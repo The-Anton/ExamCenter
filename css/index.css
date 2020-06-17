@@ -1,0 +1,222 @@
+:root {
+    --title-color: #141313;
+    --text-color: #777777;
+    --border-color: #201f1f17;
+    --gradient-color: linear-gradient(90deg, #4458dc 0%, #854fee 100%);
+    --shadow-color: 0px 10px 30px rgba(1, 1, 2, 0.3);
+    --shadow2-color: 0px 10px 30px rgba(1, 1, 2, 0.1);
+    --box-shadow: 0px 10px 30px rgba(57, 56, 61, 0.205);
+    --primary1-color:#f2f2f2;
+    --primary2-color:#f96d00;
+    --primary3-color:#393e46;
+    --primary4-color:#222831;
+}
+
+
+
+.sec-heading{
+    text-shadow: var(--shadow-color);
+}
+
+body{
+    font-family: 'Raleway';
+}
+
+
+/*  Start Navbar Area  */
+
+
+
+
+/*  End Navbar Area  */
+
+
+
+
+
+
+/*  Start Banner Area  */
+
+.overlay::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.5;
+}
+
+.carousel-indicators .active {
+    height: 6px;
+    background-color: #4EC5F1;
+    font-family: 'Raleway';
+
+}
+
+.banner {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
+    animation-name: zoom;
+    animation-duration: 15s;
+}
+
+.banner-btn{
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: var(--primary2-color);
+    color: var(--primary1-color);
+    font-size: 18px;
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(1.2)
+    }
+    ;
+    100% {
+        transform: scale(1);
+    }
+}
+
+#custom-carousel .carousel-item {
+    height: 95vh;
+    position: relative;
+}
+
+#custom-carousel .carousel-item .carousel-caption {
+    position: absolute;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+#custom-carousel .carousel-item .carousel-caption h2 {
+    font-size: 45px;
+}
+
+#custom-carousel .carousel-item .carousel-caption h2 span {
+    color: #4EC5F1;
+}
+
+#custom-carousel .carousel-item .carousel-caption h5 {
+    font-size: 25px;
+    border-left: 7px solid #4EC5F1;
+    width: 27%;
+    height: 45px;
+    margin: auto;
+    padding: 0.3em 0em;
+    margin-bottom: 100px;
+}
+
+#custom-carousel .carousel-item .carousel-caption h3 {
+    font-size: 16px;
+    padding-top: 80px;
+}
+
+@media (max-width: 1199.98px) {
+    #custom-carousel .carousel-item .carousel-caption h5 {
+        margin-bottom: 130px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    #custom-carousel .carousel-item .carousel-caption h2 {
+        font-size: 30px;
+    }
+    #custom-carousel .carousel-item .carousel-caption h5 {
+        font-size: 25px;
+        height: 40px;
+        width: 35%;
+        margin-bottom: 110px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    #custom-carousel .carousel-item .carousel-caption h2 {
+        font-size: 27px;
+    }
+    #custom-carousel .carousel-item .carousel-caption h5 {
+        font-size: 20px;
+        height: 40px;
+        width: 35%;
+        margin-bottom: 125px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    #custom-carousel .carousel-item .carousel-caption h2 {
+        font-size: 28px;
+    }
+    #custom-carousel .carousel-item .carousel-caption h5 {
+        font-size: 20px;
+        height: 40px;
+        width: 60%;
+        margin-bottom: 115px;
+    }
+}
+
+
+/* ----------------------------------------------------------------------------------- */
+
+
+/*  End Banner Area  */
+
+
+
+
+
+
+
+/*  Start Courses Area  */
+
+.w3-row-padding{
+    display: flex;
+    justify-content: space-between;
+}
+.courses-btn{
+    background-color: var(--primary2-color);
+    color: var(--primary1-color);
+    border-radius: 6px;
+}
+
+.course-card{
+    border-radius: 12px;
+    padding-top: 20px;
+    box-shadow: var(--shadow-color);
+
+}
+/*  End Courses Area  */
+
+
+
+/*  Start Quizzes Area  */
+
+.w3-row-padding{
+    display: flex;
+    justify-content: space-between;
+}
+.courses-btn{
+}
+/*  End Quizzes Area  */
+
+
+
+
+/*  Start quarter Area  */
+
+.quarter-sec{
+    font-family: 'Raleway';
+    color: var(--primary1-color);
+    background-color: var(--primary2-color);
+}
+/*  End quarter Area  */
+

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<link rel="stylesheet" href="/css/profile.css">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/footer.css">
+
+
+
+<body class="w3-light-grey">
+
+
+  <!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <a href="#home" class="w3-bar-item w3-button w3-wide">LOGO</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+      <a href="../index.html" class="w3-bar-item w3-button">HOME</a>
+      <a href="/public/index.html#courses" class="w3-bar-item w3-button"><i class="fa fa-user"></i> TEAM</a>
+      <a href="#work" class="w3-bar-item w3-button"><i class="fa fa-th"></i> WORK</a>
+      <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+      <a class="w3-bar-item w3-button" href="/public/profile.html" style="color:#000; display: none;" id="username"></a>
+      <button class="btn btn-outline-success my-2 my-sm-0 w3-bar-item" type="submit" data-toggle="modal" data-target="#loginmodal" id="login" style="color: #000;">Login</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#exampleModal" id="register" style="color: #000;">Register</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="logout" style="display: none; color: #000; padding-top: 10px;"" onclick="logout()">Logout</button>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+  <a href="../index.html" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
+  <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button">TEAM</a>
+  <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">WORK</a>
+  <a href="./index.html" onclick="w3_close()" class="w3-bar-item w3-button">PROFILE</a>
+  <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+</nav>
+
+<!-- Page Container -->
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
+
+  <!-- The Grid -->
+  <div class="w3-row-padding">
+  
+    <!-- Left Column -->
+    <div class="w3-third mt-5">
+    
+      <div class="w3-white w3-text-grey w3-card-4">
+        <div class="w3-display-container">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSUYV0gxaV5ar4a-cKBr6_XyX8PaR1S8uDMoHp69Gwg0zq6otpe&usqp=CAU" style="width:100%" alt="Avatar">
+          <div class="w3-display-bottomleft w3-container w3-text-black">
+            <h2 id="h2" style="color: #fff;"></h2>
+          </div>
+        </div>
+        <div class="w3-container mt-5">
+          <p class=""><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>User Details</b></p>
+        
+          <hr>
+
+          
+          <br>
+        </div>
+      </div><br>
+
+    <!-- End Left Column -->
+    </div>
+
+
+
+
+
+    <!-- Right Column -->
+    <div class="w3-twothird mt-5">
+      <div class="w3-container w3-card w3-white w3-margin-bottom">
+        <h4 class="w3-text-grey w3-padding-0"><i class="	fa fa-book fa-fw w3-margin-right w3-xlarge w3-text-teal"></i>Pending Tests</h4>
+
+
+      <div class="container">
+
+          <!-- Normal Demo-->
+          <div class="column">
+            <!-- Post-->
+            <div class="post-module">
+              <!-- Thumbnail-->
+              <div class="thumbnail">
+                <div class="date">
+                  <div class="day">27</div>
+                  <div class="month">Mar</div>
+                </div><img src="https://colorlib.com/wp/wp-content/uploads/sites/2/nodejs-frameworks.png"/>
+              </div>
+              <!-- Post Content-->
+              <div class="post-content">
+                <div class="category">Pending</div>
+                <h1 class="title">javascript</h1>
+                <h2 class="sub_title">This course is oriented for js lovers.</h2>
+                <p class="description">New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
+                <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">Questions : </i> 50</span><span class="comments"><a href="www.google.com"> Status</a></span></div>
+              </div>
+            </div>
+          </div>
+        <!-- Normal Demo-->
+        <div class="column">
+          <!-- Post-->
+          <div class="post-module">
+            <!-- Thumbnail-->
+            <div class="thumbnail">
+              <div class="date">
+                <div class="day">27</div>
+                <div class="month">Mar</div>
+              </div><img src="https://colorlib.com/wp/wp-content/uploads/sites/2/nodejs-frameworks.png"/>
+            </div>
+            <!-- Post Content-->
+            <div class="post-content">
+              <div class="category">Pending</div>
+              <h1 class="title">javascript</h1>
+              <h2 class="sub_title">This course is oriented for js lovers.</h2>
+              <p class="description">New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
+              <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">Questions : </i> 50</span><span class="comments"><a href="www.google.com"> Status</a></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <!-- Normal Demo-->
+          <div class="column">
+            <!-- Post-->
+            <div class="post-module">
+              <!-- Thumbnail-->
+              <div class="thumbnail">
+                <div class="date">
+                  <div class="day">27</div>
+                  <div class="month">Mar</div>
+                </div><img src="https://colorlib.com/wp/wp-content/uploads/sites/2/nodejs-frameworks.png"/>
+              </div>
+              <!-- Post Content-->
+              <div class="post-content">
+                <div class="category">Pending</div>
+                <h1 class="title">javascript</h1>
+                <h2 class="sub_title">This course is oriented for js lovers.</h2>
+                <p class="description">New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
+                <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">Questions : </i> 50</span><span class="comments"><a href="www.google.com"> Status</a></span></div>
+              </div>
+            </div>
+          </div>
+       
+        </div>
+     
+      </div>
+        </div>
+
+        <div class="w3-container w3-card w3-white w3-margin-bottom">
+          <h4 class="w3-text-grey w3-padding-0"><i class="	fa fa-book fa-fw w3-margin-right w3-xlarge w3-text-teal"></i>Completed Tests</h4>
+  
+  
+        <div class="container">
+  
+            <!-- Normal Demo-->
+            <div class="column">
+              <!-- Post-->
+              <div class="post-module">
+                <!-- Thumbnail-->
+                <div class="thumbnail">
+                  <div class="date">
+                    <div class="day">27</div>
+                    <div class="month">Mar</div>
+                  </div><img src="https://colorlib.com/wp/wp-content/uploads/sites/2/nodejs-frameworks.png"/>
+                </div>
+                <!-- Post Content-->
+                <div class="post-content">
+                  <div class="category">Pending</div>
+                  <h1 class="title">javascript</h1>
+                  <h2 class="sub_title">This course is oriented for js lovers.</h2>
+                  <p class="description">New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
+                  <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">Questions : </i> 50</span><span class="comments"><a href="www.google.com"> Status</a></span></div>
+                </div>
+              </div>
+            </div>
+          <!-- Normal Demo-->
+          <div class="column">
+            <!-- Post-->
+            <div class="post-module">
+              <!-- Thumbnail-->
+              <div class="thumbnail">
+                <div class="date">
+                  <div class="day">27</div>
+                  <div class="month">Mar</div>
+                </div><img src="https://colorlib.com/wp/wp-content/uploads/sites/2/nodejs-frameworks.png"/>
+              </div>
+              <!-- Post Content-->
+              <div class="post-content">
+                <div class="category">Pending</div>
+                <h1 class="title">javascript</h1>
+                <h2 class="sub_title">This course is oriented for js lovers.</h2>
+                <p class="description">New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
+                <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">Questions : </i> 50</span><span class="comments"><a href="www.google.com"> Status</a></span></div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="container">
+            <!-- Normal Demo-->
+            <div class="column">
+              <!-- Post-->
+              <div class="post-module">
+                <!-- Thumbnail-->
+                <div class="thumbnail">
+                  <div class="date">
+                    <div class="day">27</div>
+                    <div class="month">Mar</div>
+                  </div><img src="https://colorlib.com/wp/wp-content/uploads/sites/2/nodejs-frameworks.png"/>
+                </div>
+                <!-- Post Content-->
+                <div class="post-content">
+                  <div class="category">Pending</div>
+                  <h1 class="title">javascript</h1>
+                  <h2 class="sub_title">This course is oriented for js lovers.</h2>
+                  <p class="description">New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
+                  <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-">Questions : </i> 50</span><span class="comments"><a href="www.google.com"> Status</a></span></div>
+                </div>
+              </div>
+            </div>
+         
+          </div>
+       
+        </div>
+          </div>
+      
+
+    <!-- End Right Column -->
+    </div>
+    
+  <!-- End Grid -->
+  </div>
+  
+  <!-- End Page Container -->
+</div>
+
+    <!-- Footer -->
+    <footer class="w3-center w3-black pt-5 mt-5">
+     
+
+      <div class="inner-footer">
+        <div class="w3-xlarge w3-section">
+          <i class="fa fa-facebook-official w3-hover-opacity m-1"></i>
+          <i class="fa fa-instagram w3-hover-opacity m-1"></i>
+          <i class="fa fa-snapchat w3-hover-opacity m-1"></i>
+          <i class="fa fa-pinterest-p w3-hover-opacity m-1"></i>
+          <i class="fa fa-twitter w3-hover-opacity m-1"></i>
+          <i class="fa fa-linkedin w3-hover-opacity m-1"></i>
+        </div>
+
+        <div class="footer-items">
+            <div class="section-box">
+                <h5>Quick Links</h5>
+                <a href="main.html">Home</a>
+                <a href="aboutUs.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="#">FAQs</a>
+
+
+            </div>
+            <div class="section-box">
+                <h5>Our Courses</h5>
+
+
+                <a href="services.html#corporate">UPSC</a>
+
+                <a href="services.html#consultancy">SSC</a>
+
+
+            </div>
+            <div class="section-box">
+                <h5>Get In Touch</h5>
+                <p>
+                    <i class="fas fa-map-marker-alt"></i> F-67 /7 , B.U. Bhandari Skylines, Dighi Hills, Pune -411015, Maharashtra, India <br>
+                    <i class="fas fa-phone"></i> +(91) 9673335645 <br>
+                    <i class="fas fa-envelope"></i> bootstrapping.pawan@gmail.com
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-footer">
+        <div class="bottom-container">
+           
+            Copyright &copy; THOUGHT POWER 2020. All Rights Reserved. | <a href="terms.html">terms</a> |
+            <a href="privacy.html">privacy</a> |
+        </div>
+    </div>
+    </footer>
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-firestore.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-auth.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDsQC39VrcE_fyzZHBtld7Qfv5-cFDM01g",
+    authDomain: "examcentre-6b0a6.firebaseapp.com",
+    databaseURL: "https://examcentre-6b0a6.firebaseio.com",
+    projectId: "examcentre-6b0a6",
+    storageBucket: "examcentre-6b0a6.appspot.com",
+    messagingSenderId: "547043335428",
+    appId: "1:547043335428:web:a14fedf20945303efe4451",
+    measurementId: "G-KFFSR330E0"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+  </script>
+
+<script src="/js/profile.js"></script>
+
+</body>
+</html>

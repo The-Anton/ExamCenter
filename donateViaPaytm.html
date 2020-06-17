@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate here </title>
+</head>
+<body>
+   
+    <form  method="POST" and action="https://us-central1-examcentre-6b0a6.cloudfunctions.net/donate">
+        <div id="amtForm">
+        <input name="name" placeholder="name" >
+        <input name="email"placeholder="email">
+        <input name="mobile" placeholder="uid">
+        <input name="orderid" placeholder="orderid" id="orderid" >
+
+        <!-- <span name="amount">100</span> -->
+        <!-- <input type="text" value="200" name="amount"> -->
+        </div>
+        <input type="submit">
+    </form>
+
+
+    <!-- Add the entire Firebase JavaScript SDK -->
+ <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase.js"></script>
+
+ <script>
+    // TODO: Replace the following with your app's Firebase project configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDsQC39VrcE_fyzZHBtld7Qfv5-cFDM01g",
+      authDomain: "examcentre-6b0a6.firebaseapp.com",
+      databaseURL: "https://examcentre-6b0a6.firebaseio.com",
+      projectId: "examcentre-6b0a6",
+      storageBucket: "examcentre-6b0a6.appspot.com",
+      messagingSenderId: "547043335428",
+      appId: "1:547043335428:web:a14fedf20945303efe4451",
+      measurementId: "G-KFFSR330E0"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    var storage = firebase.storage();
+
+
+    firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+     var uid = user.uid;
+
+     function getUrlVars() {
+            var vars = {};
+            var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,    
+            function(m,key,value) {
+            vars[key] = value;
+            });
+            return vars;
+        }
+        var course = getUrlVars()["course"];
+
+        
+     document.getElementById('orderid').value=course+"-"+uid+"-"+Math.floor(Math.random() * 100000000);  
+
+            
+          } else {
+            console.log("User not logged in")
+            }
+        });
+    
+
+        
+       
+
+
+    </script>
+    
+</body>
+</html>

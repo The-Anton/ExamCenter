@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+<title>ExamCentre</title>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/footer.css">
+
+ 
+<body>
+
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+      <div class="w3-bar w3-white w3-card p-2 " id="myNavbar">
+        <a href="#home" class="w3-bar-item w3-button w3-wide">ExamCentre</a>
+        <!-- Right-sided navbar links -->
+        <div class="w3-right w3-hide-small pr-3">
+          <a href="#about" class="w3-bar-item w3-button">About</a>
+          <a href="#courses" class="w3-bar-item w3-button"> Courses</a>
+          <a href="#work" class="w3-bar-item w3-button"></i> Work</a>
+          <a href="contact.html" class="w3-bar-item w3-button"> Contact</a>
+          <a class="w3-bar-item w3-button" href="/profile.html" style="color:#000; display: none;" id="username"></a>
+          <button class="btn btn-outline-success my-2 my-sm-0 w3-bar-item" type="submit" data-toggle="modal" data-target="#loginmodal" id="login" style="color: #000;">Login</button>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#exampleModal" id="register" style="color: #000;">Register</button>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="logout" style="display: none; color: #000; padding-top: 10px;"" onclick="logout()">Logout</button>
+        </div>
+        <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+    
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+    </div>
+    <!-- Sidebar on small screens when clicking the menu icon -->
+    <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+      <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+      <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">About</a>
+      <a href="#courses" onclick="w3_close()" class="w3-bar-item w3-button">Team</a>
+      <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">Work</a>
+      <a href="contact.html" onclick="w3_close()" class="w3-bar-item w3-button">Contact</a>
+      <a class="nav-link" href="/profile.html" style="color:#fff; display: none;" id="usernameside"></a>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#loginmodal" id="loginside">Login</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#exampleModal" id="registerside">Register</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="logoutside" style="display: none;" onclick="logout()">Logout</button>
+    </nav>
+    
+   
+    
+
+
+    
+
+    <!-- ------------------------banner section start----------------------------------- -->
+
+    <section class="site-banner mt-5 ">
+      <div id="custom-carousel" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+              <li data-target="#custom-carousel" data-slide-to="0" class="active"></li>
+              <li data-target="#custom-carousel" data-slide-to="1"></li>
+              <li data-target="#custom-carousel" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+              <div class="carousel-item overlay active">
+                  <div class="banner" style="background-image:url(assets/banner1.jpg);"></div>
+                  <div class="carousel-caption">
+                      <h2 class="animate__animated animate__fadeInDown animate__delay-1s">What can we help you <span>Achieve?</span></h2>
+                      <button class="btn  banner-btn" id="banner-btn-1" type="submit">Explore</button>
+                      <h3>"We have a pool of experts in our faculty, specializing in specific areas to assist organizations in their Human Capital Development"</h3>
+                  </div>
+              </div>
+              <div class="carousel-item overlay">
+                  <div class="banner" style="background-image:url(assets/banner2.jpg);"></div>
+                  <div class="carousel-caption">
+                      <h2 class="animate__animated animate__fadeInDown animate__delay-1s">Stay ahead in a rapidly changing <span>World</span></h2>
+                      <button class="btn  banner-btn" id="banner-btn-2" type="submit">Explore</button>
+                      <h3>"We believe that Humans are the real-time assets for growth of any organization"
+                      </h3>
+                  </div>
+              </div>
+              <div class="carousel-item overlay ">
+                <div class="banner" style="background-image:url(assets/banner3.jpg);"></div>
+                <div class="carousel-caption">
+                    <h2 class="animate__animated animate__fadeInDown animate__delay-1s">What can we help you <span>Achieve?</span></h2>
+                    <button class="btn  banner-btn" id="banner-btn-3" type="submit">Explore</button>
+                    <h3>"We have a pool of experts in our faculty, specializing in specific areas to assist organizations in their Human Capital Development"</h3>
+                </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#custom-carousel" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#custom-carousel" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+          </a>
+      </div>
+      </div>
+  </section>
+
+     <!-- ================================ End Bannner Section ==================================-->
+
+
+
+    <!-- About Section -->
+  
+    
+    
+    
+    <!-- Courses Section -->
+    <section class="courses-sec">
+    <div class="w3-container" style="padding:128px 16px; text-align: center; display: inline-block;" id="courses">
+      <h3 class="w3-center sec-heading">Our Courses</h3>
+      <p class="w3-center w3-large">Choose Your jorney to run the world.</p>
+      <div class="w3-row-padding " style="margin-top:64px">
+
+        <div class="w3-col l3 m6 w3-margin-bottom " >
+          <div class="w3-card course-card h-100">
+            <img src="/assets/upsc-logo-1576674415.jpg" alt="John" style="width:100%; height: 150px;">
+            <div class="w3-container">
+              <h3>UPSC</h3>
+              <p class="w3-opacity">Test Series</p>
+              <p>"If a country is to be corruption free and become a nation of beautiful minds, I strongly feel there are three key societal members who can make a difference. they are father, the mother and the teacher.” – A. P. J. Abdul Kalam.</p>
+              <p><button class="w3-button  w3-block courses-btn mt-1" onclick = 'location.href="/courses.html?category=upsc"'> Enroll Now</button></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="w3-col l3 m6 w3-margin-bottom" >
+          <div class="w3-card course-card h-100">
+            <img src="/assets/ssc_new_logo.jpeg" alt="Jane" style="width:100%; height: 150px;">
+            <div class="w3-container">
+              <h3>SSC</h3>
+              <p class="w3-opacity">Test Series</p>
+              <p>"Struggle, setbacks and short-term failures don’t have to drain your motivation. They don’t have to make you want to quit before you’ve put in enough time and effort to reach your goal...."</p>
+              <p></p><button class="w3-button  w3-block courses-btn mt-5" onclick = 'location.href="/courses.html?category=ssc"'> Enroll Now</button></p>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </section>
+
+
+      <!-- Quizzes Section -->
+      <section class="quizzes-sec">
+        <div class="w3-container" style="padding:128px 16px; text-align: center; display: inline-block;" id="courses">
+          <h3 class="w3-left-align ml-5">Quizzes</h3>
+          <div class="w3-row-padding  ml-4 mr-4" style="margin-top:64px">
+    
+            <div class="w3-col l3 m6 w3-margin-bottom m-1 " >
+              <div class="w3-card course-card h-100">
+                <img src="/assets/upsc-logo-1576674415.jpg" alt="John" style="width:100%; height: 120px;">
+                <div class="w3-container">
+                  <h3>UPSC</h3>
+                  <p class="w3-opacity">Test Series</p>
+                  <p>"If a country is to be corruption free and become a nation of beautiful minds, I strongly feel there are three key societal members who can make a difference. they are father, the mother and the teacher.” – A. P. J. Abdul Kalam.</p>
+                  <p><button class="w3-button  w3-block courses-btn" onclick = 'location.href="/courses.html?category=upsc"'> Enroll Now</button></p>
+                </div>
+              </div>
+            </div>
+    
+            <div class="w3-col l3 m6 w3-margin-bottom m-1" >
+              <div class="w3-card course-card h-100">
+                <img src="/assets/ssc_new_logo.jpeg" alt="Jane" style="width:100%; height: 120px;">
+                <div class="w3-container">
+                  <h3>SSC</h3>
+                  <p class="w3-opacity">Test Series</p>
+                  <p>"Struggle, setbacks and short-term failures don’t have to drain your motivation. They don’t have to make you want to quit before you’ve put in enough time and effort to reach your goal...."</p>
+                  <p><button class="w3-button  w3-block courses-btn mt-5" onclick = 'location.href="/courses.html?category=ssc"'> Enroll Now</button></p>
+                </div>
+              </div>
+            </div>
+            <div class="w3-col l3 m6 w3-margin-bottom m-1" >
+              <div class="w3-card course-card h-100">
+                <img src="/assets/ssc_new_logo.jpeg" alt="Jane" style="width:100%; height: 120px;">
+                <div class="w3-container">
+                  <h3>SSC</h3>
+                  <p class="w3-opacity">Test Series</p>
+                  <p>"Struggle, setbacks and short-term failures don’t have to drain your motivation. They don’t have to make you want to quit before you’ve put in enough time and effort to reach your goal...."</p>
+                  <p><button class="w3-button  w3-block courses-btn mt-5" onclick = 'location.href="/courses.html?category=ssc"'> Enroll Now</button></p>
+                </div>
+              </div>
+            </div>
+
+          
+
+            <div class="w3-col l3 m6 w3-margin-bottom m-1" >
+              <div class="w3-card course-card h-100">
+                <img src="/assets/ssc_new_logo.jpeg" alt="Jane" style="width:100%; height: 120px;">
+                <div class="w3-container">
+                  <h3>SSC</h3>
+                  <p class="w3-opacity">Test Series</p>
+                  <p>"Struggle, setbacks and short-term failures don’t have to drain your motivation. They don’t have to make you want to quit before you’ve put in enough time and effort to reach your goal...."</p>
+                  <p><button class="w3-button  w3-block courses-btn mt-5" onclick = 'location.href="/courses.html?category=ssc"'> Enroll Now</button></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+   
+ <!-- CurrentAf Section -->
+      <section class="currentAf-sec">
+        <div class="w3-container" style="padding:128px 16px; text-align: center; display: inline-block;" id="courses">
+          <h3 class="w3-left-align ml-5">Current Affairs</h3>
+          <div class="w3-row-padding ml-4 mr-4" style="margin-top:64px">
+    
+            <div class="w3-col l3 m6 w3-margin-bottom m-1 " >
+              <div class="w3-card course-card h-100">
+                <img src="/assets/upsc-logo-1576674415.jpg" alt="John" style="width:100%; height: 120px;">
+                <div class="w3-container">
+                  <h3>UPSC</h3>
+                  <p class="w3-opacity">Test Series</p>
+                  <p>"If a country is to be corruption free and become a nation of beautiful minds, I strongly feel there are three key societal members who can make a difference. they are father, the mother and the teacher.” – A. P. J. Abdul Kalam.</p>
+                  <p><button class="w3-button w3-block courses-btn" onclick = 'location.href="/courses.html?category=upsc"'> Enroll Now</button></p>
+                </div>
+              </div>
+            </div>
+    
+            <div class="w3-col l3 m6 w3-margin-bottom m-1" >
+              <div class="w3-card course-card h-100">
+                <img src="/assets/ssc_new_logo.jpeg" alt="Jane" style="width:100%; height: 120px;">
+                <div class="w3-container">
+                  <h3>SSC</h3>
+                  <p class="w3-opacity">Test Series</p>
+                  <p>"Struggle, setbacks and short-term failures don’t have to drain your motivation. They don’t have to make you want to quit before you’ve put in enough time and effort to reach your goal...."</p>
+                  <p><button class="w3-button w3-block courses-btn mt-5" onclick = 'location.href="/courses.html?category=ssc"'> Enroll Now</button></p>
+                </div>
+              </div>
+            </div>
+            <div class="w3-col l3 m6 w3-margin-bottom m-1" >
+              <div class="w3-card course-card h-100">
+                <img src="/assets/ssc_new_logo.jpeg" alt="Jane" style="width:100%; height: 120px;">
+                <div class="w3-container">
+                  <h3>SSC</h3>
+                  <p class="w3-opacity">Test Series</p>
+                  <p>"Struggle, setbacks and short-term failures don’t have to drain your motivation. They don’t have to make you want to quit before you’ve put in enough time and effort to reach your goal...."</p>
+                  <p><button class="w3-button  w3-block courses-btn mt-5" onclick = 'location.href="/courses.html?category=ssc"'> Enroll Now</button></p>
+                </div>
+              </div>
+            </div>
+
+          
+
+            <div class="w3-col l3 m6 w3-margin-bottom m-1" >
+              <div class="w3-card course-card h-100">
+                <img src="/assets/ssc_new_logo.jpeg" alt="Jane" style="width:100%; height: 120px;">
+                <div class="w3-container">
+                  <h3>SSC</h3>
+                  <p class="w3-opacity">Test Series</p>
+                  <p>"Struggle, setbacks and short-term failures don’t have to drain your motivation. They don’t have to make you want to quit before you’ve put in enough time and effort to reach your goal...."</p>
+                  <p><button class="w3-button  w3-block courses-btn mt-5" onclick = 'location.href="/courses.html?category=ssc"'> Enroll Now</button></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <!-- Promo Section "Statistics" -->
+  <section class="quarter-sec">
+    <div class="w3-container w3-row w3-center w3-padding-64">
+      <div class="w3-quarter">
+        <span class="w3-xxlarge">14+</span>
+        <br>Partners
+      </div>
+      <div class="w3-quarter">
+        <span class="w3-xxlarge">55+</span>
+        <br>Projects Done
+      </div>
+      <div class="w3-quarter">
+        <span class="w3-xxlarge">89+</span>
+        <br>Happy Clients
+      </div>
+      <div class="w3-quarter">
+        <span class="w3-xxlarge">150+</span>
+        <br>Meetings
+      </div>
+    </div>
+  </section>
+
+
+    <!-- Modal for full size images on click-->
+    <div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+      <span class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright" title="Close Modal Image">×</span>
+      <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+        <img id="img01" class="w3-image">
+        <p id="caption" class="w3-opacity w3-large"></p>
+      </div>
+    </div>
+   
+
+    
+    
+    <!-- Footer -->
+    <footer class="w3-center w3-black pt-5">
+      <a href="#home" class="w3-button w3-light-grey mt-3 mb-3"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+     
+
+      <div class="inner-footer">
+        <div class="w3-xlarge w3-section">
+          <i class="fa fa-facebook-official w3-hover-opacity m-1"></i>
+          <i class="fa fa-instagram w3-hover-opacity m-1"></i>
+          <i class="fa fa-snapchat w3-hover-opacity m-1"></i>
+          <i class="fa fa-pinterest-p w3-hover-opacity m-1"></i>
+          <i class="fa fa-twitter w3-hover-opacity m-1"></i>
+          <i class="fa fa-linkedin w3-hover-opacity m-1"></i>
+        </div>
+
+        <div class="footer-items">
+            <div class="section-box">
+                <h5>Quick Links</h5>
+                <a href="main.html">Home</a>
+                <a href="aboutUs.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="#">FAQs</a>
+
+
+            </div>
+            <div class="section-box">
+                <h5>Our Courses</h5>
+
+
+                <a href="services.html#corporate">UPSC</a>
+
+                <a href="services.html#consultancy">SSC</a>
+
+
+            </div>
+            <div class="section-box">
+                <h5>Get In Touch</h5>
+                <p>
+                    <i class="fas fa-map-marker-alt"></i> F-67 /7 , B.U. Bhandari Skylines, Dighi Hills, Pune -411015, Maharashtra, India <br>
+                    <i class="fas fa-phone"></i> +(91) 9673335645 <br>
+                    <i class="fas fa-envelope"></i> bootstrapping.pawan@gmail.com
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-footer">
+        <div class="bottom-container">
+           
+            Copyright &copy; THOUGHT POWER 2020. All Rights Reserved. | <a href="terms.html">terms</a> |
+            <a href="privacy.html">privacy</a> |
+        </div>
+    </div>
+    </footer>
+
+
+
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"> Registeration</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="usrname">
+            <label class="mdl-textfield__label" for="sample3">Username</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="regemail">
+            <label class="mdl-textfield__label" for="sample3">Email Address</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="phoneno">
+            <label class="mdl-textfield__label" for="sample4">Phone Number...</label>
+            <span class="mdl-textfield__error">Input is not a number!</span>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="password" id="regpassword">
+            <label class="mdl-textfield__label" for="sample3">Choose Password</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" onclick="register()">Register</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="loginmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"> Login</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="lgnemail">
+            <label class="mdl-textfield__label" for="sample3">Email Address</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="password" id="lgnpassword">
+            <label class="mdl-textfield__label" for="sample3">Password</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" onclick="login()">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-auth.js"></script>
+
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDsQC39VrcE_fyzZHBtld7Qfv5-cFDM01g",
+      authDomain: "examcentre-6b0a6.firebaseapp.com",
+      databaseURL: "https://examcentre-6b0a6.firebaseio.com",
+      projectId: "examcentre-6b0a6",
+      storageBucket: "examcentre-6b0a6.appspot.com",
+      messagingSenderId: "547043335428",
+      appId: "1:547043335428:web:a14fedf20945303efe4451",
+      measurementId: "G-KFFSR330E0"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    </script>
+
+
+    <script src="/js/main.js"></script>
+    
+    </body>
+    </html>
+    

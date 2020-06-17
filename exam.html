@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+
+
+    <!---------------------------- Bootstrap -------------------->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+   <link type="stylesheet" href="/css/exam.css">
+
+    
+<!---------------------------- Start Firebase setup scripts------------------------------------------->
+                <!-- The core Firebase JS SDK is always required and must be listed first -->
+                <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+                <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-firestore.js"></script>
+    
+                <!-- TODO: Add SDKs for Firebase products that you want to use
+                    https://firebase.google.com/docs/web/setup#available-libraries -->
+                <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-analytics.js"></script>
+    
+                <script>
+                    // Your web app's Firebase configuration
+                    var firebaseConfig = {
+                      apiKey: "AIzaSyDsQC39VrcE_fyzZHBtld7Qfv5-cFDM01g",
+                      authDomain: "examcentre-6b0a6.firebaseapp.com",
+                      databaseURL: "https://examcentre-6b0a6.firebaseio.com",
+                      projectId: "examcentre-6b0a6",
+                      storageBucket: "examcentre-6b0a6.appspot.com",
+                      messagingSenderId: "547043335428",
+                      appId: "1:547043335428:web:20b89966bf767e8ffe4451",
+                      measurementId: "G-MNJ8KHSJZL"
+                    };
+                    // Initialize Firebase
+                    firebase.initializeApp(firebaseConfig);
+                    firebase.analytics();
+                  </script>
+    
+    
+    
+    
+    <!---------------------------- End Firebase setup scripts------------------------------------------->
+
+</head>
+<body>
+
+   
+<div id="end-section">
+</div>
+   
+<section class=" mt-5 mb-5" id="exam-section">
+    <div class="card container pt-3 pb-5">
+
+        <div class="row">
+
+            <div class="col-lg-8 col-md-12 col-sm-12" id="ques-area">
+               
+            </div>
+
+
+            <div class="col-lg-4 col-md-12 col-sm-12" id="ques-panel">
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class=" mt-5 mb-5" id="initial-section">
+    <div class="card container pt-3 pb-5">
+
+              
+<div id="content">
+    <div class="container">
+        <section>
+            <div class="row">
+                <div class="col-md-12 exam-confirm">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="col-md-12" id="1" style="display: block;">
+                                <h4 class="text-center">Please read the instructions carefully</h4>
+                                <h4><strong><u>General Instructions:</u></strong></h4>
+                                <ol>
+                                    <li>
+                                        <ul class="ulInstruction">
+                                            <li>Total duration of paper is 180 min.</li>
+                                        </ul>
+                                    </li>
+                                    <li>The clock will be set at the server. The countdown timer in the top left corner of screen will display the remaining time available for you to complete the examination. When the timer reaches zero, the examination will end by itself. You will not be required to end or submit your examination.</li>
+                                    <li>
+                                        The Questions Palette displayed on the right side of screen will show the status of each question using one of the following symbols:
+                                        <ol>
+                                            <li><button type="button" class="btn btn-primary mr-3 ml-3 ">0</button>You have not visited the question yet.<br><br></li>
+                                            <li><button type="button" class="btn btn-danger mr-3 ml-3 " >0</button> You have not answered the question.<br><br></li>
+                                            <li><button type="button" class="btn btn-success mr-3 ml-3 " >0</button>You have answered the question.<br><br></li>
+                                            <li><button type="button" class="btn btn-warning mr-3 ml-3 " >0</button> You have NOT answered the question, but have marked the question for review.<br><br></li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                                <h4><strong><u>Navigating to a Question:</u></strong></h4>
+                                <ol start="7">
+                                    <li>
+                                        To answer a question, do the following:
+                                        <ol type="a">
+                                            <li>Click on the question number in the Question Palette at the right of your screen to go to that numbered question directly. Note that using this option does NOT save your answer to the current question.</li>
+                                            <li>Click on <strong>Save &amp; Next</strong> to save your answer for the current question and then go to the next question.</li>
+                                            <li>Click on <strong>Mark for Review &amp; Next</strong> to save your answer for the current question, mark it for review, and then go to the next question.</li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                                <h4><strong><u>Answering a Question:</u></strong></h4>
+                                <ol start="8">
+                                    <li>
+                                        Procedure for answering a multiple choice type question:
+                                        <ol type="a">
+                                            <li>To select you answer, click on the button of one of the options.</li>
+                                            <li>To deselect your chosen answer, click on the button of the chosen option again or click on the <strong>Clear Response</strong> button</li>
+                                            <li>To change your chosen answer, click on the button of another option</li>
+                                            <li>To save your answer, you MUST click on the Save &amp; Next button.</li>
+                                            <li>To mark the question for review, click on the Mark for Review &amp; Next button.</li>
+                                        </ol>
+                                    </li>
+                                    <li>To change your answer to a question that has already been answered, first select that question for answering and then follow the procedure for answering that type of question.</li>
+                                </ol>
+                                <h4><strong><u>Navigating through sections:</u></strong></h4>
+                                <ol start="10">
+                                    <li>Sections in this question paper are displayed on the top bar of the screen. Questions in a section can be viewed by click on the section name. The section you are currently viewing is highlighted.</li>
+                                    <li>After click the Save &amp; Next button on the last question for a section, you will automatically be taken to the first question of the next section.</li>
+                                    <li>You can shuffle between sections and questions anything during the examination as per your convenience only during the time stipulated.</li>
+                                    <li>Candidate can view the corresponding section summery as part of the legend that appears in every section above the question palette.</li>
+                                </ol>
+                                
+                               
+                                <hr>
+                                <div class="col-md-4 col-md-offset-4 text-center">
+                                    <button onclick="createPage()" class="btn btn-success btn-block">Proceed</button>
+                                </div>
+                            </div>
+    </div>
+</section>
+
+
+    
+
+
+
+
+
+<!---------------------------- Start Bootstrap scripts------------------------------------------->
+
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+<!---------------------------- End Bootstrap scripts------------------------------------------->
+
+<script  src="js/exam.js"></script>
+
+
+
+</body>
+</html>

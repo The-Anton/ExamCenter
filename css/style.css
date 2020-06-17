@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+body, html {
+  height: 100%;
+  line-height: 1.8;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: lighter;
+}
+
+/* Full height image header */
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("/public/assets/cole-keister-vEgVWRBr2VY-unsplash.jpg");
+  min-height: 100%;
+  opacity: 80%;
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+#mySidebar{
+    background-color: #ffffff;
+}
+.btn-outline-success{
+  border-width: 0px;
+  color: #fff;
+  font-size: 1.5em;
+}
+.btn-outline-success:hover {
+  background-color: ivory;
+  color:#000;
+}
