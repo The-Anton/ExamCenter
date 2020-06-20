@@ -20,17 +20,17 @@
 
     <!-- Navbar (sit on top) -->
     <div class="w3-top">
-      <div class="w3-bar w3-white w3-card p-2 " id="myNavbar">
+      <div class="w3-bar w3-theme w3-card p-2 " id="myNavbar">
         <a href="#home" class="w3-bar-item w3-button w3-wide">ExamCentre</a>
         <!-- Right-sided navbar links -->
         <div class="w3-right w3-hide-small pr-3">
-          <a href="#about" class="w3-bar-item w3-button">About</a>
-          <a href="#courses" class="w3-bar-item w3-button"> Courses</a>
-          <a href="#work" class="w3-bar-item w3-button"></i> Work</a>
-          <a href="contact.html" class="w3-bar-item w3-button"> Contact</a>
-          <a class="w3-bar-item w3-button" href="/profile.html" style="color:#000; display: none;" id="username"></a>
-          <button class="btn btn-outline-success my-2 my-sm-0 w3-bar-item" type="submit" data-toggle="modal" data-target="#loginmodal" id="login" style="color: #000;">Login</button>
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#exampleModal" id="register" style="color: #000;">Register</button>
+          <a href="/exam.html" class="w3-bar-item w3-button w3-hover-deep-orange">About</a>
+          <a href="#courses" class="w3-bar-item w3-button w3-hover-deep-orange"> Courses</a>
+          <a href="#work" class="w3-bar-item w3-button w3-hover-deep-orange"></i> Work</a>
+          <a href="contact.html" class="w3-bar-item w3-button w3-hover-deep-orange"> Contact</a>
+          <a class="w3-bar-item w3-button" href="/profile.html" style="color:#fff; display: none;" id="username"></a>
+          <button class="btn btn-outline-success my-2 my-sm-0 w3-bar-item" type="submit" data-toggle="modal" data-target="#loginmodal" id="login" style="color: #fff;">Login</button>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#exampleModal" id="register" style="color: #fff;">Register</button>
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="logout" style="display: none; color: #000; padding-top: 10px;"" onclick="logout()">Logout</button>
         </div>
         <!-- Hide right-floated links on small screens and replace them with a menu icon -->
@@ -60,8 +60,9 @@
     
 
     <!-- ------------------------banner section start----------------------------------- -->
-
-    <section class="site-banner mt-5 ">
+<div>
+   <div>
+     <section class="site-banner mt-5 ">
       <div id="custom-carousel" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
               <li data-target="#custom-carousel" data-slide-to="0" class="active"></li>
@@ -70,7 +71,7 @@
           </ol>
           <div class="carousel-inner">
               <div class="carousel-item overlay active">
-                  <div class="banner" style="background-image:url(assets/banner1.jpg);"></div>
+                  <div class="banner" id="banner-1" style="background-image:url(assets/banner1.jpg);"></div>
                   <div class="carousel-caption">
                       <h2 class="animate__animated animate__fadeInDown animate__delay-1s">What can we help you <span>Achieve?</span></h2>
                       <button class="btn  banner-btn" id="banner-btn-1" type="submit">Explore</button>
@@ -78,7 +79,7 @@
                   </div>
               </div>
               <div class="carousel-item overlay">
-                  <div class="banner" style="background-image:url(assets/banner2.jpg);"></div>
+                  <div class="banner" id="banner-2" style="background-image:url(assets/banner2.jpg);"></div>
                   <div class="carousel-caption">
                       <h2 class="animate__animated animate__fadeInDown animate__delay-1s">Stay ahead in a rapidly changing <span>World</span></h2>
                       <button class="btn  banner-btn" id="banner-btn-2" type="submit">Explore</button>
@@ -87,7 +88,7 @@
                   </div>
               </div>
               <div class="carousel-item overlay ">
-                <div class="banner" style="background-image:url(assets/banner3.jpg);"></div>
+                <div class="banner" id="banner-3" style="background-image:url(assets/banner3.jpg);"></div>
                 <div class="carousel-caption">
                     <h2 class="animate__animated animate__fadeInDown animate__delay-1s">What can we help you <span>Achieve?</span></h2>
                     <button class="btn  banner-btn" id="banner-btn-3" type="submit">Explore</button>
@@ -106,106 +107,73 @@
       </div>
       </div>
   </section>
+  </div>
+  <div></div>
+</div>
+ 
 
      <!-- ================================ End Bannner Section ==================================-->
 
 
 
-    <!-- About Section -->
-  
+
     
     
     
     <!-- Courses Section -->
-    <section class="courses-sec">
-    <div class="w3-container" style="padding:128px 16px; text-align: center; display: inline-block;" id="courses">
+    <div class="container">
       <h3 class="w3-center sec-heading">Our Courses</h3>
       <p class="w3-center w3-large">Choose Your jorney to run the world.</p>
       <div class="w3-row-padding " style="margin-top:64px">
+         
+        <section class="d-flex flex-column"  style="justify-items: center;">
+            <div class="card course-card" style="margin-bottom: 64px;" >
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="card-img-bottom" style="background: url(/assets/upsc-logo-1576674415.jpg) center";>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="card-block">
+                    <h3 class="card-title">UPSC</h3>
+                    <p class="w3-opacity">Test Series</p>
+                    <p class="card-text">"If a country is to be corruption free and become a nation of beautiful minds, I strongly feel there are three key societal members who can make a difference. they are father, the mother and the teacher.” – A. P. J. Abdul Kalam.</p>
+                    <button class="w3-button  w3-block courses-btn mt-5"  onclick = 'location.href="/courses.html?category=upsc"'> Enroll Now</button>
+                  </div>
+                </div>
 
-        <div class="w3-col l3 m6 w3-margin-bottom " >
-          <div class="w3-card course-card h-100">
-            <img src="/assets/upsc-logo-1576674415.jpg" alt="John" style="width:100%; height: 150px;">
-            <div class="w3-container">
-              <h3>UPSC</h3>
-              <p class="w3-opacity">Test Series</p>
-              <p>"If a country is to be corruption free and become a nation of beautiful minds, I strongly feel there are three key societal members who can make a difference. they are father, the mother and the teacher.” – A. P. J. Abdul Kalam.</p>
-              <p><button class="w3-button  w3-block courses-btn mt-1" onclick = 'location.href="/courses.html?category=upsc"'> Enroll Now</button></p>
+              </div>
             </div>
-          </div>
-        </div>
-
-        <div class="w3-col l3 m6 w3-margin-bottom" >
-          <div class="w3-card course-card h-100">
-            <img src="/assets/ssc_new_logo.jpeg" alt="Jane" style="width:100%; height: 150px;">
-            <div class="w3-container">
-              <h3>SSC</h3>
-              <p class="w3-opacity">Test Series</p>
-              <p>"Struggle, setbacks and short-term failures don’t have to drain your motivation. They don’t have to make you want to quit before you’ve put in enough time and effort to reach your goal...."</p>
-              <p></p><button class="w3-button  w3-block courses-btn mt-5" onclick = 'location.href="/courses.html?category=ssc"'> Enroll Now</button></p>
-            </div>
-          </div>
-        </div>
        
+        
+            <div class="card course-card" >
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="card-img-bottom" style="background: url(/assets/ssc_new_logo.jpeg) center;">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="card-block">
+                    <h3 class="card-title">SSC</h3>
+                    <p class="w3-opacity">Test Series</p>
+                    <p class="card-text">"Struggle, setbacks and short-term failures don’t have to drain your motivation. They don’t have to make you want to quit before you’ve put in enough time and effort to reach your goal...."</p>
+                    <button class="w3-button  w3-block courses-btn mt-5"  onclick = 'location.href="/courses.html?category=ssc"'> Enroll Now</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+       </section>
       </div>
     </div>
-  </section>
 
 
       <!-- Quizzes Section -->
       <section class="quizzes-sec">
-        <div class="w3-container" style="padding:128px 16px; text-align: center; display: inline-block;" id="courses">
+        <div class="w3-container">
           <h3 class="w3-left-align ml-5">Quizzes</h3>
-          <div class="w3-row-padding  ml-4 mr-4" style="margin-top:64px">
-    
-            <div class="w3-col l3 m6 w3-margin-bottom m-1 " >
-              <div class="w3-card course-card h-100">
-                <img src="/assets/upsc-logo-1576674415.jpg" alt="John" style="width:100%; height: 120px;">
-                <div class="w3-container">
-                  <h3>UPSC</h3>
-                  <p class="w3-opacity">Test Series</p>
-                  <p>"If a country is to be corruption free and become a nation of beautiful minds, I strongly feel there are three key societal members who can make a difference. they are father, the mother and the teacher.” – A. P. J. Abdul Kalam.</p>
-                  <p><button class="w3-button  w3-block courses-btn" onclick = 'location.href="/courses.html?category=upsc"'> Enroll Now</button></p>
-                </div>
-              </div>
-            </div>
-    
-            <div class="w3-col l3 m6 w3-margin-bottom m-1" >
-              <div class="w3-card course-card h-100">
-                <img src="/assets/ssc_new_logo.jpeg" alt="Jane" style="width:100%; height: 120px;">
-                <div class="w3-container">
-                  <h3>SSC</h3>
-                  <p class="w3-opacity">Test Series</p>
-                  <p>"Struggle, setbacks and short-term failures don’t have to drain your motivation. They don’t have to make you want to quit before you’ve put in enough time and effort to reach your goal...."</p>
-                  <p><button class="w3-button  w3-block courses-btn mt-5" onclick = 'location.href="/courses.html?category=ssc"'> Enroll Now</button></p>
-                </div>
-              </div>
-            </div>
-            <div class="w3-col l3 m6 w3-margin-bottom m-1" >
-              <div class="w3-card course-card h-100">
-                <img src="/assets/ssc_new_logo.jpeg" alt="Jane" style="width:100%; height: 120px;">
-                <div class="w3-container">
-                  <h3>SSC</h3>
-                  <p class="w3-opacity">Test Series</p>
-                  <p>"Struggle, setbacks and short-term failures don’t have to drain your motivation. They don’t have to make you want to quit before you’ve put in enough time and effort to reach your goal...."</p>
-                  <p><button class="w3-button  w3-block courses-btn mt-5" onclick = 'location.href="/courses.html?category=ssc"'> Enroll Now</button></p>
-                </div>
-              </div>
-            </div>
-
-          
-
-            <div class="w3-col l3 m6 w3-margin-bottom m-1" >
-              <div class="w3-card course-card h-100">
-                <img src="/assets/ssc_new_logo.jpeg" alt="Jane" style="width:100%; height: 120px;">
-                <div class="w3-container">
-                  <h3>SSC</h3>
-                  <p class="w3-opacity">Test Series</p>
-                  <p>"Struggle, setbacks and short-term failures don’t have to drain your motivation. They don’t have to make you want to quit before you’ve put in enough time and effort to reach your goal...."</p>
-                  <p><button class="w3-button  w3-block courses-btn mt-5" onclick = 'location.href="/courses.html?category=ssc"'> Enroll Now</button></p>
-                </div>
-              </div>
-            </div>
+          <div class="ml-4 mr-4" style="margin-top:6px">
+                <ul id="listofdailyquizes"></ul>
           </div>
         </div>
       </section>
@@ -215,58 +183,11 @@
    
  <!-- CurrentAf Section -->
       <section class="currentAf-sec">
-        <div class="w3-container" style="padding:128px 16px; text-align: center; display: inline-block;" id="courses">
-          <h3 class="w3-left-align ml-5">Current Affairs</h3>
-          <div class="w3-row-padding ml-4 mr-4" style="margin-top:64px">
-    
-            <div class="w3-col l3 m6 w3-margin-bottom m-1 " >
-              <div class="w3-card course-card h-100">
-                <img src="/assets/upsc-logo-1576674415.jpg" alt="John" style="width:100%; height: 120px;">
-                <div class="w3-container">
-                  <h3>UPSC</h3>
-                  <p class="w3-opacity">Test Series</p>
-                  <p>"If a country is to be corruption free and become a nation of beautiful minds, I strongly feel there are three key societal members who can make a difference. they are father, the mother and the teacher.” – A. P. J. Abdul Kalam.</p>
-                  <p><button class="w3-button w3-block courses-btn" onclick = 'location.href="/courses.html?category=upsc"'> Enroll Now</button></p>
-                </div>
-              </div>
-            </div>
-    
-            <div class="w3-col l3 m6 w3-margin-bottom m-1" >
-              <div class="w3-card course-card h-100">
-                <img src="/assets/ssc_new_logo.jpeg" alt="Jane" style="width:100%; height: 120px;">
-                <div class="w3-container">
-                  <h3>SSC</h3>
-                  <p class="w3-opacity">Test Series</p>
-                  <p>"Struggle, setbacks and short-term failures don’t have to drain your motivation. They don’t have to make you want to quit before you’ve put in enough time and effort to reach your goal...."</p>
-                  <p><button class="w3-button w3-block courses-btn mt-5" onclick = 'location.href="/courses.html?category=ssc"'> Enroll Now</button></p>
-                </div>
-              </div>
-            </div>
-            <div class="w3-col l3 m6 w3-margin-bottom m-1" >
-              <div class="w3-card course-card h-100">
-                <img src="/assets/ssc_new_logo.jpeg" alt="Jane" style="width:100%; height: 120px;">
-                <div class="w3-container">
-                  <h3>SSC</h3>
-                  <p class="w3-opacity">Test Series</p>
-                  <p>"Struggle, setbacks and short-term failures don’t have to drain your motivation. They don’t have to make you want to quit before you’ve put in enough time and effort to reach your goal...."</p>
-                  <p><button class="w3-button  w3-block courses-btn mt-5" onclick = 'location.href="/courses.html?category=ssc"'> Enroll Now</button></p>
-                </div>
-              </div>
-            </div>
-
-          
-
-            <div class="w3-col l3 m6 w3-margin-bottom m-1" >
-              <div class="w3-card course-card h-100">
-                <img src="/assets/ssc_new_logo.jpeg" alt="Jane" style="width:100%; height: 120px;">
-                <div class="w3-container">
-                  <h3>SSC</h3>
-                  <p class="w3-opacity">Test Series</p>
-                  <p>"Struggle, setbacks and short-term failures don’t have to drain your motivation. They don’t have to make you want to quit before you’ve put in enough time and effort to reach your goal...."</p>
-                  <p><button class="w3-button  w3-block courses-btn mt-5" onclick = 'location.href="/courses.html?category=ssc"'> Enroll Now</button></p>
-                </div>
-              </div>
-            </div>
+        <div class="w3-container" >
+          <h3 class=" ml-5">Current Affairs</h3>
+          <div class="ml-4 mr-4" style="margin-top:6px">
+            <ul id="listofcurrentaffairs">
+            </ul>
           </div>
         </div>
       </section>

@@ -111,3 +111,42 @@ function w3_open() {
 function w3_close() {
       mySidebar.style.display = "none";
   }
+
+db.collection("dailyquiz")
+.onSnapshot(function(querySnapshot) {
+
+    querySnapshot.forEach(function(doc) {
+        console.log("name of course " , doc.data().name)
+        console.log("cost " , doc.data().cost)
+        console.log("description " , doc.data().description )
+        document.getElementById("listofdailyquizes").innerHTML += `
+        <a href="#" style="text-decoration: none;">
+        <li>
+          ${doc.data().Name}<br/>
+          ${doc.data().category}<br/>
+          <div class="right top">${doc.data().Date}</div>
+        </li>
+        </a>
+        `
+
+    });
+});   
+db.collection("currentaffairs")
+.onSnapshot(function(querySnapshot) {
+
+    querySnapshot.forEach(function(doc) {
+        console.log("name of course " , doc.data().name)
+        console.log("cost " , doc.data().cost)
+        console.log("description " , doc.data().description )
+        document.getElementById("listofcurrentaffairs").innerHTML += `
+        <a href="${doc.data().url}" style="text-decoration: none;">
+        <li>
+          ${doc.data().Name}<br/>
+          ${doc.data().category}<br/>
+          <div class="right top">${doc.data().Date}</div>
+        </li>
+        </a>
+        `
+
+    });
+});  

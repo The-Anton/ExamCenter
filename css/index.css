@@ -12,6 +12,31 @@
     --primary4-color:#222831;
 }
 
+/*  Theme colors  */
+.w3-theme-l5 {color:#000 !important; background-color:#eaecf8 !important}
+.w3-theme-l4 {color:#000 !important; background-color:#bac1e9 !important}
+.w3-theme-l3 {color:#fff !important; background-color:#7482d2 !important}
+.w3-theme-l2 {color:#fff !important; background-color:#394bb1 !important}
+.w3-theme-l1 {color:#fff !important; background-color:#232e6c !important}
+.w3-theme-d1 {color:#fff !important; background-color:#0b0f23 !important}
+.w3-theme-d2 {color:#fff !important; background-color:#0a0d1f !important}
+.w3-theme-d3 {color:#fff !important; background-color:#090b1b !important}
+.w3-theme-d4 {color:#fff !important; background-color:#070a17 !important}
+.w3-theme-d5 {color:#fff !important; background-color:#060813 !important}
+
+.w3-theme-light {color:#000 !important; background-color:#eaecf8 !important}
+.w3-theme-dark {color:#fff !important; background-color:#060813 !important}
+.w3-theme-action {color:#fff !important; background-color:#060813 !important}
+
+.w3-theme {color:#fff !important; background-color:#0d1128 !important}
+.w3-text-theme {color:#0d1128 !important}
+.w3-border-theme {border-color:#0d1128 !important}
+.w3-orange-color {color: #fd5f00 !important}
+
+.w3-hover-theme:hover {color:#fff !important; background-color:#0d1128 !important}
+.w3-hover-text-theme:hover {color:#0d1128 !important}
+.w3-hover-border-theme:hover {border-color:#0d1128 !important}
+
 
 
 .sec-heading{
@@ -25,7 +50,9 @@ body{
 
 /*  Start Navbar Area  */
 
-
+.w3-top {
+    font-size: large;
+}
 
 
 /*  End Navbar Area  */
@@ -36,6 +63,8 @@ body{
 
 
 /*  Start Banner Area  */
+
+
 
 .overlay::after {
     content: "";
@@ -51,7 +80,7 @@ body{
 
 .carousel-indicators .active {
     height: 6px;
-    background-color: #4EC5F1;
+    background-color: var(--primary2-color);
     font-family: 'Raleway';
 
 }
@@ -64,6 +93,97 @@ body{
     animation-name: zoom;
     animation-duration: 15s;
 }
+#banner-1:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    content: '';
+    z-index: -1;
+    opacity: .8;
+    background: #0d1128;
+    background: #0d1128;
+    background: -moz-linear-gradient(45deg, #0d1128 0%, #fd6100 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, #0d1128), color-stop(100%, #fd6100));
+    /* background: -webkit-linear-gradient(45deg, #0d1128 0%, #fd6100 100%); */
+    background: -o-linear-gradient(45deg, #0d1128 0%, #fd6100 100%);
+    background: -ms-linear-gradient(45deg, #0d1128 0%, #fd6100 100%);
+    background: linear-gradient(45deg, #0d1128 0%, #fd6100 100%);
+    background-image: linear-gradient(45deg, rgb(13, 17, 40) 0%, rgb(253, 97, 0) 100%);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d1128', endColorstr='#fd6100', GradientType=1 );
+}
+
+#banner-2:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    content: '';
+    z-index: -1;
+    opacity: .8;
+    background: #0d1128;
+    background: #0d1128;
+    background: -moz-linear-gradient(45deg, #0d1128 0%, #fd6100 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, #0d1128), color-stop(100%, #fd6100));
+    /* background: -webkit-linear-gradient(45deg, #0d1128 0%, #fd6100 100%); */
+    background: -o-linear-gradient(45deg, #0d1128 0%, #fd6100 100%);
+    background: -ms-linear-gradient(45deg, #0d1128 0%, #fd6100 100%);
+    background: linear-gradient(45deg, #0d1128 0%, #fd6100 100%);
+    background-image: linear-gradient(45deg, rgb(13, 17, 40) 0%, rgb(253, 97, 0) 100%);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d1128', endColorstr='#fd6100', GradientType=1 );
+}
+
+#banner-3:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    content: '';
+    z-index: -1;
+    opacity: .8;
+    background: #0d1128;
+    background: #0d1128;
+    background: -moz-linear-gradient(45deg, #0d1128 0%, #fd6100 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, #0d1128), color-stop(100%, #fd6100));
+    /* background: -webkit-linear-gradient(45deg, #0d1128 0%, #fd6100 100%); */
+    background: -o-linear-gradient(45deg, #0d1128 0%, #fd6100 100%);
+    background: -ms-linear-gradient(45deg, #0d1128 0%, #fd6100 100%);
+    background: linear-gradient(45deg, #0d1128 0%, #fd6100 100%);
+    background-image: linear-gradient(45deg, rgb(13, 17, 40) 0%, rgb(253, 97, 0) 100%);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d1128', endColorstr='#fd6100', GradientType=1 );
+}
+
+
 
 .banner-btn{
     padding-left: 10px;
@@ -81,6 +201,9 @@ body{
     100% {
         transform: scale(1);
     }
+}
+.mvh-100 {
+    min-height: 100vh;
 }
 
 #custom-carousel .carousel-item {
@@ -190,7 +313,7 @@ body{
 
 .course-card{
     border-radius: 12px;
-    padding-top: 20px;
+    padding: 20px;
     box-shadow: var(--shadow-color);
 
 }
@@ -220,3 +343,56 @@ body{
 }
 /*  End quarter Area  */
 
+.card-img-bottom {
+    color: #fff;
+    height: 20rem;
+    background-size: cover;
+  }
+
+/* current affairs section css */
+.right {
+    float: right;
+    position: relative;
+    top: 6px;
+  }
+  
+  .top {
+    margin-top: -30px;
+  }
+  
+
+  
+  ul {
+    margin: 0 auto;
+    padding: 0;
+    max-height: 390px;
+    overflow-y: auto;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 5px 5px 0 5px;
+    border-left: none;
+    border-right: none;
+    margin-bottom: 50px;
+  }
+  
+  li {
+    list-style: none;
+    background-color: #ffffff;
+    background-image: 
+      linear-gradient(
+        90deg,
+        #0000ff	 10px,
+        #fff 10px,
+        #fff 11px,
+        transparent 11px);
+    padding: 10px 15px 10px 25px;
+    border: 1px solid #0000ff;
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+    margin-bottom: 15px;
+    margin-top: 15px ;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+
+/* current affairs section end */    

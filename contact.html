@@ -19,7 +19,41 @@
 </head>
 <body>
 
-
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+        <div class="w3-bar w3-theme w3-card p-2 " id="myNavbar">
+          <a href="#home" class="w3-bar-item w3-button w3-wide">ExamCentre</a>
+          <!-- Right-sided navbar links -->
+          <div class="w3-right w3-hide-small pr-3">
+            <a href="#about" class="w3-bar-item w3-button w3-hover-deep-orange">About</a>
+            <a href="#courses" class="w3-bar-item w3-button w3-hover-deep-orange"> Courses</a>
+            <a href="#work" class="w3-bar-item w3-button w3-hover-deep-orange"></i> Work</a>
+            <a href="contact.html" class="w3-bar-item w3-button w3-hover-deep-orange"> Contact</a>
+            <a class="w3-bar-item w3-button" href="/profile.html" style="color:#fff; display: none;" id="username"></a>
+            <button class="btn btn-outline-success my-2 my-sm-0 w3-bar-item" type="submit" data-toggle="modal" data-target="#loginmodal" id="login" style="color: #fff;">Login</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#exampleModal" id="register" style="color: #fff;">Register</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="logout" style="display: none; color: #000; padding-top: 10px;"" onclick="logout()">Logout</button>
+          </div>
+          <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+      
+          <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+            <i class="fa fa-bars"></i>
+          </a>
+        </div>
+      </div>
+      <!-- Sidebar on small screens when clicking the menu icon -->
+      <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+        <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">About</a>
+        <a href="#courses" onclick="w3_close()" class="w3-bar-item w3-button">Team</a>
+        <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">Work</a>
+        <a href="contact.html" onclick="w3_close()" class="w3-bar-item w3-button">Contact</a>
+        <a class="nav-link" href="/profile.html" style="color:#fff; display: none;" id="usernameside"></a>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#loginmodal" id="loginside">Login</button>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#exampleModal" id="registerside">Register</button>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="logoutside" style="display: none;" onclick="logout()">Logout</button>
+      </nav>
+      
 
 
     

@@ -13,9 +13,9 @@ var Name;
 var data= [];
 
 var d;
-var docRef = db.collection("Shekhar").doc("W7w3Z9PK5BnYOc65qIWp");
+var docRef = db.collection("/courses/categories/ssc/ssc-001/questions").doc("W7w3Z9PK5BnYOc65qIWp");
 
-var responseDocRef = db.collection("Shekhar").doc("Responses");
+var responseDocRef = db.collection("/courses/categories/ssc/ssc-001/questions").doc("Responses");
 
 var currentQ =0;
 
@@ -26,6 +26,7 @@ var optObj ={};
 var totalQuestion;
 var timeleft=180;
 var marked=[];
+
 //var ans ={};
 
 //var base = "/user/"
@@ -198,7 +199,7 @@ function loadBackQues(){
         }
     }
     console.log("Answers:", ans);
-    db.collection("Shekhar").doc("Answers").set(optObj)
+    db.collection("/courses/categories/ssc/ssc-001/questions").doc("Answers").set(optObj)
     .then(function() {
         console.log("Document successfully written!");
     })
@@ -211,16 +212,17 @@ function submit(){
     console.log("Answers:", ans);
     console.log("Answers:", optObj);
 
-    db.collection("Shekhar").doc("Responses").set(optObj)
+    db.collection("/courses/categories/ssc/ssc-001/questions").doc("Responses").set(optObj)
     .then(function() {
         console.log("Document successfully written!");
+        document.getElementById("exam-section").style.display = "none";
+        document.getElementById("exam-section").innerHTML = `<h4 class=" mt-5 text-center">Your Test has been submitted!.</h4>`;
+        window.location.href='/result.html'
     })
     .catch(function(error) {
         console.error("Error writing document: ", error);
     });
-    document.getElementById("exam-section").style.display = "none";
-    document.getElementById("exam-section").innerHTML = `<h4 class=" mt-5 text-center">Your Test has been submitted!.</h4>`;
-    window.location.href='/result.html'
+
 }
 
 function markIt(){
@@ -308,7 +310,7 @@ function loadQues(qNo,flag){
             loadFromCache(qNo);
         }else{
 
-            var docRef2 = db.collection("Shekhar").doc(`${qNo}`);
+            var docRef2 = db.collection("/courses/categories/ssc/ssc-001/questions").doc(`${qNo}`);
 
             docRef2.withConverter(dataConverter)
             .get().then(function(doc) {
@@ -337,7 +339,7 @@ function loadQues(qNo,flag){
 
 
 function showAllQuesNo(){
-    var docRef3 = db.collection("Shekhar").doc("testData");
+    var docRef3 = db.collection("/courses/categories/ssc/ssc-001/questions").doc("testData");
     docRef3.get().then(function(doc) {
     if (doc.exists) {
         var range = doc.data().TotalQuestions;
