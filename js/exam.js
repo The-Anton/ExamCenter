@@ -303,6 +303,8 @@ function loadQues(qNo,flag){
             }
             else if(flag==-1){
                 currentQ--;
+            }else if(flag==0){
+                currentQ=qNo;
             }
             else{
 
@@ -320,10 +322,13 @@ function loadQues(qNo,flag){
                     }
                     else if(flag==-1){
                         currentQ--;
+                    }else if(flag==0){
+                        currentQ=qNo;
                     }
                     else{
 
                     }
+                    
                     d = doc.data();
                     d.showQues();
                 } else {
@@ -344,9 +349,9 @@ function showAllQuesNo(){
     if (doc.exists) {
         var range = doc.data().TotalQuestions;
         totalQuestion = doc.data().TotalQuestions;
-
+        var f=0;
         for(i=1; i<=range ; i++){
-            document.getElementById("all-ques-area").innerHTML += `<button type="button" class="btn btn-primary mt-3 mb-2 mr-2 ml-2 mr-2" id= "Qbtn${i}" onclick="loadQues(${i},0)">${i}</button>`;
+            document.getElementById("all-ques-area").innerHTML += `<button type="button" class="btn btn-primary mt-3 mb-2 mr-2 ml-2 mr-2" id= "Qbtn${i}" onclick="loadQues(${i},${f})">${i}</button>`;
         }
 
     } else {
