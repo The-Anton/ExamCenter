@@ -14,12 +14,14 @@
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   <link rel="stylesheet" href="/css/index.css">
   <link rel="stylesheet" href="/css/footer.css">
+  <link href="https://fonts.googleapis.com/css2?family=Piedra&display=swap" rel="stylesheet">
 
  
 <body>
+  <h3 style="text-align: center; background-color: #f96d00; color: white; font-family: 'Piedra', cursive; margin: 0; height: 50px; padding-top: 5px;">Exam Aapka Test Hamara</h2>
 
     <!-- Navbar (sit on top) -->
-    <div class="w3-top">
+    <div >
       <div class="w3-bar w3-theme w3-card p-2 " id="myNavbar">
         <a href="#home" class="w3-bar-item w3-button w3-wide">ExamCentre</a>
         <!-- Right-sided navbar links -->
@@ -28,7 +30,7 @@
           <a href="#courses" class="w3-bar-item w3-button w3-hover-deep-orange"> Courses</a>
           <a href="#work" class="w3-bar-item w3-button w3-hover-deep-orange"></i> Work</a>
           <a href="contact.html" class="w3-bar-item w3-button w3-hover-deep-orange"> Contact</a>
-          <a class="w3-bar-item w3-button" href="/profile.html" style="color:#fff; display: none;" id="username"></a>
+          <a class="w3-bar-item w3-button" href="/profile.html" style="color:#ffffff; display: none;" id="username"></a>
           <button class="btn btn-outline-success my-2 my-sm-0 w3-bar-item" type="submit" data-toggle="modal" data-target="#loginmodal" id="login" style="color: #fff;">Login</button>
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#exampleModal" id="register" style="color: #fff;">Register</button>
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="logout" style="display: none; color: #000; padding-top: 10px;"" onclick="logout()">Logout</button>
@@ -47,10 +49,10 @@
       <a href="#courses" onclick="w3_close()" class="w3-bar-item w3-button">Team</a>
       <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">Work</a>
       <a href="contact.html" onclick="w3_close()" class="w3-bar-item w3-button">Contact</a>
-      <a class="nav-link" href="/profile.html" style="color:#fff; display: none;" id="usernameside"></a>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#loginmodal" id="loginside">Login</button>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#exampleModal" id="registerside">Register</button>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="logoutside" style="display: none;" onclick="logout()">Logout</button>
+      <a onclick="w3_close()" class="w3-bar-item w3-button" href="/profile.html" style=" display: none;" id="usernameside"></a>
+      <button class="btn btn-outline-success my-2 my-sm-0 w3-bar-item w3-button" type="submit" data-toggle="modal" data-target="#loginmodal" id="loginside" >Login</button>
+      <button class="btn btn-outline-success my-2 my-sm-0 w3-bar-item w3-button" type="submit" data-toggle="modal" data-target="#exampleModal" id="registerside">Register</button>
+      <button class="btn btn-outline-success my-2 my-sm-0 w3-bar-item w3-button" type="submit" id="logoutside" style="display: none;" onclick="logout()">Logout</button>
     </nav>
     
    
@@ -60,56 +62,34 @@
     
 
     <!-- ------------------------banner section start----------------------------------- -->
-<div>
-   <div>
-     <section class="site-banner mt-5 ">
-      <div id="custom-carousel" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-              <li data-target="#custom-carousel" data-slide-to="0" class="active"></li>
-              <li data-target="#custom-carousel" data-slide-to="1"></li>
-              <li data-target="#custom-carousel" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner">
-              <div class="carousel-item overlay active">
-                  <div class="banner" id="banner-1" style="background-image:url(assets/banner1.jpg);"></div>
-                  <div class="carousel-caption">
-                      <h2 class="animate__animated animate__fadeInDown animate__delay-1s">What can we help you <span>Achieve?</span></h2>
-                      <button class="btn  banner-btn" id="banner-btn-1" type="submit">Explore</button>
-                      <h3>"We have a pool of experts in our faculty, specializing in specific areas to assist organizations in their Human Capital Development"</h3>
-                  </div>
-              </div>
-              <div class="carousel-item overlay">
-                  <div class="banner" id="banner-2" style="background-image:url(assets/banner2.jpg);"></div>
-                  <div class="carousel-caption">
-                      <h2 class="animate__animated animate__fadeInDown animate__delay-1s">Stay ahead in a rapidly changing <span>World</span></h2>
-                      <button class="btn  banner-btn" id="banner-btn-2" type="submit">Explore</button>
-                      <h3>"We believe that Humans are the real-time assets for growth of any organization"
-                      </h3>
-                  </div>
-              </div>
-              <div class="carousel-item overlay ">
-                <div class="banner" id="banner-3" style="background-image:url(assets/banner3.jpg);"></div>
-                <div class="carousel-caption">
-                    <h2 class="animate__animated animate__fadeInDown animate__delay-1s">What can we help you <span>Achieve?</span></h2>
-                    <button class="btn  banner-btn" id="banner-btn-3" type="submit">Explore</button>
-                    <h3>"We have a pool of experts in our faculty, specializing in specific areas to assist organizations in their Human Capital Development"</h3>
-                </div>
-            </div>
-          </div>
-          <a class="carousel-control-prev" href="#custom-carousel" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#custom-carousel" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-          </a>
+    <div class="container-fluid" >
+      <div class="row">
+        <div class="col-sm-8" style="background-image:url(/assets/1.jpeg); height: 500px; background-position: center; background-repeat: no-repeat; background-size: cover;">
+        
+          
+        </div>
+        <div class="col-sm-4" style="padding: 0; margin-top: 0;">
+          <h3 style="background-color: #f96d00;  margin-bottom: 0px; margin-top: 0; color: white; text-align: center; border-radius: 5px 5px 0 0;">Current Affairs</h3>
+          <div class="container-current blur" style="height: 461px;">
+            
+            <ul class="slider">
+              <li><p> This was a triumph.</p></li>
+              <li><p> I'm making a note here:</p></li>
+              <li><p>HUGE SUCCESS.</p></li>
+              <li><p> It's hard to overstate</p></li>
+              <li><p> my satisfaction</p></li>
+              <li><p>Aperture Science</p></li>
+              <li><p>We do what we must</p></li>
+              <li><p>because we can.</p></li>
+              <li><p>For the good of all of us.</p></li>
+              <li><p>Except for the ones who are dead.</p></li>
+            </ul>
+        </div>
+        </div>
+        
       </div>
-      </div>
-  </section>
-  </div>
-  <div></div>
-</div>
+  
+    </div>
  
 
      <!-- ================================ End Bannner Section ==================================-->
@@ -173,7 +153,7 @@
         <div class="w3-container">
           <h3 class="w3-left-align ml-5">Quizzes</h3>
           <div class="ml-4 mr-4" style="margin-top:6px">
-                <ul id="listofdailyquizes"></ul>
+                <ul class="ul-list" id="listofdailyquizes"></ul>
           </div>
         </div>
       </section>
@@ -296,9 +276,11 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" style="text-align: center;">
+          <div class="alert alert-warning alert-dismissible fade show" role="alert" id="error">
+          </div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="usrname">
+            <input class="mdl-textfield__input" type="text" id="usrname" >
             <label class="mdl-textfield__label" for="sample3">Username</label>
           </div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -316,7 +298,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary" onclick="register()">Register</button>
+          <button type="submit" class="btn btn-primary " onclick="register()" id="register">Register</button>
         </div>
       </div>
     </div>
@@ -330,7 +312,10 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" style="text-align: center;">
+          <div class="alert alert-warning alert-dismissible fade show" role="alert" id="errorlogin">
+      
+          </div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input class="mdl-textfield__input" type="text" id="lgnemail">
             <label class="mdl-textfield__label" for="sample3">Email Address</label>

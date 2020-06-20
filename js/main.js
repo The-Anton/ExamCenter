@@ -16,9 +16,9 @@ firebase.auth().onAuthStateChanged(function(user) {
          document.getElementById("usernameside").textContent=doc.data().Username
      })
      document.getElementById("register").style="display:none;"
-     document.getElementById("logout").style="display:inline; color:#000"
+     document.getElementById("logout").style="display:inline; color:#fff"
      document.getElementById("login").style="display:none;"
-     document.getElementById("username").style="display:inline;color:#000;"
+     document.getElementById("username").style="display:inline;color:#fff;"
      document.getElementById("registerside").style="display:none;"
      document.getElementById("logoutside").style="display:inline; color:#fff"
      document.getElementById("loginside").style="display:none;"
@@ -35,18 +35,28 @@ function register(){
     var password = regpasswordinput.value;
     var name = username.value; 
     var no = phoneno.value;
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then(function() {
-        var user = firebase.auth().currentUser;
-        uid = user.uid;
-        saveuserdata(uid,name,no);
-    })
-    .catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log(errorMessage);
-      });
+    if(name!="" || no!=""){
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(function() {
+          var user = firebase.auth().currentUser;
+          uid = user.uid;
+          saveuserdata(uid,name,no);
+          modal = document.getElementById("exampleModal")
+          modal.style.display = "none";
+          window.location.reload();
+      })
+      .catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          
+          document.getElementById("error").textContent=errorMessage;
+          console.log(errorMessage);
+        });
+
+    }else{
+      document.getElementById("error").textContent="Please fill out all the fields!!"
+    }
       
     
 }
@@ -75,15 +85,22 @@ function  logout(){
 function login(){
     var email = lgnemailinput.value;
     var password = lgnpasswordinput.value;
-    firebase.auth().signInWithEmailAndPassword(email, password)
-    
-    .catch(function(error) {
-        // Handle Errors here.
+    if(email!="" || password!=""){
+      firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(function(){
+        modal = document.getElementById("loginmodal")
+        modal.style.display = "none";
+        window.location.reload();
+      })
+      .catch(function(error) {
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log(errorMessage);
-        window.location.reload();
+        document.getElementById("errorlogin").textContent=errorMessage;
       });
+    }else{
+      document.getElementById("errorlogin").textContent="Please fill out all the fields!!"
+    }
 }
 
 
@@ -121,7 +138,7 @@ db.collection("dailyquiz")
         console.log("description " , doc.data().description )
         document.getElementById("listofdailyquizes").innerHTML += `
         <a href="#" style="text-decoration: none;">
-        <li>
+        <li class="li-list">
           ${doc.data().Name}<br/>
           ${doc.data().category}<br/>
           <div class="right top">${doc.data().Date}</div>
@@ -140,7 +157,7 @@ db.collection("currentaffairs")
         console.log("description " , doc.data().description )
         document.getElementById("listofcurrentaffairs").innerHTML += `
         <a href="${doc.data().url}" style="text-decoration: none;">
-        <li>
+        <li class="li-list">
           ${doc.data().Name}<br/>
           ${doc.data().category}<br/>
           <div class="right top">${doc.data().Date}</div>
