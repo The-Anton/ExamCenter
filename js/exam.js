@@ -13,9 +13,9 @@ var Name;
 var data= [];
 
 var d;
-var docRef = db.collection("/courses/categories/ssc/ssc-001/questions").doc("W7w3Z9PK5BnYOc65qIWp");
+var docRef = db.collection("Shekhar").doc("W7w3Z9PK5BnYOc65qIWp");
 
-var responseDocRef = db.collection("/courses/categories/ssc/ssc-001/questions").doc("Responses");
+var responseDocRef = db.collection("Shekhar").doc("Responses");
 
 var currentQ =0;
 
@@ -26,6 +26,10 @@ var optObj ={};
 var totalQuestion;
 var timeleft=180;
 var marked=[];
+var status=[];                                        //   Answered = 1 | Not Answered = 0 | Not Visited = undifined or null | Marked For review = -1
+
+
+
 
 //var ans ={};
 
@@ -39,7 +43,7 @@ var marked=[];
 
 
 var totalAnswered =0;
-var totalVisited =0;
+var totalVisited =1;
 var totalNotAnswered =0;
 var totalMarked =0;
 
@@ -66,7 +70,7 @@ function makeVisible(){
                 </div>
                 <div class="buttons mt-5" id="mark-btn-section">
                     
-                    <button type="button" class="btn btn-success mr-3 ml-3 " id="save-next-btn" onclick="loadNextQues()">Save & Next</button>
+                    <button type="button" class="btn btn-success mr-3 ml-3 " id="save-next-btn" onclick="save_next()">Save & Next</button>
                     <button type="button" class="btn btn-light mr-3 ml-3 " id="clear-btn" onclick="clear_opt()">Clear</button>
                     <button type="button" class="btn btn-warning mr-3 ml-3 " id="save-mark-btn" onclick="markSaveIt()">Save & Mark For Review</button>
                     <button type="button" class="btn btn-primary mr-3 ml-3 " id="save-mark-btn" onclick="markIt()">Mark For Review & Next</button>
@@ -157,10 +161,7 @@ function startTimer(){
             submit();
             clearInterval(intervals);
         }
-       /* if(document.hidden){
-            cheated();
-            clearInterval(intervals);
-        }*/
+       
     },1000)
 
 }
@@ -177,42 +178,25 @@ function loadBackQues(){
     }
 }
 
-/*function cheated(){
 
-    document.getElementById("exam-section").style.display = "none";
+function markYellow(c){
+    document.getElementById(`Qbtn${c}`).style.background = "#ffc107";            // yellow
 
-    var modal = document.getElementById("myModal");
+}
+function markRed(c){
+    document.getElementById(`Qbtn${c}`).style.background = "#e51f1f";            //  red
+}
+function markGreen(c){
+    document.getElementById(`Qbtn${c}`).style.background = "#21ab2c";            // green
+}
+function markYellow(c){
 
-    var btn = document.getElementById("myBtn");
-
-    var span = document.getElementsByClassName("close")[0];
-
-    modal.style.display = "block";
-
-    span.onclick = function() {
-    modal.style.display = "none";
-    }
-
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-    console.log("Answers:", ans);
-    db.collection("/courses/categories/ssc/ssc-001/questions").doc("Answers").set(optObj)
-    .then(function() {
-        console.log("Document successfully written!");
-    })
-    .catch(function(error) {
-        console.error("Error writing document: ", error);
-    });
-
-}*/
+}
 function submit(){
     console.log("Answers:", ans);
     console.log("Answers:", optObj);
 
-    db.collection("/courses/categories/ssc/ssc-001/questions").doc("Responses").set(optObj)
+    db.collection("Shekhar").doc("Responses").set(optObj)
     .then(function() {
         console.log("Document successfully written!");
         document.getElementById("exam-section").style.display = "none";
@@ -222,43 +206,11 @@ function submit(){
     .catch(function(error) {
         console.error("Error writing document: ", error);
     });
-
+    
 }
 
-function markIt(){
 
 
-    if(marked[currentQ]!=true){
-        totalMarked++;
-        marked[currentQ]=true;
-        document.getElementById("marked-review-btn").innerText= totalMarked;
-        document.getElementById(`Qbtn${currentQ}`).style.background = "#ffc107";
-        totalNotAnswered++;
-        document.getElementById("not-anwered-btn").innerText= totalNotAnswered;
-    }
-    document.getElementById(`Qbtn${currentQ}`).style.background = "#ffc107";
-    loadNextQues();
-
-}
-function markSaveIt(){
-
-
-    if(optObj[`${currentQ}`]== null || optObj[`${currentQ}`==undefined]){
-        window.alert("Select any option to save it!")
-        
-    }
-    else if(marked[currentQ]==true){
-        document.getElementById(`Qbtn${currentQ}`).style.background = "#ffc107";
-    }
-    else{
-        totalMarked++;
-        marked[currentQ]=true;
-        document.getElementById("marked-review-btn").innerText= totalMarked;
-        document.getElementById(`Qbtn${currentQ}`).style.background = "#ffc107";
-        loadNextQues();
-    }
-   
-}
 function selectOnlyThis(id){
     for (var i = 1;i <= 4; i++)
     {
@@ -273,7 +225,7 @@ function selectOnlyThis(id){
 
     totalNotAnswered= totalVisited-totalAnswered;
     document.getElementById("not-anwered-btn").innerText= totalNotAnswered;
-    document.getElementById(`Qbtn${currentQ}`).style.background = "#21ab2c";
+    markGreen(currentQ);
 }
 
 function clear_opt(){
@@ -288,7 +240,7 @@ function clear_opt(){
 
     totalNotAnswered= totalVisited-totalAnswered;
     document.getElementById("not-anwered-btn").innerText= totalNotAnswered;
-    document.getElementById(`Qbtn${currentQ}`).style.background = "#e51f1f";
+    markRed(currentQ);
     console.log("Answers: ", optObj);
 }
 
@@ -303,7 +255,9 @@ function loadQues(qNo,flag){
             }
             else if(flag==-1){
                 currentQ--;
-            }else if(flag==0){
+            }
+            
+            else if(flag==0){
                 currentQ=qNo;
             }
             else{
@@ -312,7 +266,7 @@ function loadQues(qNo,flag){
             loadFromCache(qNo);
         }else{
 
-            var docRef2 = db.collection("/courses/categories/ssc/ssc-001/questions").doc(`${qNo}`);
+            var docRef2 = db.collection("Shekhar").doc(`${qNo}`);
 
             docRef2.withConverter(dataConverter)
             .get().then(function(doc) {
@@ -328,7 +282,6 @@ function loadQues(qNo,flag){
                     else{
 
                     }
-                    
                     d = doc.data();
                     d.showQues();
                 } else {
@@ -344,7 +297,7 @@ function loadQues(qNo,flag){
 
 
 function showAllQuesNo(){
-    var docRef3 = db.collection("/courses/categories/ssc/ssc-001/questions").doc("testData");
+    var docRef3 = db.collection("Shekhar").doc("testData");
     docRef3.get().then(function(doc) {
     if (doc.exists) {
         var range = doc.data().TotalQuestions;
@@ -366,6 +319,8 @@ function showAllQuesNo(){
 
 
 function loadFromCache(qNo){
+    totalNotAnswered= totalVisited-totalAnswered;
+    document.getElementById("not-anwered-btn").innerText= totalNotAnswered;
     
     document.getElementById("single-ques-area").innerHTML = `<h5 id="Q">Q.${qNo} ${localQuesCache[`ques${qNo}`]}</h5><br>   
     <label class="checkbox-inline mr-3 ml-3" ><input type="radio"  id="opt1" value="${localQuesCache[`opt${qNo}.1`]}" onclick="selectOnlyThis(this.id)"> A) ${localQuesCache[`opt${qNo}.1`]}</label>    <br> 
@@ -373,19 +328,13 @@ function loadFromCache(qNo){
     <label class="checkbox-inline mr-3 ml-3" ><input type="radio"  id="opt3" value="${localQuesCache[`opt${qNo}.3`]}" onclick="selectOnlyThis(this.id)"> C) ${localQuesCache[`opt${qNo}.3`]}</label>    <br>
     <label class="checkbox-inline mr-3 ml-3" ><input type="radio"  id="opt4" value="${localQuesCache[`opt${qNo}.4`]}" onclick="selectOnlyThis(this.id)"> D) ${localQuesCache[`opt${qNo}.4`]} </label>    <br>`;
 
+    document.getElementById(`opt${optObj[qNo]}`).checked =true;
     console.log("LocalQuesCache");
+    
+    markQues(currentQ);
 
-    if(ans[qNo]!= null || ans[qNo]!= undefined){
-        document.getElementById(ans[qNo]).checked = true;
-        document.getElementById(`Qbtn${currentQ}`).style.background = "#21ab2c";
 
-     }
-     else{
-        document.getElementById(`Qbtn${qNo}`).style.background = "#e51f1f";
-
-     }
-
-     console.log("Q:",currentQ);
+     console.log("Q:",qNo);
 
 }
 
@@ -421,15 +370,17 @@ class data1 {
         localQuesCache[`opt${currentQ}.4`]=`${this.opt4}`;
 
         console.log("From Firebase");
-        totalVisited++;
-        document.getElementById("not-visited-btn").innerText = totalQuestion-totalVisited;
-        if(ans[currentQ]!= null || ans[currentQ]!= undefined){
-            document.getElementById(ans[currentQ]).checked = true;
-            document.getElementById(`Qbtn${currentQ}`).style.background = "#21ab2c";
+        if(currentQ==1){
+            totalVisited=1;
         }else{
-            document.getElementById(`Qbtn${currentQ}`).style.background = "#e51f1f";
+            totalVisited++;
+
         }
-        console.log("Q:",currentQ);
+        document.getElementById("not-visited-btn").innerText = totalQuestion-totalVisited;
+        
+        totalNotAnswered= totalVisited-totalAnswered;
+        document.getElementById("not-anwered-btn").innerText= totalNotAnswered;
+        markQues(currentQ);
 
     }
 }
@@ -449,5 +400,71 @@ dataConverter = {
     fromFirestore: function(snapshot, options){
         const data = snapshot.data(options);
         return new data1(data.ques, data.opt1, data.opt2, data.opt3, data.opt4)
+    }
+}
+
+
+function markQues(qNo ){
+
+    if(marked[qNo]==true){
+        markYellow(qNo);
+    }
+    
+    else if(ans[qNo]!= null || ans[qNo]!= undefined){
+        document.getElementById(ans[qNo]).checked = true;
+        markGreen(qNo);
+    }else{
+        markRed(qNo);
+    }
+    console.log("Q:",qNo);
+
+}
+
+
+function markSaveIt(){
+
+    if(optObj[`${currentQ}`]== null || optObj[`${currentQ}`==undefined]){
+        window.alert("Select any option to save it!")
+        
+    }
+    else if(marked[currentQ]==true){
+        markYellow(currentQ);
+    }
+    else{
+        totalMarked++;
+        marked[currentQ]=true;
+
+        document.getElementById("marked-review-btn").innerText= totalMarked;
+        markYellow(currentQ);
+        loadNextQues();
+    }
+   
+}
+
+
+function markIt(){
+
+    
+    if(marked[currentQ]!=true){
+        totalMarked++;
+        marked[currentQ]=true;
+        document.getElementById("marked-review-btn").innerText= totalMarked;
+        markYellow(currentQ);
+        totalNotAnswered++;
+        document.getElementById("not-anwered-btn").innerText= totalNotAnswered;
+    }
+    markYellow(currentQ);
+    loadNextQues();
+
+}
+function save_next(){
+
+    if(optObj[`${currentQ}`]== null || optObj[`${currentQ}`==undefined]){
+        window.alert("Select any option to save it!")
+        
+    }
+    else{
+        markYellow(currentQ);
+        loadNextQues();
     }
 }
