@@ -65,14 +65,14 @@ function makeVisible(){
                    <h5> <span id="timer"><span>Time Left: </span><span id="hours">00</span><span>:</span><span id="minutes">00</span></span></h5>
                 </div>
 
-                <div class="mt-5 mb-5 ml-3" id="single-ques-area">
+                <div class="mt-5 mb-5" id="single-ques-area">
 
                 </div>
                 <div class="buttons mt-5" id="mark-btn-section">
                     
                     <button type="button" class="btn btn-success mr-3 ml-3 " id="save-next-btn" onclick="save_next()">Save & Next</button>
                     <button type="button" class="btn btn-light mr-3 ml-3 " id="clear-btn" onclick="clear_opt()">Clear</button>
-                    <button type="button" class="btn btn-warning mr-3 ml-3 " id="save-mark-btn" onclick="markSaveIt()">Save & Mark For Review</button>
+                    <button type="button" class="btn btn-warning mr-3 ml-3 " id="save-mark-btn" onclick="markSave()">Save & Mark For Review</button>
                     <button type="button" class="btn btn-primary mr-3 ml-3 " id="save-mark-btn" onclick="markIt()">Mark For Review & Next</button>
 
 
@@ -87,55 +87,60 @@ function makeVisible(){
 
                 </div>`;
     document.getElementById("ques-panel").innerHTML = ` 
+                     <div class="row ques-panel">
+                        <div class="col-lg-12">
 
-                <div class="mt-5" id="all-ques-area">
-                    
-                </div>
-
-                <div class="mt-5" id="ques-category-area">
-         
-                </div>
-                <div class=" mt-5" id="summary-section">
-                    <div class="row summary-row">
-                        <div class="first-row">
-                            <div class="col-lg-12 ">
-                                <div class="img-summary text-center">
-                                    <button type="button" class="btn btn-primary mr-3 ml-3 " id="not-visited-btn" >0</button>
-                                </div>
-                                <div class="img-txt text-center">
-                                    <p>Not Visited</p>
-                                </div>
+                            <div class="mt-5 p-2" id="all-ques-area">
+                                
                             </div>
-                            <div class="col-lg-12">
-                                <div class="img-summary text-center">
-                                    <button type="button" class="btn btn-success mr-3 ml-3 " id="answered-btn" >0</button>
-                                </div>
-                                <div class="img-txt text-center">
-                                    <p>Answered</p>
-                                </div>
+
+                            <div class="mt-5" id="ques-category-area">
+                    
                             </div>
                         </div>
-                        <div class="second-row">
-                            <div class="col-lg-12">
-                                <div class="img-summary text-center">
-                                    <button type="button" class="btn btn-danger mr-3 ml-3 " id="not-anwered-btn" >0</button>
-                                </div>
-                                <div class="img-txt text-center">
-                                    <p>Not Answered</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="img-summary text-center">
-                                    <button type="button" class="btn btn-warning mr-3 ml-3 " id="marked-review-btn"">0</button>
-                                </div>
-                                <div class="img-txt text-center">
-                                    <p>Marked For Review</p>
+                        <div class="col-lg-12 ">
+                            <div class=" mt-5" id="summary-section">
+                                <div class="row summary-row">
+                                    <div class="first-row">
+                                        <div class="col-lg-12 ">
+                                            <div class="img-summary text-center">
+                                                <button type="button" class="btn btn-primary mr-3 ml-3 " id="not-visited-btn" >0</button>
+                                            </div>
+                                            <div class="img-txt text-center">
+                                                <p>Not Visited</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="img-summary text-center">
+                                                <button type="button" class="btn btn-success mr-3 ml-3 " id="answered-btn" >0</button>
+                                            </div>
+                                            <div class="img-txt text-center">
+                                                <p>Answered</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="second-row">
+                                        <div class="col-lg-12">
+                                            <div class="img-summary text-center">
+                                                <button type="button" class="btn btn-danger mr-3 ml-3 " id="not-anwered-btn" >0</button>
+                                            </div>
+                                            <div class="img-txt text-center">
+                                                <p>Not Answered</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="img-summary text-center">
+                                                <button type="button" class="btn btn-warning mr-3 ml-3 " id="marked-review-btn"">0</button>
+                                            </div>
+                                            <div class="img-txt text-center">
+                                                <p>Marked For Review</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
 
                 `;
     document.getElementById("initial-section").style.display = "none";
@@ -180,7 +185,8 @@ function loadBackQues(){
 
 
 function markYellow(c){
-    document.getElementById(`Qbtn${c}`).style.background = "#ffc107";            // yellow
+    document.getElementById(`Qbtn${c}`).style.background = "#ffc107";  
+    console.log("Marked Yellow");          // yellow
 
 }
 function markRed(c){
@@ -189,12 +195,16 @@ function markRed(c){
 function markGreen(c){
     document.getElementById(`Qbtn${c}`).style.background = "#21ab2c";            // green
 }
-function markYellow(c){
 
-}
 function submit(){
     console.log("Answers:", ans);
     console.log("Answers:", optObj);
+
+    for(i=1; i<=totalQuestion; i++){
+        if(optObj[`${i}`]== null || optObj[`${i}`==undefined]){
+            optObj[i]="0";
+        }
+    }
 
     db.collection("/courses/categories/ssc/ssc-001/questions").doc("Responses").set(optObj)
     .then(function() {
@@ -328,7 +338,11 @@ function loadFromCache(qNo){
     <label class="checkbox-inline mr-3 ml-3" ><input type="radio"  id="opt3" value="${localQuesCache[`opt${qNo}.3`]}" onclick="selectOnlyThis(this.id)"> C) ${localQuesCache[`opt${qNo}.3`]}</label>    <br>
     <label class="checkbox-inline mr-3 ml-3" ><input type="radio"  id="opt4" value="${localQuesCache[`opt${qNo}.4`]}" onclick="selectOnlyThis(this.id)"> D) ${localQuesCache[`opt${qNo}.4`]} </label>    <br>`;
 
-    document.getElementById(`opt${optObj[qNo]}`).checked =true;
+
+    if(optObj[`${currentQ}`]!= null || optObj[`${currentQ}`!=undefined]){
+        document.getElementById(`opt${optObj[qNo]}`).checked =true;
+        
+    }
     console.log("LocalQuesCache");
     
     markQues(currentQ);
@@ -421,21 +435,22 @@ function markQues(qNo ){
 }
 
 
-function markSaveIt(){
+function markSave(){
 
     if(optObj[`${currentQ}`]== null || optObj[`${currentQ}`==undefined]){
-        window.alert("Select any option to save it!")
+        window.alert("Select any option to save it!");
         
     }
     else if(marked[currentQ]==true){
         markYellow(currentQ);
     }
     else{
+        markYellow(currentQ);
+
         totalMarked++;
         marked[currentQ]=true;
 
         document.getElementById("marked-review-btn").innerText= totalMarked;
-        markYellow(currentQ);
         loadNextQues();
     }
    
