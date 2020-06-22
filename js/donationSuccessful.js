@@ -25,7 +25,7 @@ document.getElementById("date").innerHTML=date
 document.getElementById("txn_id").innerHTML=txn_id
 document.getElementById("status").innerHTML="Pending"
 
-
+document.getElementById("continue-button").href='courses.html?category='+ category
 
 //variable declaration for the global repeated animations
 var gear = $("#gear1, #gear2, #gear3"),
