@@ -34,10 +34,6 @@
     margin-left: 375px;
 }
 
-
-#all-ques-area{
-    border: 2px solid black;
-}
 .btn-primary{
     border-color: white;
 }
@@ -54,7 +50,9 @@
 }
 
 
-
+#all-ques-area{
+    border: 20px bold black;
+}
 
 .summary-row{
     display: flex;

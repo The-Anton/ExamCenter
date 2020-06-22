@@ -7,56 +7,42 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/courses.css">
-<link rel="stylesheet" href="/css/footer.css">
-<link href="https://fonts.googleapis.com/css2?family=Piedra&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
 <body>
-  <h3 style="text-align: center; background-color: #f96d00; color: white; font-family: 'Piedra', cursive; margin: 0; height: 50px; padding-top: 5px;">Exam Aapka Test Hamara</h2>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-      <a class="navbar-brand" href="index.html">UPSC Garden</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item ">
-            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Our Test Series
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/courses.html?category=upsc">UPSC</a>
-              <a class="dropdown-item" href="/courses.html?category=ssc">SSC</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/exam.html">Current Affairs</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/exam.html">Daily Quiz</a>
-          </li>
-          <li class="nav-item dropdown" id="myprofile">
-           
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact Us</a>
-          </li>
-         
-        
-        <button class="nav-item btn btn-outline-primary my-2 my-sm-0 " type="submit" data-toggle="modal" data-target="#loginmodal" id="login" style="margin-right: 10px;">Login</button>
-        <button class="nav-item btn btn-outline-primary my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#exampleModal" id="register" style="margin-right: 10px;">Register</button>
-       
-      </ul>
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+      <div class="w3-bar w3-theme w3-card p-2 " id="myNavbar">
+        <a href="#home" class="w3-bar-item w3-button w3-wide">ExamCentre</a>
+        <!-- Right-sided navbar links -->
+        <div class="w3-right w3-hide-small pr-3">
+          <a href="#about" class="w3-bar-item w3-button w3-hover-deep-orange">About</a>
+          <a href="#courses" class="w3-bar-item w3-button w3-hover-deep-orange"> Courses</a>
+          <a href="#work" class="w3-bar-item w3-button w3-hover-deep-orange"></i> Work</a>
+          <a href="contact.html" class="w3-bar-item w3-button w3-hover-deep-orange"> Contact</a>
+          <a class="w3-bar-item w3-button" href="/profile.html" style="color:#fff; display: none;" id="username"></a>
+          <button class="btn btn-outline-success my-2 my-sm-0 w3-bar-item" type="submit" data-toggle="modal" data-target="#loginmodal" id="login" style="color: #fff;">Login</button>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#exampleModal" id="register" style="color: #fff;">Register</button>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="logout" style="display: none; color: #000; padding-top: 10px;"" onclick="logout()">Logout</button>
+        </div>
+        <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+    
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+          <i class="fa fa-bars"></i>
+        </a>
       </div>
+    </div>
+    <!-- Sidebar on small screens when clicking the menu icon -->
+    <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+      <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+      <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">About</a>
+      <a href="#courses" onclick="w3_close()" class="w3-bar-item w3-button">Team</a>
+      <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">Work</a>
+      <a href="contact.html" onclick="w3_close()" class="w3-bar-item w3-button">Contact</a>
+      <a class="nav-link" href="/profile.html" style="color:#fff; display: none;" id="usernameside"></a>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#loginmodal" id="loginside">Login</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#exampleModal" id="registerside">Register</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="logoutside" style="display: none;" onclick="logout()">Logout</button>
     </nav>
     
 <h1 id="courses-head">Courses</h1>
@@ -69,140 +55,25 @@
 
 
 <!-- Footer -->
-<footer class="w3-center w3-black pt-5">
-
-     
-
-  <div class="inner-footer">
-    <div class="w3-xlarge w3-section">
-      <i class="fa fa-facebook-official w3-hover-opacity m-1"></i>
-      <i class="fa fa-instagram w3-hover-opacity m-1"></i>
-      <i class="fa fa-snapchat w3-hover-opacity m-1"></i>
-      <i class="fa fa-pinterest-p w3-hover-opacity m-1"></i>
-      <i class="fa fa-twitter w3-hover-opacity m-1"></i>
-      <i class="fa fa-linkedin w3-hover-opacity m-1"></i>
-    </div>
-
-    <div class="footer-items">
-        <div class="section-box">
-            <h5>Quick Links</h5>
-            <a href="index.html">Home</a>
-            <a href="aboutUs.html">About Us</a>
-            <a href="contact.html">Contact Us</a>
-      
-
-
-        </div>
-        <div class="section-box">
-            <h5>Our Courses</h5>
-
-
-            <a href="/courses.html?category=upsc">UPSC</a>
-
-            <a href="/courses.html?category=ssc">SSC</a>
-
-
-        </div>
-        <div class="section-box">
-            <h5>Get In Touch</h5>
-            <p>
-                <i class="fas fa-map-marker-alt"></i> F-67 /7 , B.U. Bhandari Skylines, Dighi Hills, Pune -411015, Maharashtra, India <br>
-                <i class="fas fa-phone"></i> +(91) 7906030727 <br>
-                <i class="fas fa-envelope"></i> upscgarden@gmail.com
-            </p>
-        </div>
-    </div>
-</div>
-<div class="bottom-footer">
-    <div class="bottom-container">
-       
-        Copyright &copy; UPSC Garden 2020. All Rights Reserved. | <a href="terms.html">terms</a> |
-        <a href="privacy.html">privacy</a> |
-    </div>
-</div>
+<footer class="w3-center w3-black w3-padding-64">
+  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <div class="w3-xlarge w3-section">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
 </footer>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"> Registeration</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body" style="text-align: center;">
-            <div class="alert alert-warning alert-dismissible fade show" role="alert" id="error">
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" id="usrname" >
-              <label class="mdl-textfield__label" for="sample3">Username</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" id="regemail">
-              <label class="mdl-textfield__label" for="sample3">Email Address</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="phoneno">
-              <label class="mdl-textfield__label" for="sample4">Phone Number...</label>
-              <span class="mdl-textfield__error">Input is not a number!</span>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="password" id="regpassword">
-              <label class="mdl-textfield__label" for="sample3">Choose Password</label>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-primary " onclick="register()" id="register">Register</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade" id="loginmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"> Login</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body" style="text-align: center;">
-            <div class="alert alert-warning alert-dismissible fade show" role="alert" id="errorlogin">
-        
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" id="lgnemail">
-              <label class="mdl-textfield__label" for="sample3">Email Address</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="password" id="lgnpassword">
-              <label class="mdl-textfield__label" for="sample3">Password</label>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" onclick="login()">Login</button>
-          </div>
-        </div>
-      </div>
-    </div> 
+ 
 
 
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.15.3/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.15.3/firebase-firestore.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-        https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-auth.js"></script>
+ <!-- Add the entire Firebase JavaScript SDK -->
+ <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase.js"></script>
 
  <script>
     // TODO: Replace the following with your app's Firebase project configuration

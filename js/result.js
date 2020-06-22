@@ -116,10 +116,6 @@ function processData(a,r,e){
 
     responseDocRef = db.collection("/courses/categories/ssc/ssc-001/questions");
 
-
-    var count=0;
-    var quesData={};
-
     responseDocRef.get().then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
 
@@ -130,78 +126,47 @@ function processData(a,r,e){
 
             var questionText = snap.ques;
 
-
-
             if(questionNo<=totalQuestion){
-                quesData[questionNo]= questionText;
-                quesData[`${questionNo}.1`] = snap.opt1;
-                quesData[`${questionNo}.2`] = snap.opt2;
-                quesData[`${questionNo}.3`] = snap.opt3;
-                quesData[`${questionNo}.4`] = snap.opt4;
-
-                console.log(quesData);
-
-                count++;
-
-            
-                if(count== totalQuestion){
-                    //showQuestions(quesData, totalQuestion, ans ,res,e);
-
-                
-                    
-                    for(qNo=1; qNo<=totalQuestion; qNo++){
-                        console.log(quesData[qNo]);
-
-                        document.getElementById('responses').innerHTML += `
-                        <div class="card data-card m-5 p-5">
-                            <div>
-                            <h5 class="mt-3 mb-3">Q${qNo}. ${quesData[qNo]}?</h5>
-                            <div>
-                                <h6 class="pl-4" id="${qNo}.1">1) ${quesData[`${qNo}.1`]}</h6>
-                                </div>
-                                <div>
-                                <h6 class="pl-4" id="${qNo}.2">2) ${quesData[`${qNo}.2`]}</h6>
-                                </div>
-                                <div>
-                                <h6 class="pl-4" id="${qNo}.3">3) ${quesData[`${qNo}.3`]}</h6>
-                                </div>
-                                <div>
-                                <h6 class="pl-4" id="${qNo}.4">4) ${quesData[`${qNo}.4`]}</h6>
-                                </div>
-                                </div>
-                                <div>
-                                <br>
-                                <h6 class="status pl-1" id="status${qNo}">Status:</h6>
-                                <h6 class="crt-txt pl-1">Correct Ans: ${ans[qNo]}</h6>
-                                <p class="expand-txt mt-3 mb-3 p-1" type="button" data-toggle="collapse" data-target="#multiCollapseExample${qNo}" aria-expanded="false" aria-controls="multiCollapseExample${qNo}">Show Explaination</p>
-
-                                <div class="exp-card card collapse multi-collapse" id="multiCollapseExample${qNo}">
-                                    <div class="card-body">
-                                        <p class="card_text ">${e[qNo]}</p>
-                                    </div>
-                                </div>
-                            </div>
-
+                document.getElementById('responses').innerHTML += `
+                <div class="card data-card m-5 p-5">
+                    <div>
+                    <h5 class="mt-3 mb-3">Q${questionNo}. ${questionText}?</h5>
+                    <div>
+                        <h6 class="pl-4" id="${questionNo}.1">1) ${snap.opt1}</h6>
                         </div>
-                                
+                        <div>
+                        <h6 class="pl-4" id="${questionNo}.2">2) ${snap.opt2}</h6>
+                        </div>
+                        <div>
+                        <h6 class="pl-4" id="${questionNo}.3">3) ${snap.opt3}</h6>
+                        </div>
+                        <div>
+                        <h6 class="pl-4" id="${questionNo}.4">4) ${snap.opt4}</h6>
+                        </div>
+                        </div>
+                        <div>
+                        <br>
+                    <h6 class=" crt-txt pl-1">Correct Ans: ${ans[questionNo]}</h6>
+                        <p class="expand-txt mt-3 mb-3 p-1" type="button" data-toggle="collapse" data-target="#multiCollapseExample${questionNo}" aria-expanded="false" aria-controls="multiCollapseExample${questionNo}">Show Explaination</p>
 
-                            
-                        `;
-                        if(res[qNo]==0){
-                            document.getElementById(`status${qNo}`).innerText="Status: Unattempted";
-                            document.getElementById(`status${qNo}`).style.color="#e51f1f";      // red
-                        }
-                        else{
-                            document.getElementById(`status${qNo}`).innerText="Status: Attempted";
-                            document.getElementById(`status${qNo}`).style.color="#21ab2c";      // green
-                            document.getElementById(`${qNo}.${res[qNo]}`).style.color="#4EC5F1";
-                        }
-                    }
-                
-                
-                
-                }
+                        <div class="exp-card card collapse multi-collapse" id="multiCollapseExample${questionNo}">
+                            <div class="card-body">
+                                <p class="card_text ">${e[questionNo]}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                        
+        
+                    
+                `;
+
+                document.getElementById(`${questionNo}.${res[doc.id]}`).style.color="#4EC5F1";
             }
+           
+    
+            
 
         });
     });
@@ -209,47 +174,3 @@ function processData(a,r,e){
 }
 
 
-
-function showQuestions(quesData, totalQuestion ,ans, res, e){
-
-
-
-    for(qNo=1; qNo<=totalQuestion; qNo++){
-        document.getElementById('responses').innerHTML += `
-        <div class="card data-card m-5 p-5">
-            <div>
-            <h5 class="mt-3 mb-3">Q${qNo}. ${quesData[qNo]}?</h5>
-            <div>
-                <h6 class="pl-4" id="${qNo}.1">1) ${quesData[`${qNo}.1`]}</h6>
-                </div>
-                <div>
-                <h6 class="pl-4" id="${qNo}.2">2) ${quesData[`${qNo}.2`]}</h6>
-                </div>
-                <div>
-                <h6 class="pl-4" id="${qNo}.3">3) ${quesData[`${qNo}.3`]}</h6>
-                </div>
-                <div>
-                <h6 class="pl-4" id="${qNo}.4">4) ${quesData[`${qNo}.4`]}</h6>
-                </div>
-                </div>
-                <div>
-                <br>
-            <h6 class=" crt-txt pl-1">Correct Ans: ${ans[qNo]}</h6>
-                <p class="expand-txt mt-3 mb-3 p-1" type="button" data-toggle="collapse" data-target="#multiCollapseExample${qNo}" aria-expanded="false" aria-controls="multiCollapseExample${qNo}">Show Explaination</p>
-
-                <div class="exp-card card collapse multi-collapse" id="multiCollapseExample${qNo}">
-                    <div class="card-body">
-                        <p class="card_text ">${e[qNo]}</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-                
-
-            
-        `;
-
-       // document.getElementById(`${questionNo}.${res[doc.id]}`).style.color="#4EC5F1";
-    }
-}

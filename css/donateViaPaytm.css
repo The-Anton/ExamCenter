@@ -23,7 +23,8 @@ input {
   body {
     display: -webkit-box;
     display: flex;
-    background: #daecf7;
+    background: rgb(249,109,0);
+background: linear-gradient(90deg, rgba(249,109,0,1) 0%, rgba(249,109,0,1) 21%, rgba(245,226,212,1) 100%);
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
             flex-direction: row;
@@ -80,7 +81,7 @@ input {
     width: 270px;
     float: right;
     margin-top: -145px;
-    background: #665aa7;
+    background: #f96d00;
     padding: 50px;
     -webkit-transform: scale(1.5) rotate(20deg);
             transform: scale(1.5) rotate(20deg);
@@ -149,7 +150,7 @@ input {
   
   .checkout {
     outline: none;
-    background: #665aa7;
+    background: #f96d00;
     border: 0;
     color: white;
     position: relative;

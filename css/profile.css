@@ -1,3 +1,11 @@
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+
+body, html {
+    height: 100%;
+    line-height: 1.8;
+    margin-top: 35px;
+  }
+  
   .w3-bar .w3-button {
     padding: 16px;
   }
@@ -35,7 +43,10 @@
   /*PEN STYLES*/
   body {
     background: #f2f2f2;
-
+    font-family: 'proxima-nova-soft', sans-serif;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   .post-module {
     position: relative;

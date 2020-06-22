@@ -26,10 +26,6 @@ var optObj ={};
 var totalQuestion;
 var timeleft=180;
 var marked=[];
-var status=[];                                        //   Answered = 1 | Not Answered = 0 | Not Visited = undifined or null | Marked For review = -1
-
-
-
 
 //var ans ={};
 
@@ -43,7 +39,7 @@ var status=[];                                        //   Answered = 1 | Not An
 
 
 var totalAnswered =0;
-var totalVisited =1;
+var totalVisited =0;
 var totalNotAnswered =0;
 var totalMarked =0;
 
@@ -65,14 +61,14 @@ function makeVisible(){
                    <h5> <span id="timer"><span>Time Left: </span><span id="hours">00</span><span>:</span><span id="minutes">00</span></span></h5>
                 </div>
 
-                <div class="mt-5 mb-5" id="single-ques-area">
+                <div class="mt-5 mb-5 ml-3" id="single-ques-area">
 
                 </div>
                 <div class="buttons mt-5" id="mark-btn-section">
                     
-                    <button type="button" class="btn btn-success mr-3 ml-3 " id="save-next-btn" onclick="save_next()">Save & Next</button>
+                    <button type="button" class="btn btn-success mr-3 ml-3 " id="save-next-btn" onclick="loadNextQues()">Save & Next</button>
                     <button type="button" class="btn btn-light mr-3 ml-3 " id="clear-btn" onclick="clear_opt()">Clear</button>
-                    <button type="button" class="btn btn-warning mr-3 ml-3 " id="save-mark-btn" onclick="markSave()">Save & Mark For Review</button>
+                    <button type="button" class="btn btn-warning mr-3 ml-3 " id="save-mark-btn" onclick="markSaveIt()">Save & Mark For Review</button>
                     <button type="button" class="btn btn-primary mr-3 ml-3 " id="save-mark-btn" onclick="markIt()">Mark For Review & Next</button>
 
 
@@ -87,60 +83,55 @@ function makeVisible(){
 
                 </div>`;
     document.getElementById("ques-panel").innerHTML = ` 
-                     <div class="row ques-panel">
-                        <div class="col-lg-12">
 
-                            <div class="mt-5 p-2" id="all-ques-area">
-                                
-                            </div>
-
-                            <div class="mt-5" id="ques-category-area">
+                <div class="mt-5" id="all-ques-area">
                     
+                </div>
+
+                <div class="mt-5" id="ques-category-area">
+         
+                </div>
+                <div class=" mt-5" id="summary-section">
+                    <div class="row summary-row">
+                        <div class="first-row">
+                            <div class="col-lg-12 ">
+                                <div class="img-summary text-center">
+                                    <button type="button" class="btn btn-primary mr-3 ml-3 " id="not-visited-btn" >0</button>
+                                </div>
+                                <div class="img-txt text-center">
+                                    <p>Not Visited</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="img-summary text-center">
+                                    <button type="button" class="btn btn-success mr-3 ml-3 " id="answered-btn" >0</button>
+                                </div>
+                                <div class="img-txt text-center">
+                                    <p>Answered</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 ">
-                            <div class=" mt-5" id="summary-section">
-                                <div class="row summary-row">
-                                    <div class="first-row">
-                                        <div class="col-lg-12 ">
-                                            <div class="img-summary text-center">
-                                                <button type="button" class="btn btn-primary mr-3 ml-3 " id="not-visited-btn" >0</button>
-                                            </div>
-                                            <div class="img-txt text-center">
-                                                <p>Not Visited</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="img-summary text-center">
-                                                <button type="button" class="btn btn-success mr-3 ml-3 " id="answered-btn" >0</button>
-                                            </div>
-                                            <div class="img-txt text-center">
-                                                <p>Answered</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="second-row">
-                                        <div class="col-lg-12">
-                                            <div class="img-summary text-center">
-                                                <button type="button" class="btn btn-danger mr-3 ml-3 " id="not-anwered-btn" >0</button>
-                                            </div>
-                                            <div class="img-txt text-center">
-                                                <p>Not Answered</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="img-summary text-center">
-                                                <button type="button" class="btn btn-warning mr-3 ml-3 " id="marked-review-btn"">0</button>
-                                            </div>
-                                            <div class="img-txt text-center">
-                                                <p>Marked For Review</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <div class="second-row">
+                            <div class="col-lg-12">
+                                <div class="img-summary text-center">
+                                    <button type="button" class="btn btn-danger mr-3 ml-3 " id="not-anwered-btn" >0</button>
+                                </div>
+                                <div class="img-txt text-center">
+                                    <p>Not Answered</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="img-summary text-center">
+                                    <button type="button" class="btn btn-warning mr-3 ml-3 " id="marked-review-btn"">0</button>
+                                </div>
+                                <div class="img-txt text-center">
+                                    <p>Marked For Review</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+
 
                 `;
     document.getElementById("initial-section").style.display = "none";
@@ -166,7 +157,10 @@ function startTimer(){
             submit();
             clearInterval(intervals);
         }
-       
+       /* if(document.hidden){
+            cheated();
+            clearInterval(intervals);
+        }*/
     },1000)
 
 }
@@ -183,28 +177,40 @@ function loadBackQues(){
     }
 }
 
+/*function cheated(){
 
-function markYellow(c){
-    document.getElementById(`Qbtn${c}`).style.background = "#ffc107";  
-    console.log("Marked Yellow");          // yellow
+    document.getElementById("exam-section").style.display = "none";
 
-}
-function markRed(c){
-    document.getElementById(`Qbtn${c}`).style.background = "#e51f1f";            //  red
-}
-function markGreen(c){
-    document.getElementById(`Qbtn${c}`).style.background = "#21ab2c";            // green
-}
+    var modal = document.getElementById("myModal");
 
+    var btn = document.getElementById("myBtn");
+
+    var span = document.getElementsByClassName("close")[0];
+
+    modal.style.display = "block";
+
+    span.onclick = function() {
+    modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    console.log("Answers:", ans);
+    db.collection("/courses/categories/ssc/ssc-001/questions").doc("Answers").set(optObj)
+    .then(function() {
+        console.log("Document successfully written!");
+    })
+    .catch(function(error) {
+        console.error("Error writing document: ", error);
+    });
+
+}*/
 function submit(){
     console.log("Answers:", ans);
     console.log("Answers:", optObj);
-
-    for(i=1; i<=totalQuestion; i++){
-        if(optObj[`${i}`]== null || optObj[`${i}`==undefined]){
-            optObj[i]="0";
-        }
-    }
 
     db.collection("/courses/categories/ssc/ssc-001/questions").doc("Responses").set(optObj)
     .then(function() {
@@ -216,11 +222,43 @@ function submit(){
     .catch(function(error) {
         console.error("Error writing document: ", error);
     });
-    
+
 }
 
+function markIt(){
 
 
+    if(marked[currentQ]!=true){
+        totalMarked++;
+        marked[currentQ]=true;
+        document.getElementById("marked-review-btn").innerText= totalMarked;
+        document.getElementById(`Qbtn${currentQ}`).style.background = "#ffc107";
+        totalNotAnswered++;
+        document.getElementById("not-anwered-btn").innerText= totalNotAnswered;
+    }
+    document.getElementById(`Qbtn${currentQ}`).style.background = "#ffc107";
+    loadNextQues();
+
+}
+function markSaveIt(){
+
+
+    if(optObj[`${currentQ}`]== null || optObj[`${currentQ}`==undefined]){
+        window.alert("Select any option to save it!")
+        
+    }
+    else if(marked[currentQ]==true){
+        document.getElementById(`Qbtn${currentQ}`).style.background = "#ffc107";
+    }
+    else{
+        totalMarked++;
+        marked[currentQ]=true;
+        document.getElementById("marked-review-btn").innerText= totalMarked;
+        document.getElementById(`Qbtn${currentQ}`).style.background = "#ffc107";
+        loadNextQues();
+    }
+   
+}
 function selectOnlyThis(id){
     for (var i = 1;i <= 4; i++)
     {
@@ -235,7 +273,7 @@ function selectOnlyThis(id){
 
     totalNotAnswered= totalVisited-totalAnswered;
     document.getElementById("not-anwered-btn").innerText= totalNotAnswered;
-    markGreen(currentQ);
+    document.getElementById(`Qbtn${currentQ}`).style.background = "#21ab2c";
 }
 
 function clear_opt(){
@@ -250,7 +288,7 @@ function clear_opt(){
 
     totalNotAnswered= totalVisited-totalAnswered;
     document.getElementById("not-anwered-btn").innerText= totalNotAnswered;
-    markRed(currentQ);
+    document.getElementById(`Qbtn${currentQ}`).style.background = "#e51f1f";
     console.log("Answers: ", optObj);
 }
 
@@ -265,10 +303,6 @@ function loadQues(qNo,flag){
             }
             else if(flag==-1){
                 currentQ--;
-            }
-            
-            else if(flag==0){
-                currentQ=qNo;
             }
             else{
 
@@ -286,8 +320,6 @@ function loadQues(qNo,flag){
                     }
                     else if(flag==-1){
                         currentQ--;
-                    }else if(flag==0){
-                        currentQ=qNo;
                     }
                     else{
 
@@ -312,9 +344,9 @@ function showAllQuesNo(){
     if (doc.exists) {
         var range = doc.data().TotalQuestions;
         totalQuestion = doc.data().TotalQuestions;
-        var f=0;
+
         for(i=1; i<=range ; i++){
-            document.getElementById("all-ques-area").innerHTML += `<button type="button" class="btn btn-primary mt-3 mb-2 mr-2 ml-2 mr-2" id= "Qbtn${i}" onclick="loadQues(${i},${f})">${i}</button>`;
+            document.getElementById("all-ques-area").innerHTML += `<button type="button" class="btn btn-primary mt-3 mb-2 mr-2 ml-2 mr-2" id= "Qbtn${i}" onclick="loadQues(${i},0)">${i}</button>`;
         }
 
     } else {
@@ -329,8 +361,6 @@ function showAllQuesNo(){
 
 
 function loadFromCache(qNo){
-    totalNotAnswered= totalVisited-totalAnswered;
-    document.getElementById("not-anwered-btn").innerText= totalNotAnswered;
     
     document.getElementById("single-ques-area").innerHTML = `<h5 id="Q">Q.${qNo} ${localQuesCache[`ques${qNo}`]}</h5><br>   
     <label class="checkbox-inline mr-3 ml-3" ><input type="radio"  id="opt1" value="${localQuesCache[`opt${qNo}.1`]}" onclick="selectOnlyThis(this.id)"> A) ${localQuesCache[`opt${qNo}.1`]}</label>    <br> 
@@ -338,17 +368,19 @@ function loadFromCache(qNo){
     <label class="checkbox-inline mr-3 ml-3" ><input type="radio"  id="opt3" value="${localQuesCache[`opt${qNo}.3`]}" onclick="selectOnlyThis(this.id)"> C) ${localQuesCache[`opt${qNo}.3`]}</label>    <br>
     <label class="checkbox-inline mr-3 ml-3" ><input type="radio"  id="opt4" value="${localQuesCache[`opt${qNo}.4`]}" onclick="selectOnlyThis(this.id)"> D) ${localQuesCache[`opt${qNo}.4`]} </label>    <br>`;
 
-
-    if(optObj[`${currentQ}`]!= null || optObj[`${currentQ}`!=undefined]){
-        document.getElementById(`opt${optObj[qNo]}`).checked =true;
-        
-    }
     console.log("LocalQuesCache");
-    
-    markQues(currentQ);
 
+    if(ans[qNo]!= null || ans[qNo]!= undefined){
+        document.getElementById(ans[qNo]).checked = true;
+        document.getElementById(`Qbtn${currentQ}`).style.background = "#21ab2c";
 
-     console.log("Q:",qNo);
+     }
+     else{
+        document.getElementById(`Qbtn${qNo}`).style.background = "#e51f1f";
+
+     }
+
+     console.log("Q:",currentQ);
 
 }
 
@@ -384,17 +416,15 @@ class data1 {
         localQuesCache[`opt${currentQ}.4`]=`${this.opt4}`;
 
         console.log("From Firebase");
-        if(currentQ==1){
-            totalVisited=1;
-        }else{
-            totalVisited++;
-
-        }
+        totalVisited++;
         document.getElementById("not-visited-btn").innerText = totalQuestion-totalVisited;
-        
-        totalNotAnswered= totalVisited-totalAnswered;
-        document.getElementById("not-anwered-btn").innerText= totalNotAnswered;
-        markQues(currentQ);
+        if(ans[currentQ]!= null || ans[currentQ]!= undefined){
+            document.getElementById(ans[currentQ]).checked = true;
+            document.getElementById(`Qbtn${currentQ}`).style.background = "#21ab2c";
+        }else{
+            document.getElementById(`Qbtn${currentQ}`).style.background = "#e51f1f";
+        }
+        console.log("Q:",currentQ);
 
     }
 }
@@ -414,72 +444,5 @@ dataConverter = {
     fromFirestore: function(snapshot, options){
         const data = snapshot.data(options);
         return new data1(data.ques, data.opt1, data.opt2, data.opt3, data.opt4)
-    }
-}
-
-
-function markQues(qNo ){
-
-    if(marked[qNo]==true){
-        markYellow(qNo);
-    }
-    
-    else if(ans[qNo]!= null || ans[qNo]!= undefined){
-        document.getElementById(ans[qNo]).checked = true;
-        markGreen(qNo);
-    }else{
-        markRed(qNo);
-    }
-    console.log("Q:",qNo);
-
-}
-
-
-function markSave(){
-
-    if(optObj[`${currentQ}`]== null || optObj[`${currentQ}`==undefined]){
-        window.alert("Select any option to save it!");
-        
-    }
-    else if(marked[currentQ]==true){
-        markYellow(currentQ);
-    }
-    else{
-        markYellow(currentQ);
-
-        totalMarked++;
-        marked[currentQ]=true;
-
-        document.getElementById("marked-review-btn").innerText= totalMarked;
-        loadNextQues();
-    }
-   
-}
-
-
-function markIt(){
-
-    
-    if(marked[currentQ]!=true){
-        totalMarked++;
-        marked[currentQ]=true;
-        document.getElementById("marked-review-btn").innerText= totalMarked;
-        markYellow(currentQ);
-        totalNotAnswered++;
-        document.getElementById("not-anwered-btn").innerText= totalNotAnswered;
-    }
-    markYellow(currentQ);
-    loadNextQues();
-
-}
-function save_next(){
-
-    if(optObj[`${currentQ}`]== null || optObj[`${currentQ}`==undefined]){
-        window.alert("Select any option to save it!")
-        
-    }
-    else{
-        markYellow(currentQ);
-        loadNextQues();
     }
 }
