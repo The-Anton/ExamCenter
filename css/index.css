@@ -48,7 +48,7 @@ body{
 }
 
 
-/*  Start Navbar Area  *
+/*  Start Navbar Area  */
 
 
 /*  End Navbar Area  */
@@ -153,8 +153,6 @@ p {
 .w3-row-padding{
     display: flex;
     justify-content: space-between;
-}
-.courses-btn{
 }
 /*  End Quizzes Area  */
 
