@@ -1,11 +1,4 @@
-html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
-body, html {
-    height: 100%;
-    line-height: 1.8;
-    margin-top: 35px;
-  }
-  
   .w3-bar .w3-button {
     padding: 16px;
   }
@@ -54,7 +47,7 @@ body, html {
     box-shadow: 10px;
     display: block;
     background: #FFFFFF;
-    min-width: 270px;
+    min-width: 250px;
     height: 400px;
     -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
@@ -123,7 +116,7 @@ body, html {
     bottom: 0;
     background: #FFFFFF;
     width: 100%;
-    padding: 20px;
+    padding: 20px 10px 10px;
     -webkti-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -153,7 +146,6 @@ body, html {
   }
   .post-module .post-content .sub_title {
     margin: 0;
-    padding: 0 0 10px;
     color: #e74c3c;
     font-size: 20px;
     font-weight: 400;
@@ -172,8 +164,7 @@ body, html {
     margin: 0 16px 0 0;
   }
   .post-module .post-content .post-meta a {
-    color: #999999;
-    text-decoration: none;
+    color: #23cece;
   }
   .hover .post-content .description {
     display: block !important;
@@ -196,7 +187,7 @@ body, html {
     
   }
   .container .column {
-    width: 295px;
+    width: 260px;
     padding: 10px;
     -webkti-box-sizing: border-box;
     -moz-box-sizing: border-box;

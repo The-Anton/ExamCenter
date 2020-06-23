@@ -108,14 +108,6 @@ function login(){
 }
 
 
-// Modal Image Gallery
-function onClick(element) {
-    document.getElementById("img01").src = element.src;
-    document.getElementById("modal01").style.display = "block";
-    var captionText = document.getElementById("caption");
-    captionText.innerHTML = element.alt;
-  }
-
 
 db.collection("dailyquiz")
 .onSnapshot(function(querySnapshot) {
@@ -123,7 +115,7 @@ db.collection("dailyquiz")
     querySnapshot.forEach(function(doc) {
         
         document.getElementById("listofdailyquizes").innerHTML += `
-        <a href="#" style="text-decoration: none;">
+        <a href="quiz.html" style="text-decoration: none;">
         <li class="li-list">
           ${doc.data().Name}<br/>
           ${doc.data().category}<br/>
