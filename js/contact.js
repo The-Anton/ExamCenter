@@ -1,11 +1,3 @@
-var regemailinput = document.getElementById("regemail");
-var regpasswordinput = document.getElementById("regpassword");
-var lgnemailinput = document.getElementById("lgnemail");
-var lgnpasswordinput = document.getElementById("lgnpassword");
-var regusername = document.getElementById("usrname");
-var regphoneno = document.getElementById("phoneno")
-
-
 var db = firebase.firestore();
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
@@ -29,49 +21,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
   });
 
-
-function register(){
-    var email = regemailinput.value;
-    var password = regpasswordinput.value;
-    var name = regusername.value; 
-    var no = regphoneno.value;
-    if(name!="" || no!=""){
-      firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then(function() {
-          var user = firebase.auth().currentUser;
-          uid = user.uid;
-          /*saveuserdata(uid,name,no);*/
-        db.collection("users").doc(uid).set({
-            Username : name,
-            phoneno: no
-        })
-        .then(function() {
-            console.log("Document successfully written!");
-        })
-        .catch(function(error) {
-            console.error("Error writing document: ", error);
-        });
-      })
-      .catch(function(error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          
-          document.getElementById("error").textContent=errorMessage;
-          console.log(errorMessage);
-        });
-
-    }else{
-      document.getElementById("error").textContent="Please fill out all the fields!!"
-    }
-      
-    
-}
-function saveuserdata(uid,name,no){
-    console.log("Saveuserdata starts")
-    
-
-}
 function  logout(){
     firebase.auth().signOut().then(function() {
         console.log("Succesfully logged out")
@@ -81,26 +30,6 @@ function  logout(){
       });
 }
 
-function login(){
-    var email = lgnemailinput.value;
-    var password = lgnpasswordinput.value;
-    if(email!="" || password!=""){
-      firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(function(){
-        modal = document.getElementById("loginmodal")
-        modal.style.display = "none";
-        window.location.reload();
-      })
-      .catch(function(error) {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log(errorMessage);
-        document.getElementById("errorlogin").textContent=errorMessage;
-      });
-    }else{
-      document.getElementById("errorlogin").textContent="Please fill out all the fields!!"
-    }
-}
 
 
 function sendMail(){

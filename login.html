@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Piedra&display=swap" rel="stylesheet">
+    <title>Login</title>
+  </head>
+  <body>
+    <h3 style="text-align: center; background-color: #f96d00; color: white; font-family: 'Piedra', cursive; margin: 0; height: 50px; padding-top: 5px;">Exam Aapka Test Hamara</h2>
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <a class="navbar-brand" href="index.html">UPSC Garden</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Our Test Series
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/courses.html?category=upsc">UPSC</a>
+                <a class="dropdown-item" href="/courses.html?category=ssc">SSC</a>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/exam.html">Current Affairs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/exam.html">Daily Quiz</a>
+            </li>
+            <li class="nav-item dropdown" id="myprofile">
+             
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact Us</a>
+            </li>
+           
+          
+          <button class="nav-item btn btn-outline-primary my-2 my-sm-0 " type="submit" onclick='location.href="login.html"' id="login" style="margin-right: 10px;">Login</button>
+          <button class="nav-item btn btn-outline-primary my-2 my-sm-0" type="submit"  onclick='location.href="login.html"' id="register" style="margin-right: 10px;">Register</button>
+         
+        </ul>
+        </div>
+      </nav>
+
+   <div class="container" style="margin-top: 100px; margin-bottom: 20px; ">
+    <div id="registrationform">
+        <div class="form-column">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" id="error">
+        </div>
+        <div class="form-group">
+            <label for="inputAddress">Username</label>
+            <input type="text" class="form-control" id="usrname" placeholder="Enter your Name" required>
+        </div>
+        <div class="form-group">
+          <label for="regemail">Email</label>
+          <input type="email" class="form-control" id="regemail" placeholder="Enter your email Address" required>
+        </div>
+        
+    
+          <div class="form-group">
+            <label for="phoneno">Phone No.</label>
+            <input type="number" class="form-control" id="phoneno" placeholder="Enter Your Phone No." required>
+          </div>
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <select id="gender" class="form-control" required>
+              <option selected>Male</option>
+              <option>Female</option>
+
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress2">Password</label>
+            <input type="password" class="form-control" id="regpassword" placeholder="Choose Password" required>
+            <small id="passwordHelpBlock" class="form-text text-muted">
+                Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+              </small>
+          </div>
+        
+        </div>
+        <button  class="btn btn-primary" style="width: 100%; margin-top: 20px;" onclick="register()" id="register">Sign in</button>
+        <button  class="btn btn-outline-primary" style="width: 100%; margin-top: 20px;" onclick="loginformcall()">Login</button>
+    </div>
+
+
+      <div id="loginform" style="display: none;">
+        <div class="form-column">
+        
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" id="errorlogin">
+        </div>
+        <div class="form-group">
+          <label for="inputAddress">Email</label>
+          <input type="email" class="form-control" id="lgnemail" placeholder="Enter your email Address" required>
+        </div>
+        
+          <div class="form-group">
+            <label for="inputAddress2">Password</label>
+            <input type="password" class="form-control" id="lgnpassword" placeholder="Choose Password" required>
+            <small id="passwordHelpBlock" class="form-text text-muted">
+                Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+              </small>
+          </div>
+        
+        </div>
+        <button  class="btn btn-primary" style="width: 100%; margin-top: 20px;" onclick="login()" id="login">Login</button>
+        <button  class="btn btn-outline-primary" style="width: 100%; margin-top: 20px;" onclick="registrationformcall()">Sign Up</button>
+
+    </div>
+      </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.3/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-auth.js"></script>
+    <script>
+       function loginformcall(){
+           document.getElementById("registrationform").style="display: none";
+           document.getElementById("loginform").style="display: inline"
+        }
+        function registrationformcall(){
+           document.getElementById("loginform").style="display: none";
+           document.getElementById("registrationform").style="display: inline"
+        }
+        var firebaseConfig = {
+        apiKey: "AIzaSyDsQC39VrcE_fyzZHBtld7Qfv5-cFDM01g",
+        authDomain: "examcentre-6b0a6.firebaseapp.com",
+        databaseURL: "https://examcentre-6b0a6.firebaseio.com",
+        projectId: "examcentre-6b0a6",
+        storageBucket: "examcentre-6b0a6.appspot.com",
+        messagingSenderId: "547043335428",
+        appId: "1:547043335428:web:a14fedf20945303efe4451",
+        measurementId: "G-KFFSR330E0"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        const db = firebase.firestore();
+        var regemailinput = document.getElementById("regemail");
+        var regpasswordinput = document.getElementById("regpassword");
+        var lgnemailinput = document.getElementById("lgnemail");
+        var lgnpasswordinput = document.getElementById("lgnpassword");
+        var regusername = document.getElementById("usrname");
+        var regphoneno = document.getElementById("phoneno")
+        var e = document.getElementById("gender");
+        
+        
+        firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+        
+        document.getElementById("register").style="display:none;"
+        document.getElementById("login").style="display:none;"
+        document.getElementById("myprofile").innerHTML+=`
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        My Profile
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="/profile.html">Profile</a>
+        <a class="dropdown-item" href="/profile.html">My Tests</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" id="logout" href="#" onclick="logout()">Logout</a>
+      </div>
+        `
+        
+        } else {
+        console.log("User not logged in")
+        }
+      });
+
+
+    function  logout(){
+        firebase.auth().signOut().then(function() {
+            console.log("Succesfully logged out")
+            window.location.reload();
+          }).catch(function(error) {
+            console.log(error.message)
+          });
+    }
+
+
+
+        function register(){
+        var email = regemailinput.value;
+        var password = regpasswordinput.value;
+        var name = regusername.value; 
+        var no = regphoneno.value;
+
+        if(name!="" || no!=""){
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then(function(user) {
+            var user = firebase.auth().currentUser;
+            var uid = user.uid;
+            var gender = e.options[e.selectedIndex].value;
+            saveuserdata(uid,name,no,gender);
+        }, function(error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                
+                document.getElementById("error").textContent=errorMessage;
+                console.log(errorMessage);
+        });
+
+        }else{
+            document.getElementById("error").textContent="Please fill out all the fields!!"
+        }
+        }
+
+
+        function saveuserdata(uid,name,no,gender){
+        console.log("Saveuserdata starts")
+        db.collection("users").doc(uid).set({
+            Username: name, 
+            Phoneno: no,
+            Gender: gender
+        })
+        .then(function(uid) {
+            console.log("Document written with ID: ", uid);
+            window.location = "index.html";
+        })
+        .catch(function(error) {
+            console.error("Error adding document: ", error);
+        });
+
+        }
+
+
+        function login(){
+        var email = lgnemailinput.value;
+        var password = lgnpasswordinput.value;
+        if(email!="" || password!=""){
+            firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(function(){
+            console.log("Logged in successfuly!!")
+            window.location = "index.html";
+            })
+            .catch(function(error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorMessage);
+            document.getElementById("errorlogin").textContent=errorMessage;
+            });
+        }else{
+            document.getElementById("errorlogin").textContent="Please fill out all the fields!!"
+        }
+        }
+
+
+    </script>
+  </body>
+</html>

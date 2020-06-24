@@ -1,9 +1,20 @@
-var uid="/courses/categories/ssc/ssc-001/questions";
-
 var ans=[];
 var res=[];
 var exp;
 var totalQuestion;
+
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,    
+    function(m,key,value) {
+      vars[key] = value;
+    });
+    return vars;
+  }
+
+var uid = getUrlVars()["u"];
+var category = getUrlVars()["category"];
+var courseid = getUrlVars()["courseid"];
 
 const db = firebase.firestore();
 
@@ -13,7 +24,7 @@ totalQuestion();
 setTimeout(downloadData(),10000);
 
 function totalQuestion(){
-    var docRef3 = db.collection(uid).doc("testData");
+    var docRef3 = db.collection('/courses/categories/'+category+'/'+courseid+'/questions').doc("testData");
     docRef3.get().then(function(doc) {
     if (doc.exists) {
         totalQuestion = doc.data().TotalQuestions;
@@ -34,16 +45,16 @@ function totalQuestion(){
 function downloadData(){
 
 
-    var docRef = db.collection(uid).doc("Answers");
+    var docRef = db.collection('/courses/categories/'+category+'/'+courseid+'/questions').doc("Answers");
 
     docRef.get().then(function(doc) {
 
             ans = doc.data().ans;
 
-            var docRef2 = db.collection(uid).doc("Responses");
+            var docRef2 = db.collection('/users/'+uid+'/courses/'+courseid+'/result').doc("Responses");
             docRef2.get().then(function(doc2) {
                     res = doc2.data();
-                    var docRef3 = db.collection(uid).doc("explain");
+                    var docRef3 = db.collection('/courses/categories/'+category+'/'+courseid+'/questions').doc("explain");
                     docRef3.get().then(function(doc3) {
                         exp = doc3.data().exp;
                         processData(ans, res, exp);
@@ -114,7 +125,7 @@ function processData(a,r,e){
     
     `;
 
-    responseDocRef = db.collection("/courses/categories/ssc/ssc-001/questions");
+    responseDocRef = db.collection('/courses/categories/'+category+'/'+courseid+'/questions');
 
 
     var count=0;

@@ -1,11 +1,3 @@
-var regemailinput = document.getElementById("regemail");
-var regpasswordinput = document.getElementById("regpassword");
-var lgnemailinput = document.getElementById("lgnemail");
-var lgnpasswordinput = document.getElementById("lgnpassword");
-var regusername = document.getElementById("usrname");
-var regphoneno = document.getElementById("phoneno")
-
-
 var db = firebase.firestore();
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
@@ -29,54 +21,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
   });
 
-
-  function register(){
-    var email = regemailinput.value;
-    var password = regpasswordinput.value;
-    var name = regusername.value; 
-    var no = regphoneno.value;
-
-    if(name!="" || no!=""){
-      db.collection("users").doc("uid").set({cool : "cool again" });
-
-      firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then(function(user) {
-        var user = firebase.auth().currentUser;
-        var uid = user.uid
-        console.log("uid is here " , uid)
-        logUser(user , uid); // Optional
-    }, function(error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          
-          document.getElementById("error").textContent=errorMessage;
-          console.log(errorMessage);
-    });
-
-    }else{
-      document.getElementById("error").textContent="Please fill out all the fields!!"
-    }
-
-    function logUser(user , uid) {
-      console.log("IN loguser")
-      db.collection("users").doc(uid).set({Username: name, 
-        Phoneno: no})
-        .then(function(){
-          console.log("User Successfully registered !!")
-        });
-      // or however you wish to update the node
-  }
-
-    
-}
-
-
-function saveuserdata(uid,name,no){
-    console.log("Saveuserdata starts")
-    
-
-}
 function  logout(){
     firebase.auth().signOut().then(function() {
         console.log("Succesfully logged out")
@@ -85,28 +29,6 @@ function  logout(){
         console.log(error.message)
       });
 }
-
-function login(){
-    var email = lgnemailinput.value;
-    var password = lgnpasswordinput.value;
-    if(email!="" || password!=""){
-      firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(function(){
-        modal = document.getElementById("loginmodal")
-        modal.style.display = "none";
-        window.location.reload();
-      })
-      .catch(function(error) {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log(errorMessage);
-        document.getElementById("errorlogin").textContent=errorMessage;
-      });
-    }else{
-      document.getElementById("errorlogin").textContent="Please fill out all the fields!!"
-    }
-}
-
 
 
 
@@ -126,7 +48,7 @@ firebase.auth().onAuthStateChanged(function(user) {
      showCourses(uid)
      var docref = db.collection("users").doc(uid);
      docref.get().then(function(doc){
-         document.getElementById("username").textContent=doc.data().Username;
+         
          document.getElementById("h22").textContent=doc.data().Username;
          document.getElementById("pn").textContent=doc.data().Phoneno;
          document.getElementById("ema").textContent=user.email;
@@ -137,7 +59,7 @@ firebase.auth().onAuthStateChanged(function(user) {
      document.getElementById("register").style="display:none;"
      document.getElementById("logout").style="display:inline; color:#fff"
      document.getElementById("login").style="display:none;"
-     document.getElementById("username").style="display:inline;color:#fd5f00;"
+    
      
     } else {
      console.log("User not logged in")
@@ -193,7 +115,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                     </div>
                   </div>
                   `
-                  settimer(doc.data().date,doc.data().name)
+                  settimer(doc.data().date,doc.data().name,course_name,category,uid)
                   
                 }
                 else{
@@ -214,7 +136,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                    <div class="post-module">
                      <!-- Thumbnail-->
                      <div class="thumbnail">
-                     <button type="button" class="btn btn-primary">Primary</button>
+                     
                        <div class="date">
                          <div class="day">27</div>
                          <div class="month">Mar</div>
@@ -231,7 +153,9 @@ firebase.auth().onAuthStateChanged(function(user) {
                        <div>Correct : 18</div>
                        <div>Score : 56</div>  
                                                 
-                       <div class="post-meta"><span class="timestamp">Questions : 50</span><span class="comments"><a href="www.google.com"><i class="fa fa-hourglass"></i>Check Status</a></span></div>
+                       <div class="post-meta"><span class="timestamp">Questions : 50</span>
+                       <span><button type="button" class="btn btn-primary" style="width: 100%; margin-top: 20px;" id="${course_name}" onclick="showresult(${uid},${category},${course_name});">Show Result</button></span></div>
+                       
                      </div>
                    </div>
                  </div>
@@ -271,7 +195,7 @@ firebase.auth().onAuthStateChanged(function(user) {
       
   }
      
-function settimer(startDate,id){
+function settimer(startDate,id,course_name,category,uid){
   var countDownDate = new Date(startDate).getTime();
 
   // Update the count down every 1 second
@@ -300,9 +224,16 @@ function settimer(startDate,id){
       document.getElementById(id).innerHTML = "Start Now";
      
     document.getElementById(id).addEventListener("click", function(){
-      window.location = "exam.html";    
+      window.location = 'exam.html?id='+course_name+'&category='+category+'&uid='+uid ; 
  });
 
     }
   }, 1000);
+  }
+
+function showresult(uid,category,coursename){
+
+  window.location='result.html?u='+uid+'&category='+category+'&courseid='+coursename ;
+
+    
   }

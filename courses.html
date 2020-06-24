@@ -17,6 +17,7 @@
 <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
 <body>
+
   <h3 style="text-align: center; background-color: #f96d00; color: white; font-family: 'Piedra', cursive; margin: 0; height: 50px; padding-top: 5px;">Exam Aapka Test Hamara</h2>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
@@ -26,10 +27,10 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
-          <li class="nav-item ">
-            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item dropdown active">
+          <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Our Test Series
             </a>
@@ -38,6 +39,7 @@
               <a class="dropdown-item" href="/courses.html?category=ssc">SSC</a>
             </div>
           </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="/exam.html">Current Affairs</a>
           </li>
@@ -52,20 +54,58 @@
           </li>
          
         
-        <button class="nav-item btn btn-outline-primary my-2 my-sm-0 " type="submit" data-toggle="modal" data-target="#loginmodal" id="login" style="margin-right: 10px;">Login</button>
-        <button class="nav-item btn btn-outline-primary my-2 my-sm-0" type="submit" data-toggle="modal" data-target="#exampleModal" id="register" style="margin-right: 10px;">Register</button>
+        <button class="nav-item btn btn-outline-primary my-2 my-sm-0 " type="submit" onclick='location.href="login.html"' id="login" style="margin-right: 10px;">Login</button>
+        <button class="nav-item btn btn-outline-primary my-2 my-sm-0" type="submit"  onclick='location.href="login.html"' id="register" style="margin-right: 10px;">Register</button>
        
       </ul>
       </div>
     </nav>
+     
+     
     
 <h1 id="courses-head">Courses</h1>
 <hr>
 
-<!--Cards of courses-->
-<ul id= "all-cards-ul">
+<div class="container-fluid">
+  <div class="row">
 
-</ul>
+   <div class="col-sm-9">
+      <!--Cards of courses-->
+      <div class="container">
+        <div class="row" id="all-cards">
+         
+        </div>
+      </div>
+          <!--  XX  Cards of courses  XX  -->
+ 
+  </div>
+
+  <div class="col-sm-3">
+
+    <div class="card current-card" style="padding: 0; margin-top: 0; ">
+      <h3 style="background-color: #f96d00;  margin-bottom: 0px; margin-top: 0; color: white; text-align: center; border-radius: 5px 5px 0 0;">Daily Quiz</h3>
+      <div class="container-current blur" style="height: 461px;">
+        
+        <ul class="slider">
+          <li><p> This was a triumph. <img src="/assets/new-Tag-Badge-PNG.jpg" alt="New" style="height: 25px;"> </p></li>
+          <li><p> I'm making a note here:</p></li>
+          <li><p>HUGE SUCCESS.</p></li>
+          <li><p> It's hard to overstate</p></li>
+          <li><p> my satisfaction</p></li>
+          <li><p>Aperture Science</p></li>
+          <li><p>We do what we must</p></li>
+          <li><p>because we can.</p></li>
+          <li><p>For the good of all of us.</p></li>
+          <li><p>Except for the ones who are dead.</p></li>
+        </ul>
+    </div>
+    </div>
+
+    </div>
+  </div>
+</div>
+
+
 
 
 <!-- Footer -->
@@ -121,71 +161,7 @@
     </div>
 </div>
 </footer>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"> Registeration</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body" style="text-align: center;">
-            <div class="alert alert-warning alert-dismissible fade show" role="alert" id="error">
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" id="usrname" >
-              <label class="mdl-textfield__label" for="sample3">Username</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" id="regemail">
-              <label class="mdl-textfield__label" for="sample3">Email Address</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="phoneno">
-              <label class="mdl-textfield__label" for="sample4">Phone Number...</label>
-              <span class="mdl-textfield__error">Input is not a number!</span>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="password" id="regpassword">
-              <label class="mdl-textfield__label" for="sample3">Choose Password</label>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-primary " onclick="register()" id="register">Register</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade" id="loginmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"> Login</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body" style="text-align: center;">
-            <div class="alert alert-warning alert-dismissible fade show" role="alert" id="errorlogin">
-        
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" id="lgnemail">
-              <label class="mdl-textfield__label" for="sample3">Email Address</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="password" id="lgnpassword">
-              <label class="mdl-textfield__label" for="sample3">Password</label>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" onclick="login()">Login</button>
-          </div>
-        </div>
-      </div>
-    </div> 
+    
 
 
 

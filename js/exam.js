@@ -3,6 +3,18 @@
 //const urlParams = new URLSearchParams(querString);
 //const uID = urlParams.get('uid');
 //var quizName =urlParams.get('quiz');
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,    
+    function(m,key,value) {
+      vars[key] = value;
+    });
+    return vars;
+  }
+var courseid = getUrlVars()['id'];
+var category = getUrlVars()['category'];
+var uid = getUrlVars()['uid'];
+
 
 //const quiz_name_text= document.getElementById('quiz_name_text');
 const db = firebase.firestore();
@@ -13,7 +25,7 @@ var Name;
 var data= [];
 
 var d;
-var docRef = db.collection("/courses/categories/ssc/ssc-001/questions").doc("W7w3Z9PK5BnYOc65qIWp");
+var docRef = db.collection("/courses/categories/"+category+"/"+courseid+"/questions").doc("W7w3Z9PK5BnYOc65qIWp");
 
 var responseDocRef = db.collection("/courses/categories/ssc/ssc-001/questions").doc("Responses");
 
@@ -206,12 +218,23 @@ function submit(){
         }
     }
 
-    db.collection("/courses/categories/ssc/ssc-001/questions").doc("Responses").set(optObj)
+
+    db.collection("/users/"+uid+"/courses/"+courseid+"/result").doc("Responses").set(optObj)
     .then(function() {
-        console.log("Document successfully written!");
-        document.getElementById("exam-section").style.display = "none";
-        document.getElementById("exam-section").innerHTML = `<h4 class=" mt-5 text-center">Your Test has been submitted!.</h4>`;
-        window.location.href='/result.html'
+        var status =db.collection("/users/"+uid+"/courses").doc(courseid);
+        status.update({
+            status: "completed"
+        })
+        .then(function(){
+            console.log("Document successfully written!");
+            document.getElementById("exam-section").style.display = "none";
+            document.getElementById("exam-section").innerHTML = `<h4 class=" mt-5 text-center">Your Test has been submitted!.</h4>`;
+            window.location.href='/result.html?u='+uid+'&category='+category+'&courseid='+courseid
+        })
+        .catch(function(error){
+            console.error("Error updating document: ", error);
+        })
+        
     })
     .catch(function(error) {
         console.error("Error writing document: ", error);
@@ -276,7 +299,7 @@ function loadQues(qNo,flag){
             loadFromCache(qNo);
         }else{
 
-            var docRef2 = db.collection("/courses/categories/ssc/ssc-001/questions").doc(`${qNo}`);
+            var docRef2 = db.collection("/courses/categories/"+category+"/"+courseid+"/questions").doc(`${qNo}`);
 
             docRef2.withConverter(dataConverter)
             .get().then(function(doc) {
@@ -307,7 +330,7 @@ function loadQues(qNo,flag){
 
 
 function showAllQuesNo(){
-    var docRef3 = db.collection("/courses/categories/ssc/ssc-001/questions").doc("testData");
+    var docRef3 = db.collection("/courses/categories/"+category+"/"+courseid+"/questions").doc("testData");
     docRef3.get().then(function(doc) {
     if (doc.exists) {
         var range = doc.data().TotalQuestions;
