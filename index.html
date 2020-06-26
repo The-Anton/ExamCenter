@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
-<title>ExamCentre</title>
+<title>ExamCentre : Online Platform for Test Series of UPSC & SSC Exam preparation</title>
   <meta charset="UTF-8">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+  <link rel = "icon" href = "/assets/logo_transparent.png" type = "image/x-icon"> 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
@@ -16,20 +16,21 @@
   <link rel="stylesheet" href="/css/footer.css">
   <link href="https://fonts.googleapis.com/css2?family=Piedra&display=swap" rel="stylesheet">
 
- 
-<body>
-  
-  <h3 style="text-align: center; background-color: #f96d00; color: white; font-family: 'Piedra', cursive; margin: 0; height: 50px; padding-top: 5px;">Exam Aapka Test Hamara</h2>
+  <style>
+   
+  </style>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-    <a class="navbar-brand" href="index.html">UPSC Garden</a>
+ 
+
+  <nav class="navbar navbar-expand-lg navbar-dark  bg-dark sticky-top" style="background-color: black;">
+    <a class="navbar-brand" href="index.html"><img src="/assets/ll.png" alt="John Doe" style="width: 100px;"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -42,10 +43,10 @@
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" href="/exam.html">Current Affairs</a>
+          <a class="nav-link" href="/currentaffairs.html">Current Affairs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/exam.html">Daily Quiz</a>
+          <a class="nav-link" href="/dailyquiz.html">Daily Quiz</a>
         </li>
         <li class="nav-item dropdown" id="myprofile">
          
@@ -55,8 +56,8 @@
         </li>
        
       
-      <button class="nav-item btn btn-outline-primary my-2 my-sm-0 " type="submit" onclick='location.href="login.html"' id="login" style="margin-right: 10px;">Login</button>
-      <button class="nav-item btn btn-outline-primary my-2 my-sm-0" type="submit"  onclick='location.href="login.html"' id="register" style="margin-right: 10px;">Register</button>
+      <button class="nav-item btn btn-outline-primary my-2 my-sm-0 " type="submit" onclick='location.href="login.html?type=login"' id="login" style="margin-right: 10px;">Login</button>
+      <button class="nav-item btn btn-outline-primary my-2 my-sm-0" type="submit"  onclick='location.href="login.html?type=registration"' id="register" style="margin-right: 10px;">Register</button>
      
     </ul>
     </div>
@@ -73,20 +74,11 @@
       <div class="row">
         <div class="col-sm-8" style="background-image:url(/assets/1.jpeg); height: 500px; background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
         <div class="col-sm-4" style="padding: 0; margin-top: 0;">
-          <h3 style="background-color: #f96d00;  margin-bottom: 0px; margin-top: 0; color: white; text-align: center; border-radius: 5px 5px 0 0;">Current Affairs</h3>
+          <h3 style="background-color: #f96d00;  margin-bottom: 0px; margin-top: 0; color: white; text-align: center; border-radius: 0px 0px 0 0;">Current Affairs</h3>
           <div class="container-current blur" style="height: 461px;">
             
-            <ul class="slider">
-              <li><p> This was a triumph. <img src="/assets/new-Tag-Badge-PNG.jpg" alt="New" style="height: 25px; width: 25px;"> </p></li>
-              <li><p> I'm making a note here:</p></li>
-              <li><p>HUGE SUCCESS.</p></li>
-              <li><p> It's hard to overstate</p></li>
-              <li><p> my satisfaction</p></li>
-              <li><p>Aperture Science</p></li>
-              <li><p>We do what we must</p></li>
-              <li><p>because we can.</p></li>
-              <li><p>For the good of all of us.</p></li>
-              <li><p>Except for the ones who are dead.</p></li>
+            <ul class="slider" id="listofcurrentaffairs">
+              
             </ul>
         </div>
         </div>
@@ -114,7 +106,7 @@
             <div class="card course-card" style="margin-bottom: 64px;" >
               <div class="row">
                 <div class="col-md-6">
-                  <div class="card-img-bottom" style="background: url(/assets/upsc-logo-1576674415.jpg) center";>
+                  <div class="card-img-bottom" style="background: url(/assets/upsc-logo-1576674415.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;";>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -133,7 +125,7 @@
             <div class="card course-card">
               <div class="row">
                 <div class="col-md-6">
-                  <div class="card-img-bottom" style="background: url(/assets/ssc_new_logo.jpeg) center;">
+                  <div class="card-img-bottom" style="background: url(/assets/ssc_new_logo.jpeg); background-position: center; background-repeat: no-repeat; background-size: cover;">
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -165,34 +157,25 @@
 
 
    
- <!-- CurrentAf Section -->
-      <section class="currentAf-sec">
-        <div class="w3-container" >
-          <h3 class=" ml-5">Current Affairs</h3>
-          <div class="ml-4 mr-4" style="margin-top:6px">
-            <ul id="listofcurrentaffairs">
-            </ul>
-          </div>
-        </div>
-      </section>
+
     <!-- Promo Section "Statistics" -->
   <section class="quarter-sec">
     <div class="w3-container w3-row w3-center w3-padding-64">
       <div class="w3-quarter">
-        <span class="w3-xxlarge">14+</span>
-        <br>Partners
+        <span class="w3-xxlarge">500+</span>
+        <br>Students
       </div>
       <div class="w3-quarter">
-        <span class="w3-xxlarge">55+</span>
-        <br>Projects Done
+        <span class="w3-xxlarge">100+</span>
+        <br>Exams
       </div>
       <div class="w3-quarter">
-        <span class="w3-xxlarge">89+</span>
-        <br>Happy Clients
+        <span class="w3-xxlarge">5k+</span>
+        <br>Questions
       </div>
       <div class="w3-quarter">
         <span class="w3-xxlarge">150+</span>
-        <br>Meetings
+        <br>Selections
       </div>
     </div>
   </section>
@@ -210,12 +193,12 @@
 
       <div class="inner-footer">
         <div class="w3-xlarge w3-section">
-          <i class="fa fa-facebook-official w3-hover-opacity m-1"></i>
-          <i class="fa fa-instagram w3-hover-opacity m-1"></i>
-          <i class="fa fa-snapchat w3-hover-opacity m-1"></i>
-          <i class="fa fa-pinterest-p w3-hover-opacity m-1"></i>
-          <i class="fa fa-twitter w3-hover-opacity m-1"></i>
-          <i class="fa fa-linkedin w3-hover-opacity m-1"></i>
+          <a href="https://instagram.com/upscacademy_?igshid=1412hbq7j8uxn" style="text-decoration: none;">  <i class="fa fa-facebook-official w3-hover-opacity m-1" ></i></a>
+          <a href="https://instagram.com/upscacademy_?igshid=1412hbq7j8uxn"><i class="fa fa-instagram w3-hover-opacity m-1"></i></a>
+          <a href="https://t.me/upscacademy2020"><i class="fa fa-telegram" aria-hidden="true"></i></a>
+
+          <a href="https://instagram.com/upscacademy_?igshid=1412hbq7j8uxn"><i class="fa fa-twitter w3-hover-opacity m-1"></i></a>
+          <a href="https://instagram.com/upscacademy_?igshid=1412hbq7j8uxn"><i class="fa fa-linkedin w3-hover-opacity m-1"></i></a>
         </div>
 
         <div class="footer-items">
@@ -241,7 +224,7 @@
             <div class="section-box">
                 <h5>Get In Touch</h5>
                 <p>
-                    <i class="fas fa-map-marker-alt"></i> F-67 /7 , B.U. Bhandari Skylines, Dighi Hills, Pune -411015, Maharashtra, India <br>
+                    <i class="fas fa-map-marker-alt"></i> <br>
                     <i class="fas fa-phone"></i> +(91) 7906030727 <br>
                     <i class="fas fa-envelope"></i> upscgarden@gmail.com
                 </p>
@@ -251,8 +234,8 @@
     <div class="bottom-footer">
         <div class="bottom-container">
            
-            Copyright &copy; UPSC Garden 2020. All Rights Reserved. | <a href="terms.html">terms</a> |
-            <a href="privacy.html">privacy</a> |
+            Copyright &copy; UPSC Garden 2020. All Rights Reserved. | <a href="terms.html">terms&privacy</a> |
+            
         </div>
     </div>
     </footer>

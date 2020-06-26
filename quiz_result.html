@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Result</title>
 
-
+    <link rel = "icon" href = "/assets/logo_transparent.png" type = "image/x-icon">
     <!---------------------------- Bootstrap -------------------->
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -45,6 +45,9 @@
     
     <!---------------------------- End Firebase setup scripts------------------------------------------->
 <style>
+body,p,h1,h2,h3,h4,h5,h6{
+    font-family: 'Raleway';
+}
 :root {
     --title-color: #141313;
     --text-color: #777777;
@@ -76,16 +79,29 @@
     color: white;
 }
 .data-card{
-    padding: 0.5rem;
+    
     border: 10px, solid, white;
     border-radius: 6px;
     box-shadow: var(--box-shadow);
+    padding: 2em;
 }
 #result{
-    padding: 5rem;
+    padding: 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 80px;
+}
+
+@media (max-width:567px){
+
+#result{
+    padding-left: 2rem;
+    padding-right: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 40px;
+}
+
 }
 
 </style>
@@ -101,7 +117,9 @@
 
 </section>
 
-
+<section class="container-fluid">
+    <button type="button" class="btn btn-primary " style="width: 100%; margin-top: 2em; margin-bottom: 2em;"  onclick='location.href="index.html"'>Continue</button>
+</section>
 
 
 

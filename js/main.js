@@ -51,17 +51,21 @@ function fetchdata(){
         `
 
     });
-});   
-  database.collection("currentaffairs")
+}); 
+  
+database.collection("currentaffairs")
   .onSnapshot(function(querySnapshot) {
 
     querySnapshot.forEach(function(doc) {
         document.getElementById("listofcurrentaffairs").innerHTML += `
-        <a href="${doc.data().url}" style="text-decoration: none;">
-        <li class="li-list">
-          ${doc.data().Name}<br/>
-          ${doc.data().category}<br/>
-          <div class="right top">${doc.data().Date}</div>
+        <a  href="${doc.data().url}" style="text-decoration: none;">
+        <li class="current-affairs" style="color: red;">
+        <svg class="bi bi-arrow-right-circle-fill" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-8.354 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L9.793 7.5H5a.5.5 0 0 0 0 1h4.793l-2.147 2.146z"/>
+</svg> &nbsp &nbsp
+          ${doc.data().Date} &nbsp
+          ${doc.data().Name}
+          
         </li>
         </a>
         `
@@ -72,3 +76,4 @@ function fetchdata(){
 
 
 fetchdata()
+

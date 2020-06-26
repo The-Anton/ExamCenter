@@ -6,6 +6,7 @@
     <title>Payment Successful</title>
     
     <link rel="stylesheet" href="./css/donationSuccessful.css">
+    <link rel = "icon" href = "/assets/logo_transparent.png" type = "image/x-icon">
 </head>
 <body>
   <div class="container">
@@ -50,10 +51,19 @@
       <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
 
       <a id="continue-button">
-        <span>Continue</span>
+        <span>Continue</span> 
         <div class="wave"></div>
       </a>
     </div>
+
+    <input type="button" id="print" onclick="frames['frame'].print()" value="Print"/>
+      <div style="text-align: center;">We recommend you to print the receipt</div>
+
+      <iframe name="frame" style="display: none;" id="frameToPrint">
+      </iframe>
+      
+    
+
             
     </div>
     <div class="animation">
@@ -188,7 +198,7 @@
       <path fill="#78646E" d="M132.4 397.8c0 4-3.2 7.2-7.2 7.2s-7.2-3.2-7.2-7.2 3.2-7.2 7.2-7.2 7.2 3.2 7.2 7.2z" />
       <path fill="#FFF" d="M128.9 397.8c0 2-1.6 3.7-3.7 3.7-2 0-3.7-1.6-3.7-3.7 0-2 1.6-3.7 3.7-3.7s3.7 1.6 3.7 3.7z" />
       <path fill="#78646E" d="M274.4 273.2H368V295h-93.6z" />
-      <path fill="#78646E" d="M366.3 273h11.6c25.6 0 46.4-20.8 46.4-46.4v-4.1h21.9v4.1c0 37.7-30.6 68.3-68.3 68.3h-11.6V273zM446.2 225.1h-21.7s-7.5-23.4-41.5-28.4c12.5 0 94.2-.1 103 0-29.9 3.1-39.8 28.4-39.8 28.4z" />
+      <path fill="#78646E" id="exhaust" d="M366.3 273h11.6c25.6 0 46.4-20.8 46.4-46.4v-4.1h21.9v4.1c0 37.7-30.6 68.3-68.3 68.3h-11.6V273zM446.2 225.1h-21.7s-7.5-23.4-41.5-28.4c12.5 0 94.2-.1 103 0-29.9 3.1-39.8 28.4-39.8 28.4z" />
       <path fill="#4E3440" d="M364.7 271.4h3.3v25.3h-3.3zM422.6 223.4h25.3v3.3h-25.3zM381.5 196.6c-1.2 0-2.1-.9-2.1-2.1 0-1.2.9-2.1 2.1-2.1h107.3c1.2 0 2.1.9 2.1 2.1 0 1.2-.9 2.1-2.1 2.1H381.5z" />
       <path fill="#78646E" d="M142.3 394h4.3v47.3h-4.3zM130.7 450.8h2.3c5.1 0 9.2-4.1 9.2-9.2v-.8h4.4v.8c0 7.5-6.1 13.5-13.5 13.5h-2.3v-4.3z" />
       <path fill="#4E3440" d="M153.7 414.5c0 2.6-2.1 4.6-4.6 4.6h-9.5c-2.6 0-4.6-2.1-4.6-4.6v-8.3c0-2.6 2.1-4.6 4.6-4.6h9.5c2.6 0 4.6 2.1 4.6 4.6v8.3z" />

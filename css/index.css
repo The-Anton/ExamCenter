@@ -43,7 +43,7 @@
     text-shadow: var(--shadow-color);
 }
 
-body{
+body,p,h1,h2,h3,h4,h5,h6{
     font-family: 'Raleway';
 }
 
@@ -74,7 +74,7 @@ body{
     box-sizing: border-box;
     animation: slider 15s linear infinite;
     list-style-type: none;
-    text-align: center;
+   
 }
 
 .slider:hover {
@@ -112,9 +112,7 @@ body{
     top: 0;
 }
 
-p {
-  font-family: helvetica, arial, sans serif;
-}
+
 
 /* End Banner area */
 
@@ -128,10 +126,7 @@ p {
 
 /*  Start Courses Area  */
 
-.w3-row-padding{
-    display: flex;
-    justify-content: space-between;
-}
+
 .courses-btn{
     background-color: var(--primary2-color);
     color: var(--primary1-color);
@@ -150,10 +145,7 @@ p {
 
 /*  Start Quizzes Area  */
 
-.w3-row-padding{
-    display: flex;
-    justify-content: space-between;
-}
+
 /*  End Quizzes Area  */
 
 
@@ -162,7 +154,7 @@ p {
 /*  Start quarter Area  */
 
 .quarter-sec{
-    font-family: 'Raleway';
+    
     color: var(--primary1-color);
     background-color: var(--primary2-color);
 }
@@ -219,5 +211,19 @@ p {
     cursor: pointer;
     border-radius: 3px;
   }
-
+.current-affairs {
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-left: 20px;
+    color: red;
+}
 /* current affairs section end */    
+@media (min-width:1000px){
+
+    .navbar-nav{
+        position: absolute;
+        right: 0;
+        margin-right: 20px;
+    }
+
+}

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
-<title>Profile</title>
+<title>Profile || ExamCentre</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel = "icon" href = "/assets/logo_transparent.png" type = "image/x-icon">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
@@ -13,94 +14,94 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <link rel="stylesheet" href="/css/profile.css">
 <link rel="stylesheet" href="/css/footer.css">
+<link rel="stylesheet" href="/css/courses.css">
 <link href="https://fonts.googleapis.com/css2?family=Piedra&display=swap" rel="stylesheet">
 
 
 
-<body class="w3-light-grey">
+<body >
 
-  <h3 style="text-align: center; background-color: #f96d00; color: white; font-family: 'Piedra', cursive; margin: 0; height: 50px; padding-top: 5px;">Exam Aapka Test Hamara</h2>
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-      <a class="navbar-brand" href="index.html">UPSC Garden</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Our Test Series
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/courses.html?category=upsc">UPSC</a>
-              <a class="dropdown-item" href="/courses.html?category=ssc">SSC</a>
-            </div>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/exam.html">Current Affairs</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/exam.html">Daily Quiz</a>
-          </li>
-          <li class="nav-item dropdown" id="myprofile">
-           
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact Us</a>
-          </li>
-         
+  <nav class="navbar navbar-expand-lg navbar-dark  bg-dark sticky-top" style="background-color: black;">
+    <a class="navbar-brand" href="index.html"><img src="/assets/ll.png" alt="John Doe" style="width: 100px;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item ">
+          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Our Test Series
+          </a>
+          <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/courses.html?category=upsc">UPSC</a>
+            <a class="dropdown-item" href="/courses.html?category=ssc">SSC</a>
+          </div>
+        </li>
         
-          <button class="nav-item btn btn-outline-primary my-2 my-sm-0 " type="submit" onclick='location.href="login.html"' id="login" style="margin-right: 10px;">Login</button>
-          <button class="nav-item btn btn-outline-primary my-2 my-sm-0" type="submit"  onclick='location.href="login.html"' id="register" style="margin-right: 10px;">Register</button>
+        <li class="nav-item">
+          <a class="nav-link" href="/currentaffairs.html">Current Affairs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/dailyquiz.html">Daily Quiz</a>
+        </li>
+        <li class="nav-item dropdown active" id="myprofile">
+         
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact Us</a>
+        </li>
        
-      </ul>
-      </div>
-    </nav>
+      
+      <button class="nav-item btn btn-outline-primary my-2 my-sm-0 " type="submit" onclick='location.href="login.html?type=login"' id="login" style="margin-right: 10px;">Login</button>
+      <button class="nav-item btn btn-outline-primary my-2 my-sm-0" type="submit"  onclick='location.href="login.html?type=registration"' id="register" style="margin-right: 10px;">Register</button>
+     
+    </ul>
+    </div>
+  </nav>
+   
 
 <!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:1400px;">
+<div class="w3-content w3-margin" style="max-width:1400px;">
 
   <!-- The Grid -->
-  <div class="w3-row-padding">
+  <div class="row">
   
     <!-- Left Column -->
-    <div class="w3-third">
+    <div class="col-sm-3 p-2">
     
       <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSUYV0gxaV5ar4a-cKBr6_XyX8PaR1S8uDMoHp69Gwg0zq6otpe&usqp=CAU" style="width:100%" alt="Avatar">
+          <img id="avatar" style="width:70%" alt="Avatar">
           <div class="w3-display-bottomleft w3-container w3-text-black">
             <h2 id="h2" style="color: #fff;"></h2>
           </div>
         </div>
         <div class="w3-container">
-          <p class="w3-large w3-margin-top"><b><i class="fa fa-user-circle-o w3-text-teal"></i>&nbsp;&nbsp;User Details</b></p>
-          <p id="h22" class="user-details"></p>
+          <p class="w3-large w3-margin-top"><b><i class="fa fa-user-circle-o w3-text-orange" style="font-size:24px;"></i>&nbsp;&nbsp;User Details</b></p>
+          <p id="h22" class="user-details" ></p>
           <p id="ema" class="user-details"></p>
           <p id="pn" class="user-details"></p>
           <hr>
 
-          <p class="w3-large"><b><i class="fa fa-bar-chart-o fa-fw w3-margin-right w3-text-teal"></i>Your Progress</b></p>
+          <p class="w3-large"><b><i class="fa fa-bar-chart-o fa-fw w3-margin-right w3-text-orange" style="font-size:24px;"></i>Your Progress</b></p>
           <p>Total</p>
           <div class="w3-light-grey w3-round-xlarge w3-small w3-margin-bottom">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal " id="total-tests" >
+            <div class="w3-container w3-center w3-round-xlarge w3-deep-orange " id="total-tests" >
               <div class="w3-center w3-text-white" id="total-tests-text"></div>
             </div>
           </div>
           <p>UPSC</p>
           <div class="w3-light-grey w3-round-xlarge w3-small w3-margin-bottom">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" id="upsc-tests" >
+            <div class="w3-container w3-center w3-round-xlarge w3-deep-orange" id="upsc-tests" >
               <div class="w3-center w3-text-white" id="upsc-tests-text"></div>
             </div>
           </div>
           <p>SSC</p>
           <div class="w3-light-grey w3-round-xlarge w3-small w3-margin-bottom">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" id="ssc-tests">
+            <div class="w3-container w3-center w3-round-xlarge w3-deep-orange" id="ssc-tests">
               <div class="w3-center w3-text-white" id="ssc-tests-text"></div>
             </div>
           </div>
@@ -112,22 +113,22 @@
     </div>
 
     <!-- Right Column -->
-    <div class="w3-twothird">
+    <div class="col-sm-9 p-2">
       
       <div class="w3-container w3-card w3-white w3-margin-bottom ">
-        <h2 class="w3-text-grey w3-padding-0"><i class="	fa fa-book fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Pending Tests</h2>
+        <h3 class="w3-text-grey w3-padding-0" style="font-size:2em;"><i class="	fa fa-book fa-fw w3-margin-right w3-xxlarge w3-text-orange"></i>Pending Tests</h3>
 
 
-      <div class="container" id="pending" >
+      <div class="container p-0" id="pending" >
      
       </div>
      </div>
 
         <div class="w3-container w3-card w3-white w3-margin-bottom">
-          <h2 class="w3-text-grey w3-padding-0"><i class="	fa fa-book fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Completed Tests</h2>
+          <h3 class="w3-text-grey w3-padding-0" style="font-size:2em;"><i class="	fa fa-book fa-fw w3-margin-right w3-xxlarge w3-text-orange"></i>Completed Tests</h3>
   
   
-        <div class="container" id="completed">
+        <div class="container p-0" id="completed">
   
         </div>
       </div>
@@ -143,59 +144,59 @@
   
  
 </div>
- <!-- Footer -->
- <footer class="w3-center w3-black pt-5">
+     <!-- Footer -->
+     <footer class="w3-center w3-black pt-5">
 
      
 
-  <div class="inner-footer">
-    <div class="w3-xlarge w3-section">
-      <i class="fa fa-facebook-official w3-hover-opacity m-1"></i>
-      <i class="fa fa-instagram w3-hover-opacity m-1"></i>
-      <i class="fa fa-snapchat w3-hover-opacity m-1"></i>
-      <i class="fa fa-pinterest-p w3-hover-opacity m-1"></i>
-      <i class="fa fa-twitter w3-hover-opacity m-1"></i>
-      <i class="fa fa-linkedin w3-hover-opacity m-1"></i>
-    </div>
+      <div class="inner-footer">
+        <div class="w3-xlarge w3-section">
+          <a href="https://instagram.com/upscacademy_?igshid=1412hbq7j8uxn" style="text-decoration: none;">  <i class="fa fa-facebook-official w3-hover-opacity m-1" ></i></a>
+          <a href="https://instagram.com/upscacademy_?igshid=1412hbq7j8uxn"><i class="fa fa-instagram w3-hover-opacity m-1"></i></a>
+          <a href="https://t.me/upscacademy2020"><i class="fa fa-telegram" aria-hidden="true"></i></a>
 
-    <div class="footer-items">
-        <div class="section-box">
-            <h5>Quick Links</h5>
-            <a href="index.html">Home</a>
-            <a href="aboutUs.html">About Us</a>
-            <a href="contact.html">Contact Us</a>
-      
-
-
+          <a href="https://instagram.com/upscacademy_?igshid=1412hbq7j8uxn"><i class="fa fa-twitter w3-hover-opacity m-1"></i></a>
+          <a href="https://instagram.com/upscacademy_?igshid=1412hbq7j8uxn"><i class="fa fa-linkedin w3-hover-opacity m-1"></i></a>
         </div>
-        <div class="section-box">
-            <h5>Our Courses</h5>
+
+        <div class="footer-items">
+            <div class="section-box">
+                <h5>Quick Links</h5>
+                <a href="index.html">Home</a>
+                <a href="aboutUs.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+          
 
 
-            <a href="/courses.html?category=upsc">UPSC</a>
+            </div>
+            <div class="section-box">
+                <h5>Our Courses</h5>
 
-            <a href="/courses.html?category=ssc">SSC</a>
+
+                <a href="/courses.html?category=upsc">UPSC</a>
+
+                <a href="/courses.html?category=ssc">SSC</a>
 
 
-        </div>
-        <div class="section-box">
-            <h5>Get In Touch</h5>
-            <p>
-                <i class="fas fa-map-marker-alt"></i> F-67 /7 , B.U. Bhandari Skylines, Dighi Hills, Pune -411015, Maharashtra, India <br>
-                <i class="fas fa-phone"></i> +(91) 7906030727 <br>
-                <i class="fas fa-envelope"></i> upscgarden@gmail.com
-            </p>
+            </div>
+            <div class="section-box">
+                <h5>Get In Touch</h5>
+                <p>
+                    <i class="fas fa-map-marker-alt"></i> <br>
+                    <i class="fas fa-phone"></i> +(91) 7906030727 <br>
+                    <i class="fas fa-envelope"></i> upscgarden@gmail.com
+                </p>
+            </div>
         </div>
     </div>
-</div>
-<div class="bottom-footer">
-    <div class="bottom-container">
-       
-        Copyright &copy; UPSC Garden 2020. All Rights Reserved. | <a href="terms.html">terms</a> |
-        <a href="privacy.html">privacy</a> |
+    <div class="bottom-footer">
+        <div class="bottom-container">
+           
+            Copyright &copy; UPSC Garden 2020. All Rights Reserved. | <a href="terms.html">terms&privacy</a> |
+            
+        </div>
     </div>
-</div>
-</footer>
+    </footer>
 
 
 
@@ -236,6 +237,8 @@
   </script>
 
 <script src="/js/profile.js"></script>
+
+
 
 </body>
 </html>

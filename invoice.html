@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+	
+	<title>ExamAcademy Invoice</title>
+	
+	<link rel='stylesheet' type='text/css' href='css/style_invoice.css' />
+	
+	
+
+</head>
+
+<body>
+
+	<div id="page-wrap">
+
+		<p id="header">INVOICE</p>
+		
+		<div id="identity">
+		
+            <p id="address">F-67 /7 , B.U. Bhandari Skylines, Dighi <br>Hills, Pune -411015, Maharashtra, India</p>
+
+            <div id="logo">
+              <img id="image" src="assets/logo.png" alt="logo" style="width: 250px; height: 170px; background-position: center; background-size: cover;"/>
+            </div>
+		
+		</div>
+		
+		<div style="clear:both"></div>
+		
+		<div id="customer">
+
+            <p id="customer-title"></p>
+
+            <table id="meta">
+                <tr>
+                    <td class="meta-head">Invoice #</td>
+                    <td><p id="invoice-no"></p></td>
+                </tr>
+                <tr>
+
+                    <td class="meta-head">Date</td>
+                    <td><p id="date"></p></td>
+                </tr>
+                <tr>
+                    <td class="meta-head">Amount</td>
+                    <td><div class="amount" id="amount"></div></td>
+                </tr>
+
+            </table>
+		
+		</div>
+		
+		<table id="items">
+		
+		  <tr>
+		      <th>Test</th>
+		      <th>Course</th>
+		      <th>Quantity</th>
+		      <th>Order Id</th>
+		      <th>Price</th>
+		  </tr>
+		  
+		  <tr class="item-row">
+		      <td class="course_name" id="course_name"><p></p></td>
+              <td class="description" id="category"><p></p></td>
+              <td><p class="course_name" >1</p></td>
+		      <td><p class="qty" id="txn_id">1</p></td>
+		      <td><p class="amount" id="amount_table"></p></td>
+		  </tr>
+		  
+		  <tr>
+		      <td colspan="2" class="blank"> </td>
+		      <td colspan="2" class="total-line">Coupon Code</td>
+		      <td class="total-value"><div id="coupon_code">--</div></td>
+		  </tr>
+
+		  <tr>
+		      <td colspan="2" class="blank"> </td>
+		      <td colspan="2" class="total-line balance">Paid Amount</td>
+		      <td class="total-value balance"><div class="due" id="paid_amount">$875.00</div></td>
+		  </tr>
+		
+		</table>
+		
+		<div id="terms">
+		  <h5>Terms</h5>
+		  <p>Your Test will be added within one minute which you can check in your profile.
+			  <br>
+			  In any query, you can call on +91 8564715348 or +91 78451452654
+		  </p>
+		</div>
+	
+	</div>
+	
+	
+</body>
+<script src='js/example.js'></script>
+
+</html>

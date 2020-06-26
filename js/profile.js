@@ -38,6 +38,8 @@ var pending = 0;
 var completed = 0;
 var upsc = 0;
 var ssc = 0;
+var marks = 10;
+
   
 
   
@@ -52,12 +54,15 @@ firebase.auth().onAuthStateChanged(function(user) {
          document.getElementById("h22").textContent=doc.data().Username;
          document.getElementById("pn").textContent=doc.data().Phoneno;
          document.getElementById("ema").textContent=user.email;
-       
 
+         if(doc.data().Gender=="Female")
+            document.getElementById("avatar").src="https://firebasestorage.googleapis.com/v0/b/examcentre-6b0a6.appspot.com/o/avatars%2Ffemale.jpg?alt=media&token=5be032e7-f706-45cd-9800-c338e0d0e724"
+        else
+           document.getElementById("avatar").src="https://firebasestorage.googleapis.com/v0/b/examcentre-6b0a6.appspot.com/o/avatars%2Fmale.jpg?alt=media&token=e5f73771-7d1d-41ec-8069-fa43abcab78a"
 
      })
      document.getElementById("register").style="display:none;"
-     document.getElementById("logout").style="display:inline; color:#fff"
+
      document.getElementById("login").style="display:none;"
     
      
@@ -65,6 +70,15 @@ firebase.auth().onAuthStateChanged(function(user) {
      console.log("User not logged in")
     }
   });
+
+var background_shades = ["https://image.freepik.com/free-vector/bright-orange-diagonal-lines-background_1017-14211.jpg"
+            , "https://img.freepik.com/free-vector/orange-abstract-background-with-dark-light-straight-lines_132230-86.jpg?size=626&ext=jpg"
+            ,"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRxfxGRGSOfGH2-Wy06er6iM9-1HpapxavB5w&usqp=CAU"
+             , "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEWfqRHI7kSdiZPMkwxKc40ubg-uZo-Hl-O7RV7io4hDWcR9zBLQ&s"];
+
+function getRndInteger(min, max) {
+              return Math.floor(Math.random() * (max - min)) + min;
+}
 
   function showCourses(uid){
     db.collection("users/"+uid+"/courses")
@@ -88,30 +102,32 @@ firebase.auth().onAuthStateChanged(function(user) {
                 console.log('No such document!');
               } else {
                 if(status=="pending"){
-                  
+                  var date = doc.data().date;
+                  var month = date.substring(0,3);
+                  var day = date.substring(4,6);
                   document.getElementById("pending").innerHTML += `
                   <!-- Normal Demo-->
-                  <div class="column">
-                    <!-- Post-->
-                    <div class="post-module">
-                      <!-- Thumbnail-->
-                      <div class="thumbnail">
-                    
-                        <div class="date">
-                          <div class="day">27</div>
-                          <div class="month">Mar</div>
-                        </div><img src="${doc.data().imgUrl}"/>
-                      </div>
-                      <!-- Post Content-->
-                      <div class="post-content">
-                        <div class="category">${status}</div>
-                        <h1 class="title">${doc.data().name}</h1>
-                        <h2 class="sub_title">${doc.data().description}</h2>
+                  <div class="column" style="width: auto;">
+                  <div class="card card-custom bg-white border-white border-0 m-2">
+                  <div class="card-custom-img" style="background-image: url(${background_shades[getRndInteger(0,3)]});"></div>
+                  <div class="card-custom-avatar">
+                    <img class="img-fluid" src="/assets/upsc-icon.jpg" alt="Avatar" />
+                  </div>
+                  <div class="card-date">
+                  <div class="day">${day}</div>
+                  <div class="month">${month}</div>
+                  </div>
+                  <div class="card-body" style="overflow-y: auto">
+                    <h4 class="card-title">${doc.data().name}</h4>
+                    <p class="card-subtitle">${doc.data().description}</p>
                         <br>
                         <div>Duration : 3 hours</div>
-                        <div>Difficulty : easy</div>
-                        <div class="post-meta"><span class="timestamp">Questions : 50</span> </div>
-                        <span><button type="button" class="btn btn-primary" style="width: 100%; margin-top: 20px;" id="${doc.data().name}" >Start Now</button></span></div>
+                        <div>Difficulty : Easy</div>
+                        <div class="post-meta"><span class="timestamp">Questions : ${doc.data().noOfQues}</span> </div>
+                  </div>
+                  <div>      
+                        <span><button type="button" class="btn btn-primary" style="width: 90%; margin: 15px;" id="${doc.data().name}" ></button></span></div>
+                    </div>
                     </div>
                   </div>
                   `
@@ -128,33 +144,62 @@ firebase.auth().onAuthStateChanged(function(user) {
                   }
 
                   completed += 1;
+                  var date = doc.data().date;
+                  var month = date.substring(0,3);
+                  var day = date.substring(4,6);
+
+                  function getReport(){
+                    var docRef = db.collection('/users/'+uid+'/courses/'+course_name+'/result').doc("Report");
+
+                    docRef.get().then(function(doc) {
+                        if (doc.exists) {
+                            console.log("Document data:", doc.data());
+                            
+                            var score= doc.data().Score ;
+                            var correct =doc.data().Correct ;
+                            var incorrect = doc.data().Inncorrect;
+                            var percentage = doc.data().Percentage;
+                            document.getElementById(course_name).innerHTML=`
+                            <div id="score">Score : ${score}</div>
+                            <div id="correct">Correct : ${correct}</div>
+                            <div id="incorrect">Incorrect : ${incorrect}</div>
+                            <div id="percentage">Percentage : ${percentage}%</div>
+                            `
+  
+                        } else {
+                            
+                            console.log("No such document!");
+                        }
+                    }).catch(function(error) {
+                        console.log("Error getting document:", error);
+                    });
+                  }
+                  getReport();
+
+
+
                   document.getElementById("completed").innerHTML += `
 
                   <!-- Normal Demo-->
-                  <div class="column">
-                   <!-- Post-->
-                   <div class="post-module">
-                     <!-- Thumbnail-->
-                     <div class="thumbnail">
-                     
-                       <div class="date">
-                         <div class="day">27</div>
-                         <div class="month">Mar</div>
-                       </div><img src="${doc.data().imgUrl}"/>
-                     </div>
-                     <!-- Post Content-->
-                     <div class="post-content">
-                       <div class="category">${status}</div>
-                       <h1 class="title">${doc.data().name}</h1>
-                       <div class="sub_title">${doc.data().description}</div>
+                  <div class="column" style="width: auto;">
+                  <div class="card card-custom bg-white border-white border-0 m-2">
+                  <div class="card-custom-img" style="background-image: url(${background_shades[getRndInteger(0,3)]});"></div>
+                  <div class="card-custom-avatar">
+                    <img class="img-fluid" src="/assets/upsc-icon.jpg" alt="Avatar" />
+                  </div>
+                  <div class="card-date">
+                  <div class="day">${day}</div>
+                  <div class="month">${month}</div>
+                  </div>
+                  <div class="card-body" style="overflow-y: auto">
+                    <h4 class="card-title">${doc.data().name}</h4>
+                    <p class="card-subtitle">${doc.data().description}</p>
                        <br>
-                       <div>Total Questions : 50</div>
-                       <div>Answered : 25</div>
-                       <div>Correct : 18</div>
-                       <div>Score : 56</div>  
-                                                
-                       <div class="post-meta"><span class="timestamp">Questions : 50</span>
-                       <span><button type="button" class="btn btn-primary" style="width: 100%; margin-top: 20px;" id="${course_name}" onclick="showresult(${uid},${category},${course_name});">Show Result</button></span></div>
+                       <div id="${course_name}">
+  
+                        </div>    
+                       <div class="post-meta"><span class="timestamp">Questions : ${doc.data().noOfQues}</span>
+                       <span><button type="button" class="btn btn-primary" style="width: 100%; margin-top: 20px;" id="${course_name}" onclick="window.open('result.html?u=${uid}&category=${category}&courseid=${course_name}');">Show Result</button></span></div>
                        
                      </div>
                    </div>
@@ -232,8 +277,7 @@ function settimer(startDate,id,course_name,category,uid){
   }
 
 function showresult(uid,category,coursename){
-
-  window.location='result.html?u='+uid+'&category='+category+'&courseid='+coursename ;
-
+   window.open('result.html?u='+uid+'&category='+category+'&courseid='+coursename+'');
     
   }
+  

@@ -2,10 +2,14 @@
 body, html {
   height: 100%;
   line-height: 1.8;
-  font-family: 'Ubuntu', sans-serif;
+  
+  font-family: 'Raleway';
+
   font-weight: lighter;
 }
-
+body,p,h1,h2,h3,h4,h5,h6{
+  font-family: 'Raleway';
+}
 /* Full height image header */
 .bgimg-1 {
   background-position: center;

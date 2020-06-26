@@ -18,7 +18,7 @@ var courseid = getUrlVars()["courseid"];
 
 const db = firebase.firestore();
 
-console.log("Page Started");
+
 totalQuestion();
 
 setTimeout(downloadData(),10000);
@@ -28,7 +28,7 @@ function totalQuestion(){
     docRef3.get().then(function(doc) {
     if (doc.exists) {
         totalQuestion = doc.data().TotalQuestions;
-        console.log("Total Question", totalQuestion);
+       
 
 
     } else {
@@ -90,11 +90,35 @@ function processData(a,r,e){
             wrong++;
         }
     }
-    console.log("Correct:", correct);
-    console.log("Wrong:", wrong);
+
     score = correct*4;
     percentage = (correct/totalQuestion)*100;
     inncorrect = totalQuestion-correct;
+
+    var docRef = db.collection('/users/'+uid+'/courses/'+courseid+'/result').doc("Report");
+
+    docRef.get().then(function(doc) {
+        if (doc.exists) {
+            
+        } else {
+                            
+            db.collection('/users/'+uid+'/courses/'+courseid+'/result').doc("Report").set({
+                    
+                    Score: score,
+                    Correct: correct,
+                    Inncorrect: inncorrect,
+                    Percentage: percentage
+                })
+                .then(function() {
+                    console.log("Document successfully written!");
+                })
+                .catch(function(error) {
+                    console.error("Error writing document: ", error);
+                });
+        }
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
 
     document.getElementById("result").innerHTML = `
             <div class="card score-card pt-3 pb-3">
@@ -150,7 +174,7 @@ function processData(a,r,e){
                 quesData[`${questionNo}.3`] = snap.opt3;
                 quesData[`${questionNo}.4`] = snap.opt4;
 
-                console.log(quesData);
+                
 
                 count++;
 
@@ -161,10 +185,10 @@ function processData(a,r,e){
                 
                     
                     for(qNo=1; qNo<=totalQuestion; qNo++){
-                        console.log(quesData[qNo]);
+                        
 
                         document.getElementById('responses').innerHTML += `
-                        <div class="card data-card m-5 p-5">
+                        <div class="card data-card m-2">
                             <div>
                             <h5 class="mt-3 mb-3">Q${qNo}. ${quesData[qNo]}?</h5>
                             <div>

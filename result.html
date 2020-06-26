@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Result</title>
-
+    <link rel = "icon" href = "/assets/logo_transparent.png" type = "image/x-icon">
 
     <!---------------------------- Bootstrap -------------------->
 
@@ -45,6 +45,11 @@
     
     <!---------------------------- End Firebase setup scripts------------------------------------------->
 <style>
+
+
+body,p,h1,h2,h3,h4,h5,h6{
+    font-family: 'Raleway';
+}
 :root {
     --title-color: #141313;
     --text-color: #777777;
@@ -74,15 +79,16 @@
     border-radius: 12px;
     box-shadow: var(--box-shadow);
     color: white;
+    
 }
 .data-card{
-    padding: 0.5rem;
+    padding: 2em;
     border: 10px, solid, white;
     border-radius: 6px;
     box-shadow: var(--box-shadow);
 }
 #result{
-    padding: 5rem;
+    padding: 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 80px;
@@ -105,13 +111,22 @@
 </head>
 <body>
 
-   
+<section class="container" style="margin-top: 1em;">
+    <h2>Your Scores</h1>
+</section>
+
 <section id="result">
 
 </section>
-   
+<section class="container">
+    <h2>Detailed Result with Solutions</h1>
+</section>
 <section id="responses">
 
+</section>
+
+<section class="container-fluid">
+    <button type="button" class="btn btn-primary " style="width: 100%; margin-top: 2em; margin-bottom: 2em;"  onclick='location.href="profile.html"'>Continue</button>
 </section>
 
 

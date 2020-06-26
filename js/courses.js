@@ -1,6 +1,9 @@
+var uid;
+
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-    
+
+      uid = user.uid;
      document.getElementById("register").style="display:none;"
      document.getElementById("login").style="display:none;"
      document.getElementById("myprofile").innerHTML+=`
@@ -31,9 +34,6 @@ function  logout(){
 }
 
 
-// Toggle between showing and hiding the sidebar when clicking the menu ico
-
-
 //getting course params
 function getUrlVars() {
     var vars = {};
@@ -57,20 +57,33 @@ function getRndInteger(min, max) {
               return Math.floor(Math.random() * (max - min)) + min;
 }
 
+
+
 // var imagesRef = storageRef.child('course images');
 
 db.collection("courses/categories/"+category)
     .get().then(function(querySnapshot) {
 
+      console.log(uid)
+
+        //Getting all courses purchased
+        var courses_purchased=[];
+
+        db.collection("users/"+uid+"/courses").get().then(function(querySnapshot) {
+          querySnapshot.forEach(function(doc) {
+            courses_purchased.push(doc.id)
+          });
+          details(courses_purchased)
+        });
+
+        function details(courses_purchased){
         querySnapshot.forEach(function(doc) {
-            // console.log("name of course " , doc.data().name)
-            // console.log("cost " , doc.data().cost)
-            // console.log("description " , doc.data().description )
+
             var date = doc.data().date;
             var month = date.substring(0,3);
             var day = date.substring(4,6);
           document.getElementById("all-cards").innerHTML += `
-          <!-- Copy the content below until next comment -->
+          
             <div class="card card-custom bg-white border-white border-0">
               <div class="card-custom-img" style="background-image: url(${background_shades[getRndInteger(0,3)]});"></div>
               <div class="card-custom-avatar">
@@ -89,103 +102,30 @@ db.collection("courses/categories/"+category)
                 <a class="icons"> Questions-${doc.data().noOfQues}</a> 
                 <div>
                 </div>
-              <div class="card-footer m-1" style="background: inherit; border-color: inherit;">
-                <a href="donateViaPaytm.html?course=${doc.id}"><div class="pay-btn">Buy Now</div></a>
+              <div class="card-footer m-0 p-0 pt-3 pb-2" style="background: inherit; border-color: inherit;">
+                <a href="donateViaPaytm.html?course=${doc.id}" id=${doc.id}><div class="pay-btn">Buy Now</div></a>
               </div>
             </div>
             <!-- Copy until here -->        
           `
+          firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+              if(courses_purchased.includes(doc.id)){
+                document.getElementById(doc.id).innerHTML = "Enrolled"
+                document.getElementById(doc.id).classList.add("enrolled-btn")
+                document.getElementById(doc.id).href = "profile.html"
+              }
+            } else {
+              document.getElementById(doc.id).href = "login.html"
+              
+            }
+          })
+
         });
+      }
+      
     });
 
+   
 
-    //footer
-    
-
-    
-
-
-
-
-
-    // document.getElementById("buyNow").onclick = function () {
-    //     location.href = "PaytmKit/TxnTest.php";
-    // };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// class City {
-//     constructor (name, cost, description ,imgUrl) {
-//         this.name = name;
-//         this.cost = cost;
-//         this.description = description;
-//         this.imgUrl = imgUrl
-//     }
-//     toString() {
-//         return this.name + ', ' + this.cost + ', ' + this.description + ', ' + this.imgUrl;
-//     }
-// }
-
-//     // Firestore data converter
-//   cityConverter = {
-//       toFirestore: function(city) {
-//           return {
-//               name: city.name,
-//               cost: city.cost,
-//               description: city.description,
-//               imgUrl: city.imgUrl
-//               }
-//       },
-//       fromFirestore: function(snapshot, options){
-//           const data = snapshot.data(options);
-//           return new City(data.name, data.cost, data.description, data.imgUrl)
-//       }
-//   }
-
-// db.collection("courses/categories/ssc").doc("PHP")
-//   .withConverter(cityConverter)
-//   .set(new City("PHP", "150", "This is the course oriented for PHP lovers.","https://www.prodjex.com/wp-content/uploads/2018/04/PHP-Tutorials-Guides-and-More.png"));
 

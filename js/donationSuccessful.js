@@ -20,12 +20,14 @@ var status = getUrlVars()["status"];
 
 document.getElementById("course_name").innerHTML=course_name
 document.getElementById("category").innerHTML=category
-document.getElementById("amount").innerHTML=amount
+document.getElementById("amount").innerHTML="&#8377; "+amount
 document.getElementById("date").innerHTML=date
 document.getElementById("txn_id").innerHTML=txn_id
 document.getElementById("status").innerHTML="Pending"
 
 document.getElementById("continue-button").href='courses.html?category='+ category
+
+document.getElementById("frameToPrint").src='invoice.html?category='+ category+'&course_name='+course_name+'&amount='+amount+'&date='+date+'&txn_id='+txn_id
 
 //variable declaration for the global repeated animations
 var gear = $("#gear1, #gear2, #gear3"),

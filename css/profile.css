@@ -4,7 +4,9 @@
   }
 
   .user-details {
-    margin-left: 30px;
+    padding-left: 10%;
+    width: fit-content;
+    display: block;
   }
 
   /*  Theme colors  */
@@ -32,11 +34,13 @@
   .w3-hover-text-theme:hover {color:#0d1128 !important}
   .w3-hover-border-theme:hover {border-color:#0d1128 !important}
 
-
+  body,p,h1,h2,h3,h4,h5,h6{
+    font-family: 'Raleway';
+}
   /*PEN STYLES*/
   body {
     background: #f2f2f2;
-    font-family: 'proxima-nova-soft', sans-serif;
+    
     font-size: 14px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -188,7 +192,7 @@
   }
   .container .column {
     width: 260px;
-    padding: 10px;
+    
     -webkti-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -228,9 +232,32 @@
     float: right;
   }
 
+
+
+  #avatar {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 50%;
+  }
   
 
 
 #footer {
     margin-top: 10px;
+}
+
+@media only screen and (max-width: 1020px) {
+  .user-details{
+    padding-left: 0%;
+  }
+}
+@media (min-width:1000px){
+
+  .navbar-nav{
+      position: absolute;
+      right: 0;
+      margin-right: 20px;
+  }
+
 }

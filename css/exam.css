@@ -1,4 +1,6 @@
-
+body,p,h1,h2,h3,h4,h5,h6{
+    font-family: 'Raleway';
+}
 #timer{
     padding: 2px 5px 3px 5px;
     background-color: #21ab2c;

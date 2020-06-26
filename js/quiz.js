@@ -13,9 +13,9 @@ var Name;
 var data= [];
 
 var d;
-var docRef = db.collection("Shekhar").doc("W7w3Z9PK5BnYOc65qIWp");
+var docRef = db.collection("/dailyquiz/eoJpYOfAX57GA06wfc4G/questions").doc("W7w3Z9PK5BnYOc65qIWp");
 
-var responseDocRef = db.collection("Shekhar").doc("Responses");
+var responseDocRef = db.collection("/dailyquiz/eoJpYOfAX57GA06wfc4G/questions").doc("Responses");
 
 var currentQ =0;
 
@@ -48,7 +48,7 @@ var totalNotAnswered =0;
 var totalMarked =0;
 
 
-var docRef3 = db.collection("Shekhar").doc("testData");
+var docRef3 = db.collection("/dailyquiz/eoJpYOfAX57GA06wfc4G/questions").doc("testData");
     docRef3.get().then(function(doc) {
     if (doc.exists) {
         var range = doc.data().TotalQuestions;
@@ -136,7 +136,7 @@ function submit(){
     console.log("Answers:", ans);
     console.log("Answers:", optObj);
 
-    db.collection("Shekhar").doc("Responses").set(optObj)
+    db.collection("/dailyquiz/eoJpYOfAX57GA06wfc4G/questions").doc("Responses").set(optObj)
     .then(function() {
         console.log("Document successfully written!");
         document.getElementById("exam-section").style.display = "none";
@@ -204,7 +204,7 @@ function loadQues(qNo,flag){
             loadFromCache(qNo);
         }else{
 
-            var docRef2 = db.collection("Shekhar").doc(`${qNo}`);
+            var docRef2 = db.collection("/dailyquiz/eoJpYOfAX57GA06wfc4G/questions").doc(`${qNo}`);
 
             docRef2.withConverter(dataConverter)
             .get().then(function(doc) {

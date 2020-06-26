@@ -1,7 +1,11 @@
+body,p,h1,h2,h3,h4,h5,h6{
+  font-family: 'Raleway';
+}
 input {
   padding: 10px;
   border-radius: 1em;
 }
+
 
 /* Inner card */
 
@@ -33,7 +37,7 @@ background: linear-gradient(90deg, rgba(249,109,0,1) 0%, rgba(249,109,0,1) 21%, 
 
 h1 {
   font-size: 1em;
-  font-family: "Montserrat";
+  
   text-transform: uppercase;
   margin-bottom: 20px;
   text-align: center;
@@ -77,10 +81,15 @@ h1 {
   display: none;
 }
 
+.coupon-text{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .card-wrap {
   width: 270px;
   float: right;
-  margin-top: -145px;
+  margin-top: -180px;
   background: #f96d00;
   padding: 50px;
   -webkit-transform: scale(1.5) rotate(20deg);
@@ -160,7 +169,8 @@ svg:not(:root) {
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   padding: 12px 16px;
-  font-family: "Montserrat";
+  cursor: pointer;
+ 
   text-transform: uppercase;
   font-size: 1.1em;
   letter-spacing: 0.1em;
@@ -208,7 +218,7 @@ ul .booking-card {
   border-radius: 10px;
   overflow: hidden;
   background-position: top;
-  background-size: 400px;
+  background-size: 450px;
   text-align: center;
   color: #0a4870;
   transition: 0.3s;
@@ -265,7 +275,8 @@ ul .booking-card .informations-container {
 ul .booking-card .informations-container .title {
   position: relative;
   padding-bottom: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
+  margin-top: 0px;
   font-weight: bold;
   font-size: 1.8em;
 }
@@ -284,10 +295,11 @@ ul .booking-card .informations-container .price {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 5px;
+  margin-top: 0px;
+  font-size: 1.2em;
 }
 ul .booking-card .informations-container .price .icon {
-  margin-right: 10px;
+  margin-left: 100px;
 }
 ul .booking-card .informations-container .more-information {
   opacity: 0;
@@ -333,7 +345,21 @@ ul .booking-card:hover .informations-container .more-information {
   opacity: 1;
 }
 
+.icon-question {
+  width: 60px;
+}
+
+.icon-calendar {
+  width: 45px;
+}
+
 @media (max-width: 768px) {
+
+
+  body{
+    flex-direction: column;
+  }
+
   ul .booking-card::before {
     background: rgba(10, 72, 112, 0.6);
   }
@@ -347,7 +373,62 @@ ul .booking-card:hover .informations-container .more-information {
   ul .booking-card .informations-container .more-information {
     opacity: 1;
   }
+
 }
+
+@media (max-width: 550px) {
+
+
+  .card-wrap{
+    width: 0px;
+    padding: 0px;
+  }
+  
+  #all-cards-ul{
+    width: fit-content;
+  }
+
+  .wrapper{
+    width: 320px;
+    margin: auto !important;
+    flex-wrap: wrap;
+   
+  }
+
+  .center{
+    padding: 0px;
+  }
+
+  .checkout{
+    top: 80px;
+  }
+
+ input{
+   text-align: center;
+   align-items: center;
+   margin: 0px;
+   
+ }
+ .amt-form{
+   margin: 0px;
+ }
+
+ #user-details{
+  font-size: large;
+  padding: 0px !important;
+  align-items: center;
+ }
+
+  }
+
+@media (max-width: 1040px) {
+  #all-cards-ul{
+    padding-left: 0px;
+  }
+
+}
+
+
 .credits {
   display: table;
   background: #0a4870;

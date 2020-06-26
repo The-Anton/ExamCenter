@@ -1,10 +1,9 @@
-/* ------------------------------------*
-       BEST VIEWED FULL-SCREEN:
-   https://codepen.io/sdras/full/waXKPw/
-*--------------------------------------*/
 
+body,p,h1,h2,h3,h4,h5,h6{
+  font-family: 'Raleway';
+}
 body {
-  font-family: 'Oswald', sans-serif;
+  font-family: Raleway;
   color: black;
   width: 100%;
   height: 100%;
@@ -30,6 +29,8 @@ h3 {
 
 svg {
   transition: all 0.5s ease;
+  position: relative;
+  z-index: -1;
 }
 
 .size {
@@ -37,6 +38,7 @@ svg {
   right: 5%;
   top: 20%;
   width: 45%;
+  z-index: 1;
   letter-spacing: 0.02em;
   font-size: 15px;
   padding: 20px;
@@ -44,7 +46,7 @@ svg {
   background: #fff;
 }
 
-.container {
+.container-l {
   width: 100%;
   
 }
@@ -84,8 +86,23 @@ svg {
   visibility: hidden;
 }
 
+
+#print {
+  display: block;
+  margin-bottom: 5px;
+  font-size: large;
+  text-decoration: none;
+  padding: 2px 4px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+
 @media screen and (max-width: 730px) {
-  .container {
+  .container-l {
     width: 100% !important;
     height: 50% !important;
   }
@@ -113,7 +130,8 @@ svg {
 
   .first {
     width: 100%;
-    top: 70px;
+    top: 0px;
+    margin-top: -5px !important;
   }
   .second {
     width: 0%;
@@ -159,6 +177,26 @@ svg {
     width: 330px;
     top: 514px !important;
   }
+}
+
+
+@media screen and (max-width: 1150px) {
+  .second{
+    width: 0px;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .third{
+    width: 0px;
+  }
+  .first{
+    margin-top: 100px;
+    width: 500px;
+  }
+  .size{
+    margin-top: 40px;
+  }
 
 }
 
@@ -172,7 +210,6 @@ svg {
 }
 
 table {
-  font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
@@ -189,6 +226,11 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
+#txn_id{
+  font-size: 12px;
+}
+
+
 /*  XXXXXX  Table  XXXXX   */
 
 
@@ -203,7 +245,8 @@ a {
   display: block;
   text-decoration: none;
   overflow: hidden;
-  margin-left: 30%;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 10px;
 }
 

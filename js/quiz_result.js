@@ -1,4 +1,4 @@
-var uid="Shekhar";
+var uid="/dailyquiz/eoJpYOfAX57GA06wfc4G/questions";
 
 var ans=[];
 var res=[];
@@ -114,7 +114,7 @@ function processData(a,r,e){
     
     `;
 
-    responseDocRef = db.collection("Shekhar");
+    responseDocRef = db.collection("/dailyquiz/eoJpYOfAX57GA06wfc4G/questions");
 
     responseDocRef.get().then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
@@ -128,7 +128,7 @@ function processData(a,r,e){
 
             if(questionNo<=totalQuestion){
                 document.getElementById('responses').innerHTML += `
-                <div class="card data-card m-5 p-5">
+                <div class="card data-card m-2 ">
                     <div>
                     <h5 class="mt-3 mb-3">Q${questionNo}. ${questionText}?</h5>
                     <div>
