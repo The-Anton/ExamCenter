@@ -8,9 +8,18 @@ body,p,h1,h2,h3,h4,h5,h6{
   }
   
   .top {
-    margin-top: -30px;
+    margin-top: -25px;
   }
   
+  .btn-leaderboard{
+    margin-top: -55px;
+    color: #fff;
+    background: #f96d00;
+    outline: 0em;
+    border: none;
+    border-radius: 5px;
+    padding: 4px 10px;
+  }
 
   
 .ul-list {
@@ -44,6 +53,11 @@ body,p,h1,h2,h3,h4,h5,h6{
     cursor: pointer;
     border-radius: 3px;
   }
+
+  .dailyquizhead{
+    display: inline;
+  }
+
   @media (min-width:1000px){
 
     .navbar-nav{
@@ -51,5 +65,18 @@ body,p,h1,h2,h3,h4,h5,h6{
         right: 0;
         margin-right: 20px;
     }
+
+}
+
+@media (max-width:500px){
+
+  .dailyquizhead{
+    display: block;
+    width: 200px;
+  }
+  .btn-leaderboard{
+    margin-left: auto;
+    margin-right: auto;
+  }
 
 }
