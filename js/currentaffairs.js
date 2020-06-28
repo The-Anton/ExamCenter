@@ -41,7 +41,7 @@ database.collection("currentaffairs")
   querySnapshot.forEach(function(doc) {
       
       document.getElementById("listofdailyquizes").innerHTML += `
-      <a href="quiz.html" style="text-decoration: none;">
+      <a href="/pdfviewer.html?id=${doc.data().id}" style="text-decoration: none;">
       <li class="li-list">
         ${doc.data().Name}<br/>
         ${doc.data().category}<br/>

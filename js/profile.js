@@ -56,9 +56,9 @@ firebase.auth().onAuthStateChanged(function(user) {
          document.getElementById("ema").textContent=user.email;
 
          if(doc.data().Gender=="Female")
-            document.getElementById("avatar").src="https://firebasestorage.googleapis.com/v0/b/examcentre-6b0a6.appspot.com/o/avatars%2Ffemale.jpg?alt=media&token=5be032e7-f706-45cd-9800-c338e0d0e724"
+            document.getElementById("avatar").src="/assets/female.jpg"
         else
-           document.getElementById("avatar").src="https://firebasestorage.googleapis.com/v0/b/examcentre-6b0a6.appspot.com/o/avatars%2Fmale.jpg?alt=media&token=e5f73771-7d1d-41ec-8069-fa43abcab78a"
+           document.getElementById("avatar").src="/assets/male.jpg"
 
      })
      document.getElementById("register").style="display:none;"
@@ -220,10 +220,13 @@ function getRndInteger(min, max) {
           console.log("total tests : " , total)
           function stats(completed , upsc , ssc){
             completed = completed/total * 100;
+            completed = completed.toFixed(2)
             completed = completed + "%"
             upsc = upsc/total * 100;
+            upsc = upsc.toFixed(2);
             upsc = upsc + "%"
             ssc = ssc/total * 100;
+            ssc = ssc.toFixed(2);
             ssc = ssc + "%"
             document.getElementById("total-tests").style.width = completed
             document.getElementById("total-tests-text").textContent = completed
@@ -281,3 +284,8 @@ function showresult(uid,category,coursename){
     
   }
   
+ 
+window.addEventListener("load", function(){
+    document.getElementById("loader").style.display="none";
+    document.getElementById("maincontent").style.display="inline"
+  })  

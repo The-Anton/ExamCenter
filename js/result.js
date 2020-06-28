@@ -93,6 +93,7 @@ function processData(a,r,e){
 
     score = correct*4;
     percentage = (correct/totalQuestion)*100;
+    percentage=percentage.toFixed(2);
     inncorrect = totalQuestion-correct;
 
     var docRef = db.collection('/users/'+uid+'/courses/'+courseid+'/result').doc("Report");
@@ -121,25 +122,25 @@ function processData(a,r,e){
     });
 
     document.getElementById("result").innerHTML = `
-            <div class="card score-card pt-3 pb-3">
+            <div class="card score-card pt-3 pb-3" id="score">
                 <div class="text-center">
                 <h4>Your Score</h4>
                 <h3>${score}</h3>
                 </div>
             </div>
-            <div class="card score-card pt-3 pb-3">
+            <div class="card score-card pt-3 pb-3" id="percentage">
                 <div class="text-center">
                 <h4>Percentage Scored</h4>
                 <h3>${percentage}%</h3>
                 </div>
             </div>
-            <div class="card score-card pt-3 pb-3">
+            <div class="card score-card pt-3 pb-3" id="correct">
                 <div class="text-center">
                 <h4>Total Correct</h4>
                 <h3>${correct}</h3>
                 </div>
             </div>
-            <div class="card  score-card pt-3 pb-3">
+            <div class="card  score-card pt-3 pb-3" id="incorrect">
                 <div class="text-center">
                 <h4>Total incorrect</h4>
                 <h3>${inncorrect}</h3>

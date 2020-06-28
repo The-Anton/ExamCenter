@@ -87,7 +87,7 @@ db.collection("courses/categories/"+category)
             <div class="card card-custom bg-white border-white border-0">
               <div class="card-custom-img" style="background-image: url(${background_shades[getRndInteger(0,3)]});"></div>
               <div class="card-custom-avatar">
-                <img class="img-fluid" src="/assets/upsc-icon.jpg" alt="Avatar" />
+                <img class="img-fluid" id="${doc.data().name}" alt="Avatar" />
               </div>
               <div class="card-date">
               <div class="day">${day}</div>
@@ -108,6 +108,13 @@ db.collection("courses/categories/"+category)
             </div>
             <!-- Copy until here -->        
           `
+          if(category=='upsc'){
+            document.getElementById(doc.data().name).src= "assets/upsc-icon.jpg"
+          }
+          else{
+            document.getElementById(doc.data().name).src= "assets/ssc_new_logo.jpeg";
+
+          }
           firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
               if(courses_purchased.includes(doc.id)){

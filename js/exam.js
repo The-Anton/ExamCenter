@@ -502,7 +502,7 @@ function save_next(){
         
     }
     else{
-        markYellow(currentQ);
+        markGreen(currentQ);
         loadNextQues();
     }
 }

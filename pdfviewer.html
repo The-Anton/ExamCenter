@@ -1,34 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.1.266/pdf_viewer.css" rel="stylesheet"/> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <title>Document</title>
 </head>
 <body>
+  <div>
+    <div style="margin-left: auto; margin-right: auto; margin-top: auto; width: 100%; text-align: center;">
+        <div id="wrapper">
 
-  <h1 style="text-align: center;">ExamCentre</h1>
-  <div id="iframe"></div>
-  
+        </div>
+    </div>
+  </div>
+   
+  <script src="//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.1.266/pdf.js"></script>    
+  <script src="//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.1.266/pdf_viewer.js"></script>
+  <script src="//cdn.polyfill.io/v2/polyfill.min.js"></script>    
+  <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.3/firebase-firestore.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-auth.js"></script>
   <script>
-    function getParameterByName(name, url) {
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, '\\$&');
-    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, ' '));
-    }
-    var url = getParameterByName("url")
-    document.getElementById("iframe").innerHTML+= `
-    <iframe
-    src="${url}"
-    width="100%"
-    height="1000px"
-    style="border: none; align-content: center;">
-  </iframe>
-    `
+
+    // Your web app's Firebase configuration
+   
+$(document).ready(function () {
+        // startup
+    });
+
+    'use strict';
+
+    
+    var firebaseConfig = {
+      apiKey: "AIzaSyDsQC39VrcE_fyzZHBtld7Qfv5-cFDM01g",
+      authDomain: "examcentre-6b0a6.firebaseapp.com",
+      databaseURL: "https://examcentre-6b0a6.firebaseio.com",
+      projectId: "examcentre-6b0a6",
+      storageBucket: "examcentre-6b0a6.appspot.com",
+      messagingSenderId: "547043335428",
+      appId: "1:547043335428:web:a14fedf20945303efe4451",
+      measurementId: "G-KFFSR330E0"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    const db = firebase.firestore();
+
+
+    function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,    
+    function(m,key,value) {
+      vars[key] = value;
+    });
+    return vars;
+  }
+
+  var id = getUrlVars()["id"];
+  db.collection("currentaffairs")
+  .onSnapshot(function(querySnapshot) {
+
+    querySnapshot.forEach(function(doc) {
+       if(id==doc.data().id){
+        var url = doc.data().url;
+        
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+        '//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.1.266/pdf.worker.js';
+
+    var loadingTask = pdfjsLib.getDocument(url);
+    loadingTask.promise.then(function(pdf) {
+        // please be aware this uses .range() function from lodash
+        var pagePromises = _.range(1, pdf.numPages).map(function(number) {
+            return pdf.getPage(number);
+        });
+        return Promise.all(pagePromises);
+    }).then(function(pages) {
+            var scale = 1.5;
+            var canvases = pages.forEach(function(page) {
+                var viewport = page.getViewport({ scale: scale, }); // Prepare canvas using PDF page dimensions
+
+                var canvas = document.createElement('canvas');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width; // Render PDF page into canvas context
+
+                var canvasContext = canvas.getContext('2d');
+                var renderContext = {
+                    canvasContext: canvasContext,
+                    viewport: viewport
+                };
+                page.render(renderContext).promise.then(function() {
+                    if (false)
+                        return console.log('Page rendered');
+                });
+                document.getElementById('wrapper').appendChild(canvas);
+            });
+        },
+        function(error) {
+            return console.log('Error', error);
+        });
+            
+       }
+
+    });
+});  
+    
+
+
   </script>
 </body>
 </html>
