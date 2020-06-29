@@ -28,10 +28,10 @@ function getUrlVars() {
   if(from == "dailyquizLeaderboard")
     test_name = "Daily Quiz"
 
-  test_name = test_name.replace("%20" , " ")
+  test_name = test_name.split("%20").join(" ");
 
-  document.getElementById("leaderboard__title").innerHTML = test_name.slice(0,18)
-  document.getElementById("leaderboard__title").style.width = "320px"
+  document.getElementById("leaderboard__title").innerHTML = test_name
+  document.getElementById("leaderboard__title").style.width = "330px"
 
 db.collection( from +"/"+id + "/scoreboard")
 .orderBy("score", "desc")
@@ -73,6 +73,7 @@ db.collection( from +"/"+id + "/scoreboard")
                 bgColor = random_bg_color();
                 elements[i].style.background=bgColor;
             }
+
             first = 1;
 
           })

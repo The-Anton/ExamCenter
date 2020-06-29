@@ -200,7 +200,7 @@ function getRndInteger(min, max) {
                         </div>    
                        <div class="post-meta"><span class="timestamp">Questions : ${doc.data().noOfQues}</span>
                        <span><button type="button" class="btn btn-primary" style="width: 100%; margin-top: 20px;" id="${course_name}" onclick="window.open('result.html?u=${uid}&category=${category}&courseid=${course_name}');">Show Result</button></span></div>
-                       <span><button type="button" class="btn btn-primary" style="width: 100%; margin-top: 5px;" onclick="window.open('leaderboard.html?from=coursesLeaderboard&id=${doc.data().id}&test=${doc.data().name}');">Show LeaderBoard</button></span>
+                       <span><button type="button" class="btn btn-primary" style="width: 100%; margin-top: 5px;" onclick="window.open('leaderboard.html?from=coursesLeaderboard&id=${doc.id}&test=${doc.data().name}');">Show LeaderBoard</button></span>
                      </div>
                    </div>
                  </div>

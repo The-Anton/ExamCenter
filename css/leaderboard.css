@@ -104,6 +104,28 @@ p {
     margin-right: 10px;
     width: 95% !important;
   }
+  .leaderboard__time{
+    position: relative;
+    margin-top: -10px !important;
+  }
+  .leaderboard__title{
+    position:  relative !important;
+    margin-left: 120px !important;
+    width: 100px;
+  }
+
+  .leaderboard__picture{
+    display: block;
+    margin-top: 10px;
+    margin-bottom: auto;
+  }
+  .leaderboard header .leaderboard__title--top {
+    font-size: 18px !important;
+    font-weight: 700;
+    letter-spacing: 0.5px !important;
+    width: 240px !important;
+    margin-top: 10px;
+  }
 }
 
 /*----------------------LeaderBoard ------------------------*/
@@ -140,7 +162,7 @@ p {
   .leaderboard header .leaderboard__title--top {
     font-size: 24px;
     font-weight: 700;
-    letter-spacing: 6.5px;
+    letter-spacing: 2.5px;
   }
   .leaderboard header .leaderboard__title--bottom {
     font-size: 13px;
