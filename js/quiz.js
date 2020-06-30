@@ -49,7 +49,17 @@ var docRef5 = db.collection(`/dailyquiz/${quizid}/questions`).doc("testData");
     });
 
 
-
+    var docRef5 = db.collection(`/dailyquiz`).doc(quizid);
+    docRef5.get().then(function(doc) {
+        if (doc.exists) {
+            examName = doc.data().Name;
+            document.getElementById("head-section").innerHTML = `<h4 class="text-center mt-5">${examName}<h4>`;
+        } else {
+            console.log("No such document!");
+        }
+    }).catch(function(error) {
+    console.log("Error getting document:", error);
+    });
 var totalAnswered =0;
 var totalVisited =1;
 var totalNotAnswered =0;
