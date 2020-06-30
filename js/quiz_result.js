@@ -391,12 +391,13 @@ function finish(){
     var name = document.getElementById("exampleInputName1").value;
     var userData = document.getElementById("exampleInputUserData1").value;
      db.collection(`dailyquiz`).doc(id).get().then(function(doc){
-        var dailyquizid = doc.data().id
+        var dailyquizid = doc.data().id;
+         var t = timeLapsed + " min";
         db.collection('/dailyquizLeaderboard/'+ dailyquizid + '/scoreboard')
         .add({
             name: name,
             score: score,
-            time : timeLapsed,
+            time : t,
             userData : userData
         })
         .then(function() {
