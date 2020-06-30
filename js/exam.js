@@ -233,14 +233,19 @@ function showReview(){
     document.getElementById("initial-section").style.display = "none";
     document.getElementById("exam-section").style.display = "none";
     document.getElementById("response-section").style.display = "block";
-    document.getElementById("response-section").innerHTML +=`
+    document.getElementById("response-section").innerHTML =`
+        
+        <div class="text-center mt-3">
+                <h4>Review Your Questions</h4>
+        </div>
         <button type="button" class="btn btn-outline-primary mr-3 ml-3" id="back-btn" onclick="resume()"><< Go Back</button>
-        <button type="button" class="btn btn-outline-primary " id="final-submit-btn" onclick="submit()">Submit</button>`;
+        <button type="button" class="btn btn-outline-primary " id="final-submit-btn" onclick="submit()">Final Submit</button>`;
 
 
 
     for(qNo=1; qNo<=totalQuestion; qNo++){
         setTimeout(loadReviews(qNo),3000);
+        
     }
  
     
@@ -280,13 +285,14 @@ class data2 {
     }
     showQues(){
     
+       
         document.getElementById("response-section").innerHTML += `
                         <div class="card data-card m-5 p-5">
                         <h5 id="Q">Q.${reviewQues} ${this.ques}</h5><br>   
-                        <h6  id="opt1" value="${this.opt1}" >1)  ${this.opt1} </h6>   
-                        <h6  id="opt2" value="${this.opt2}" >2)  ${this.opt2} </h6>   
-                        <h6  id="opt3" value="${this.opt3}" >3)  ${this.opt3} </h6>    
-                        <h6  id="opt4" value="${this.opt4}" >4)  ${this.opt4} </h6>   
+                        <h6   value="${this.opt1}" >1)  ${this.opt1} </h6>   
+                        <h6   value="${this.opt2}" >2)  ${this.opt2} </h6>   
+                        <h6   value="${this.opt3}" >3)  ${this.opt3} </h6>    
+                        <h6   value="${this.opt4}" >4)  ${this.opt4} </h6>   
 
                         <br>
                             <div id="status-txt${reviewQues}">
@@ -304,7 +310,9 @@ class data2 {
                             `;
                         }
 
-                        
+                        if(reviewQues>=totalQuestion){
+                            reviewQues=0;
+                        }          
     }
 }
 
