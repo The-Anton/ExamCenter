@@ -281,7 +281,7 @@ class data2 {
     showQues(){
     
         document.getElementById("response-section").innerHTML += `
-                        <div class="card data-card m-3">
+                        <div class="card data-card m-1">
                         <h5 id="Q">Q.${reviewQues} ${this.ques}</h5><br>   
                         <h6  value="${this.opt1}" >1)  ${this.opt1} </h6>   
                         <h6  value="${this.opt2}" >2)  ${this.opt2} </h6>   
