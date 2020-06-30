@@ -390,13 +390,26 @@ function participate(){
 function finish(){
     var name = document.getElementById("exampleInputName1").value;
     var userData = document.getElementById("exampleInputUserData1").value;
+     db.collection(`dailyquiz`).doc(id).get().then(function(doc){
+        var dailyquizid = doc.data().id
+        db.collection('/dailyquizLeaderboard/'+ dailyquizid + '/scoreboard')
+        .add({
+            name: name,
+            score: score,
+            time : timeLapsed,
+            userData : userData
+        })
+        .then(function() {
+            db.collection('/dailyquiz/tempData/quizResponses').doc(tempDoc).delete().then(function() {
+                location.href="leaderboard.html?from=dailyquizLeaderboard&id="+dailyquizid;
+            }).catch(function(error) {
+                console.error("Error removing document: ", error);
+            });
+        })
+    })
 
     console.log(timeLapsed);
     console.log(score);
-    db.collection('/dailyquiz/tempData/quizResponses').doc(tempDoc).delete().then(function() {
-    }).catch(function(error) {
-        console.error("Error removing document: ", error);
-    });
 }
 
 var j = 0;

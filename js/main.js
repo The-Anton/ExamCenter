@@ -56,9 +56,9 @@ function fetchdata(){
                 </a>
                 `
 
-            });
+            };
         }); 
-  }
+  });
 database.collection("currentaffairs")
   .onSnapshot(function(querySnapshot) {
 
