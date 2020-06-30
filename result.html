@@ -130,13 +130,7 @@ body{
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-gap: 80px;
     }
-    #result2{
-        padding-left: 5rem;
-        padding-right: 5rem;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr ;
-        grid-gap: 120px;
-    }
+   
     
     #chart-section{
         padding: 2rem;
@@ -157,6 +151,15 @@ body{
             display: grid;
             grid-template-columns: repeat(2,1fr);
             grid-gap: 40px;
+        }
+        #responses h5,h6,p{
+            font-size: small;
+        }
+        #piechart1{
+        width: 300px; height: 166px;
+        }
+        #piechart2{
+            width: 300px; height: 166px;
         }
     
     }
@@ -295,9 +298,7 @@ body {
     <section id="result">
     
     </section>
-    <section id="result2">
     
-    </section>
     <section id="chart-section" class="card text-center m-5">
         <div id="piechart1" class="text-center" style="width: 600px; height: 333px;"></div>
         <div id="piechart2" class="text-center" style="width: 600px; height: 333px;"></div>
@@ -306,8 +307,8 @@ body {
 
     <section class="container text-center m-3">
         <div>
-            <button type="button" class="btn btn-outline-primary ml-3 mr-3" id="expand-btn" onclick="showResponses()">Show Questions</button>
-            <button type="button" class="btn btn-outline-primary ml-3 mr-3" id="final-submit-btn" onclick='location.href="profile.html"'>Go To Profile</button>
+            <button type="button" class="btn btn-outline-primary m-3" id="expand-btn" onclick="showResponses()">Show Questions</button>
+            <button type="button" class="btn btn-outline-primary m-3" id="final-submit-btn" onclick='location.href="profile.html"'>Go To Profile</button>
         </div>
         
     </section>
