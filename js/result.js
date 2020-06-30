@@ -301,12 +301,12 @@ function saveRanking(score,timeLapsed)
      uid = user.uid;
      var docref = db.collection("users").doc(uid);
      docref.get().then(function(doc){
-
+                var t = timeLapsed + " min";
                 var db = firebase.firestore()
                 db.collection("/coursesLeaderboard/"+ courseid +"/scoreboard").doc(uid).set({
                     name: doc.data().Username,
                     score: score,
-                    time : timeLapsed
+                    time : t
                 })
      })
     } else {
