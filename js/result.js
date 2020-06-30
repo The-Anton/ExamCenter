@@ -2,6 +2,8 @@ var ans=[];
 var res=[];
 var exp;
 var totalQuestion;
+var timeLapsed;
+document.getElementById("responses").style.display = "none";
 
 function getUrlVars() {
     var vars = {};
@@ -28,9 +30,7 @@ function totalQuestion(){
     docRef3.get().then(function(doc) {
     if (doc.exists) {
         totalQuestion = doc.data().TotalQuestions;
-       
-
-
+        
     } else {
         console.log("No such document!");
     }
@@ -54,10 +54,11 @@ function downloadData(){
             var docRef2 = db.collection('/users/'+uid+'/courses/'+courseid+'/result').doc("Responses");
             docRef2.get().then(function(doc2) {
                     res = doc2.data();
+                    timeLapsed = doc2.data().timeLapsed;
                     var docRef3 = db.collection('/courses/categories/'+category+'/'+courseid+'/questions').doc("explain");
                     docRef3.get().then(function(doc3) {
                         exp = doc3.data().exp;
-                        processData(ans, res, exp);
+                        processData(ans, res, exp,timeLapsed);
 
                     });
 
@@ -70,7 +71,7 @@ function downloadData(){
     
 }
 
-function processData(a,r,e){
+function processData(a,r,e,timeLapsed){
     var correct=0;
     var inncorrect=0;
     var wrong=0;
@@ -78,7 +79,7 @@ function processData(a,r,e){
     var unattempted=0;
     var score=0
     var questionNo;
-  
+    
     
     for(i=1; i<=totalQuestion ; i++){
         var response = parseInt(r[i]);
@@ -86,15 +87,19 @@ function processData(a,r,e){
 
         if(response==answer){
             correct++;
+        }else if(response==0){
+            unattempted++;
         }else{
             wrong++;
         }
     }
 
-    score = correct*4;
+    inncorrect = wrong;
+    score = correct*4-(inncorrect);
     percentage = (correct/totalQuestion)*100;
     percentage=percentage.toFixed(2);
-    inncorrect = totalQuestion-correct;
+    attempted = totalQuestion-unattempted;
+    
 
     var docRef = db.collection('/users/'+uid+'/courses/'+courseid+'/result').doc("Report");
 
@@ -104,11 +109,12 @@ function processData(a,r,e){
         } else {
                             
             db.collection('/users/'+uid+'/courses/'+courseid+'/result').doc("Report").set({
-                    
+  
                     Score: score,
                     Correct: correct,
                     Inncorrect: inncorrect,
-                    Percentage: percentage
+                    Percentage: percentage,
+                    TimeTaken: timeLapsed
                 })
                 .then(function() {
                     console.log("Document successfully written!");
@@ -120,7 +126,7 @@ function processData(a,r,e){
     }).catch(function(error) {
         console.log("Error getting document:", error);
     });
-
+    console.log(timeLapsed);
     document.getElementById("result").innerHTML = `
             <div class="card score-card pt-3 pb-3" id="score">
                 <div class="text-center">
@@ -128,6 +134,13 @@ function processData(a,r,e){
                 <h3>${score}</h3>
                 </div>
             </div>
+            <div class="card score-card pt-3 pb-3" id="time">
+                <div class="text-center">
+                <h4>Time Taken</h4>
+                <h3>${timeLapsed} min</h3>
+                </div>
+            </div>
+            
             <div class="card score-card pt-3 pb-3" id="percentage">
                 <div class="text-center">
                 <h4>Percentage Scored</h4>
@@ -140,15 +153,33 @@ function processData(a,r,e){
                 <h3>${correct}</h3>
                 </div>
             </div>
+            
+    `;
+    document.getElementById("result2").innerHTML = `
+          
+            
             <div class="card  score-card pt-3 pb-3" id="incorrect">
                 <div class="text-center">
                 <h4>Total incorrect</h4>
                 <h3>${inncorrect}</h3>
                 </div>
             </div>
+            <div class="card score-card pt-3 pb-3" id="attempted">
+                <div class="text-center">
+                <h4>Attempted</h4>
+                <h3>${attempted}</h3>
+                </div>
+            </div>
+            <div class="card score-card pt-3 pb-3" id="unattempted">
+                <div class="text-center">
+                <h4>Unattempted</h4>
+                <h3>${unattempted}</h3>
+                </div>
+            </div>
     
     
     `;
+    showCharts(correct, inncorrect,unattempted,attempted, totalQuestion);
 
     responseDocRef = db.collection('/courses/categories/'+category+'/'+courseid+'/questions');
 
@@ -244,6 +275,49 @@ function processData(a,r,e){
 
 }
 
+function showCharts(correct, inncorrect,unattempted,attempted,totalQuestion){
+
+    var correct_prc=(correct/totalQuestion)*100;
+    var inncorrect_prc=(inncorrect/totalQuestion)*100;
+    var attempted_prc=(attempted/totalQuestion)*100;
+    var unattempted_prc=(unattempted/totalQuestion)*100;
+
+    google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+  
+        function drawChart() {
+  
+          var data = google.visualization.arrayToDataTable([
+            ['Status', 'Percentage'],
+            ['Correct', Math.floor(correct_prc)],
+            ['Inncorrect', Math.floor(inncorrect_prc)]
+          ]);
+          var data2 = google.visualization.arrayToDataTable([
+            ['Status', 'Percentage'],
+            ['Unattempted',  Math.floor(unattempted_prc)],
+            ['Attempted',  Math.floor(attempted_prc)]
+          ]);
+  
+          var options = {
+            title: 'Analysis 1',
+            fontName: 'Raleway',
+            colors: ['#0abf53','#ff0000'],
+            is3D: true
+          };
+          var options2 = {
+            title: 'Analysis 2',
+            fontName: 'Raleway',
+            colors: ['#28c7fa','#fd7e14'],
+            is3D: true
+          };
+  
+          var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
+          var chart2 = new google.visualization.PieChart(document.getElementById('piechart2'));
+  
+          chart.draw(data, options);
+          chart2.draw(data2, options2);
+        }
+}
 
 
 function showQuestions(quesData, totalQuestion ,ans, res, e){
@@ -288,4 +362,25 @@ function showQuestions(quesData, totalQuestion ,ans, res, e){
 
        // document.getElementById(`${questionNo}.${res[doc.id]}`).style.color="#4EC5F1";
     }
+}
+
+var j = 0;
+function showResponses(){
+
+    
+        
+
+            if (j == 0) {
+                document.getElementById("expand-btn").innerText = "Hide Questions";
+                j = 1;
+                document.getElementById("responses").style.display = "block";
+
+            } else {
+                document.getElementById("expand-btn").innerText = "Show Questions";
+                j = 0;
+                document.getElementById("responses").style.display = "none";
+
+            }
+       
+
 }
