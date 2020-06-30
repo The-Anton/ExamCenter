@@ -43,12 +43,24 @@ var timeleft=minutes;
 var marked=[];
 var status=[];                                        //   Answered = 1 | Not Answered = 0 | Not Visited = undifined or null | Marked For review = -1
 var timeLapsed;
+var examName;
 
-
-var docRef5 = db.collection('/dailyquiz/eoJpYOfAX57GA06wfc4G/questions').doc("testData");
+var docRef5 = db.collection("/courses/categories/"+category+"/"+courseid+"/questions").doc("testData");
     docRef5.get().then(function(doc) {
         if (doc.exists) {
             minutes = doc.data().time;
+        } else {
+            console.log("No such document!");
+        }
+    }).catch(function(error) {
+    console.log("Error getting document:", error);
+    });
+
+var docRef5 = db.collection("/courses/categories/"+category).doc(courseid);
+    docRef5.get().then(function(doc) {
+        if (doc.exists) {
+            examName = doc.data().name;
+            document.getElementById("head-section").innerHTML = `<h4 class="text-center mt-5">${examName}<h4>`;
         } else {
             console.log("No such document!");
         }
