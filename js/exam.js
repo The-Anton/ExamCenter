@@ -1,4 +1,3 @@
-//window.localStorage.clear();
 //const querString = window.location.search;
 //const urlParams = new URLSearchParams(querString);
 //const uID = urlParams.get('uid');
