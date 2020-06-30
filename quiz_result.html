@@ -13,7 +13,7 @@
 
     <link type="stylesheet" href="res.css">
 
-
+    
     
 <!---------------------------- Start Firebase setup scripts------------------------------------------->
                 <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -42,86 +42,376 @@
                   </script>
     
 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  
     
-    
-    <!---------------------------- End Firebase setup scripts------------------------------------------->
+      <!---------------------------- End Firebase setup scripts------------------------------------------->
 <style>
-body,p,h1,h2,h3,h4,h5,h6{
-    font-family: 'Raleway';
-}
-:root {
-    --title-color: #141313;
-    --text-color: #777777;
-    --border-color: #201f1f17;
-    --gradient-color: linear-gradient(90deg, #4458dc 0%, #854fee 100%);
-    --shadow-color: 0px 10px 30px rgba(1, 1, 2, 0.3);
-    --shadow2-color: 0px 10px 30px rgba(1, 1, 2, 0.1);
-    --box-shadow: 0px 10px 30px rgba(57, 56, 61, 0.205);
-    --primary1-color:#f2f2f2;
-    --primary2-color:#fd7e14;
-    --primary3-color:#393e46;
-    --primary4-color:#222831;
-}
 
-#section-result{
-    padding: 2rem;
-    background-color: royalblue;
-}
 
-.crt-txt{
-    color: #1dce0d;
-}
-.score-card{
-    padding: 0.5rem;
-    border: 10px, solid, white;
-    background: var(--primary2-color);
-    border-radius: 12px;
-    box-shadow: var(--box-shadow);
-    color: white;
-}
-.data-card{
+    body{
+        font-family: 'Raleway';
+    }
+    :root {
+        --title-color: #141313;
+        --text-color: #777777;
+        --border-color: #201f1f17;
+        --gradient-color: linear-gradient(90deg, #4458dc 0%, #854fee 100%);
+        --shadow-color: 0px 10px 30px rgba(202, 198, 187, 0.3);
+        --box-shadow: 0px 10px 30px rgba(57, 56, 61, 0.3);
+        --primary1-color:#f2f2f2;
+        --primary2-color:#fd7e14;
+        --primary3-color:#393e46;
+        --primary4-color:#222831;
+        --main-blue:#28c7fa;
+        --main-red:#ff0000;
+        --main-green:#0abf53;
+    }
+    #head-txt{
+        z-index: 1;
+        color: white;
+    }
+    #score{
+        background-color: var(--main-blue);
+    }
+    #pecentage{
+        background-color: var(--primary2-color);
+    }
+    #correct{
+        background-color: var(--main-green);
+    }
+    #incorrect{
+        background-color: var(--main-red);
+    }
+    #attempted{
+        background-color: var(--main-green);
+    }
+    #unattempted{
+        background-color: var(--main-red);
+    }
+    #responses{
+        margin-left: 3rem;
+        margin-right: 3rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
     
-    border: 10px, solid, white;
-    border-radius: 6px;
-    box-shadow: var(--box-shadow);
-    padding: 2em;
+    #section-result{
+        padding: 2rem;
+        background-color: royalblue;
+    }
+    
+    .crt-txt{
+        color: #21ab2c;
+    }
+    .score-card{
+        padding: 0.5rem;
+        border: 0 !important;
+        outline: 0 !important;
+        background: var(--primary2-color);
+        border-radius: 12px;
+        box-shadow: var(--box-shadow);
+        color: white;
+        
+    }
+    .data-card{
+        padding: 2em;
+        margin-left: 5rem;
+        margin-right: 5rem;
+        border: 10px, solid, white;
+        border-radius: 6px;
+        border: 0 !important;
+        outline: 0 !important;
+        
+        box-shadow: var(--box-shadow);
+    }
+    #result{
+        padding: 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-gap: 80px;
+    }
+    #result2{
+        padding-left: 5rem;
+        padding-right: 5rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr ;
+        grid-gap: 120px;
+    }
+    #chart-section{
+        padding: 2rem;
+        display: grid;
+        border-radius: 12px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    #chart-section .card{
+        border: 0 !important;
+        outline: 0 !important;
+    }
+    #piechart1{
+        width: 600px; height: 333px;
+    }
+    #piechart2{
+        width: 600px; height: 333px;
+    }
+    
+    
+    @media (max-width:567px){
+    
+        #result{
+            padding-left: 2rem;
+            padding-right: 2rem;
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-gap: 40px;
+        }
+        #result2{
+        padding-left: 2rem;
+        padding-right: 2rem;
+        display: grid;
+        grid-template-columns: repeat(2,1fr) ;
+        grid-gap: 40px;
+    }
+        #chart-section{
+            padding: 2rem;
+            display: grid;
+            border-radius: 12px;
+            grid-template-columns: repeat(1, 1fr);
+    }
+    #piechart1{
+        width: 300px; height: 166px;
+    }
+    #piechart2{
+        width: 300px; height: 166px;
+    }
+    
+    }
+
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+    body {
+        margin:0;
+        box-sizing: border-box;
+        outline: 0;
+    }
+
+
+
+.header {
+  position: fixed;
+  display: block;
+  width:100%;
+  z-index: -1;
+  text-align:center;
+  background: rgb(249,109,0);
+  background: linear-gradient(90deg, rgba(249,109,0,1) 19%, rgba(244,146,69,1) 65%, rgba(245,166,68,1) 100%);
+  color:white;
 }
-#result{
-    padding: 2rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 80px;
+.logo {
+  width:50px;
+  fill:white;
+  padding-right:15px;
+  display:inline-block;
+  vertical-align: middle;
 }
 
-@media (max-width:567px){
-
-#result{
-    padding-left: 2rem;
-    padding-right: 2rem;
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    grid-gap: 40px;
+.inner-header {
+  height:65vh;
+  width:100%;
+  margin: 0;
+  padding: 0;
 }
 
+.flex { /*Flexbox for containers*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-</style>
-</head>
-<body>
+.waves {
+  position:relative;
+  width: 100%;
+  height:15vh;
+  margin-bottom:-7px; /*Fix for safari gap*/
+  min-height:100px;
+  max-height:150px;
+}
 
-   
-<section id="result">
+.content {
+  position:relative;
+  height:20vh;
+  text-align:center;
+  background-color: white;
+}
 
-</section>
-   
-<section id="responses">
+/* Animation */
 
-</section>
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+@keyframes move-forever {
+  0% {
+   transform: translate3d(-90px,0,0);
+  }
+  100% { 
+    transform: translate3d(85px,0,0);
+  }
+}
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+  .waves {
+    height:40px;
+    min-height:40px;
+  }
+  .content {
+    height:30vh;
+  }
+}
+    </style>
+    </head>
+    <body>
+     <!--Hey! This is the original version
+of Simple CSS Waves-->
 
-<section class="container-fluid">
-    <button type="button" class="btn btn-primary " style="width: 100%; margin-top: 2em; margin-bottom: 2em;"  onclick='location.href="index.html"'>Continue</button>
-</section>
+<div class="header">
 
+    <!--Content before waves-->
+    <div class="inner-header flex">
+
+    </div>
+    
+    <!--Waves Container-->
+    <div>
+    <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+    <defs>
+    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+    </defs>
+    <g class="parallax">
+    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+    </g>  
+    </svg>
+    </div>
+    <!--Waves end-->
+    </div>
+    <!--Header ends-->
+    <section class="container" >
+        <div class="text-center">
+            <br>
+            <br>
+        <h2 id="head-txt" >Your Scores</h1>
+        </div>
+    </section>
+    
+    <section id="result">
+    
+    </section>
+    <section id="result2">
+    
+    </section>
+    <section id="chart-section" class="card text-center m-5">
+        <div id="piechart1" class="text-center" ></div>
+        <div id="piechart2" class="text-center" ></div>
+    </section>
+    
+
+    <section class="container text-center m-3">
+        <div>
+            <button type="button" class="btn btn-outline-primary ml-3 mr-3" id="expand-btn" onclick="showResponses()">Show Questions</button>
+            <button type="button" class="btn btn-outline-primary ml-3 mr-3" id="final-submit-btn" onclick="participate()">Participate In Rankings</button>
+            <button type="button" class="btn btn-outline-primary ml-3 mr-3" id="final-submit-btn" onclick="gotoprofile()">Go To Profile</button>
+        </div>
+        
+    </section>
+    <section id="responses" >
+    
+    </section>
+    
+    <section class="container-fluid">
+    </section>
+    
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="form-group">
+        <label for="exampleInputName1">Name</label>
+        <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
+      </div>
+
+    <div class="form-group">
+        <label for="exampleInputUserData1">Email Or Password</label>
+        <input type="text" class="form-control" id="exampleInputUserData1" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email or phone number with anyone else.</small>
+      </div>
+
+      <button type="button" class="btn btn-outline-primary m-3 text-center" id="final-submit-btn" onclick='finish()'>Submit</button>
+
+  </div>
+
+</div>
+    
+    
 
 
 
