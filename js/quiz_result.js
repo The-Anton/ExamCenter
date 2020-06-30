@@ -100,8 +100,14 @@ function processData(a,r,e,timeLapsed){
 
     inncorrect = wrong;
     score = correct*4-(inncorrect);
-    percentage = (correct/totalQuestion)*100;
-    percentage=percentage.toFixed(2);
+    if(score<0){
+        percentage=0;
+
+    }else{
+        percentage = (score/(totalQuestion*4))*100;
+        percentage=percentage.toFixed(2);
+
+    }
     attempted = totalQuestion-unattempted;
 
     document.getElementById("result").innerHTML = `
@@ -111,7 +117,7 @@ function processData(a,r,e,timeLapsed){
         <h3>${score}</h3>
         </div>
     </div>
-    <div class="card score-card pt-3 pb-3" id="time">
+    <div class="card score-card pt-3 pb-3" id="score">
         <div class="text-center">
         <h4>Time Taken</h4>
         <h3>${timeLapsed} min</h3>
@@ -124,6 +130,12 @@ function processData(a,r,e,timeLapsed){
         <h3>${percentage}%</h3>
         </div>
     </div>
+    <div class="card score-card pt-3 pb-3" >
+        <div class="text-center">
+        <h4>Total Questions</h4>
+        <h3>${totalQuestion}</h3>
+        </div>
+    </div>
     <div class="card score-card pt-3 pb-3" id="correct">
         <div class="text-center">
         <h4>Total Correct</h4>
@@ -131,8 +143,6 @@ function processData(a,r,e,timeLapsed){
         </div>
     </div>
     
-`;
-document.getElementById("result2").innerHTML = `
   
     
     <div class="card  score-card pt-3 pb-3" id="incorrect">
@@ -153,6 +163,7 @@ document.getElementById("result2").innerHTML = `
         <h3>${unattempted}</h3>
         </div>
     </div>
+    
 
 
 `;
@@ -239,11 +250,17 @@ document.getElementById("result2").innerHTML = `
                             document.getElementById(`status${qNo}`).innerText="Status: Unattempted";
                             document.getElementById(`status${qNo}`).style.color="#e51f1f";      // red
                         }
-                        else{
-                            document.getElementById(`status${qNo}`).innerText="Status: Attempted";
+                        if(res[qNo]!=ans[qNo]){
+                            document.getElementById(`status${qNo}`).innerText="Status: Incorrect";
+                            document.getElementById(`status${qNo}`).style.color="#e51f1f";      // red
+                            document.getElementById(`${qNo}.${res[qNo]}`).style.color="#4EC5F1";
+                        }
+                        if(res[qNo]==ans[qNo]){
+                            document.getElementById(`status${qNo}`).innerText="Status: Correct";
                             document.getElementById(`status${qNo}`).style.color="#21ab2c";      // green
                             document.getElementById(`${qNo}.${res[qNo]}`).style.color="#4EC5F1";
                         }
+                        
                     }
                 
                 
@@ -375,6 +392,7 @@ function finish(){
     var userData = document.getElementById("exampleInputUserData1").value;
 
     console.log(timeLapsed);
+
     db.collection('/dailyquiz/tempData/quizResponses').doc(tempDoc).delete().then(function() {
     }).catch(function(error) {
         console.error("Error removing document: ", error);
