@@ -357,7 +357,7 @@ function showQuestions(quesData, totalQuestion ,ans, res, e){
             
         `;
 
-       // document.getElementById(`${questionNo}.${res[doc.id]}`).style.color="#4EC5F1";
+       //document.getElementById(`${questionNo}.${res[doc.id]}`).style.color="#4EC5F1";
     }
 }
 
@@ -426,6 +426,5 @@ function gotoprofile(){
         console.error("Error removing document: ", error);
     });
 
-    
-
+  
 }
