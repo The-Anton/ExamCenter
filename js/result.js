@@ -188,6 +188,8 @@ function processData(a,r,e,timeLapsed){
 
             
     `;
+
+    saveRanking(score,timeLapsed);
   showCharts(correct, inncorrect,unattempted,attempted, totalQuestion);
 
     responseDocRef = db.collection('/courses/categories/'+category+'/'+courseid+'/questions');
@@ -289,6 +291,11 @@ function processData(a,r,e,timeLapsed){
         });
     });
 
+}
+
+function saveRanking(score,timeLapsed)
+{
+    
 }
 
 function showCharts(correct, inncorrect,unattempted,attempted,totalQuestion){
