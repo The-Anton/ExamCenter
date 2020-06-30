@@ -47,7 +47,7 @@ function fetchdata(){
         ${doc.data().Name}
         </div>
           ${doc.data().category}<br/>
-          <a href="leaderboard.html?from=dailyquizLeaderboard&id=${doc.data().id}" style="text-decoration: none;">
+          <a href="leaderboard.html?from=dailyquizLeaderboard&quizid=${doc.data().id}" style="text-decoration: none;">
           <button class="right btn-leaderboard">Leaderboard</button>
           </a>
           <div class="right top">${doc.data().Date}</div>
