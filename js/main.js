@@ -41,13 +41,13 @@ function fetchdata(){
     querySnapshot.forEach(function(doc) {
         
         document.getElementById("listofdailyquizes").innerHTML += `
-        <a href="quiz.html" style="text-decoration: none;">
+        <a href="quiz.html?quizid=${doc.data().id}" style="text-decoration: none;">
         <li class="li-list">
         <div class="dailyquizhead">
         ${doc.data().Name}
         </div>
           ${doc.data().category}<br/>
-          <a href="leaderboard.html?from=dailyquizLeaderboard&quizid=${doc.data().id}" style="text-decoration: none;">
+          <a href="leaderboard.html?from=dailyquizLeaderboard&id=${doc.data().id}" style="text-decoration: none;">
           <button class="right btn-leaderboard">Leaderboard</button>
           </a>
           <div class="right top">${doc.data().Date}</div>
