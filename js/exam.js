@@ -30,18 +30,31 @@ var docRef = db.collection("/courses/categories/"+category+"/"+courseid+"/questi
 var responseDocRef = db.collection("/courses/categories/ssc/ssc-001/questions").doc("Responses");
 
 var currentQ =0;
+var reviewQues=0;
+
+
 
 var ans =[];
-var minutes= 180;
+var minutes;
 var localQuesCache ={};
 var optObj ={};
 var totalQuestion;
-var timeleft=180;
+var timeleft=minutes;
 var marked=[];
 var status=[];                                        //   Answered = 1 | Not Answered = 0 | Not Visited = undifined or null | Marked For review = -1
+var timeLapsed;
 
 
-
+var docRef5 = db.collection('/dailyquiz/eoJpYOfAX57GA06wfc4G/questions').doc("testData");
+    docRef5.get().then(function(doc) {
+        if (doc.exists) {
+            minutes = doc.data().time;
+        } else {
+            console.log("No such document!");
+        }
+    }).catch(function(error) {
+    console.log("Error getting document:", error);
+    });
 
 //var ans ={};
 
@@ -69,7 +82,12 @@ function createPage(){
     startTimer();
 }
 
-
+function resume(){
+    
+    document.getElementById("initial-section").style.display = "none";
+    document.getElementById("response-section").style.display = "none";
+    document.getElementById("exam-section").style.display = "block";
+}
 
 function makeVisible(){
     document.getElementById("ques-area").innerHTML = ` 
@@ -94,7 +112,7 @@ function makeVisible(){
 
                     <button type="button" class="btn btn-outline-primary mr-3 ml-3" id="next-btn" onclick="loadBackQues()"><< Back</button>
                     <button type="button" class="btn btn-outline-primary mr-3 ml-3 " id="back-btn" onclick="loadNextQues()">Next >></button>
-                    <button type="button" class="btn btn-success" id="submit-btn" onclick="submit()">Submit</button>
+                    <button type="button" class="btn btn-success" id="submit-btn" onclick="showReview()">Submit</button>
 
 
                 </div>`;
@@ -171,9 +189,11 @@ function startTimer(){
         var now = new Date().getMinutes();
          timeleft = endTime-now;
         var hours = Math.floor((timeleft / (60)));
-        var minutes = Math.floor((timeleft % (60)));  
+        var min = Math.floor((timeleft % (60)));  
         document.getElementById("hours").innerHTML = hours + "h ";
-        document.getElementById("minutes").innerHTML = minutes + "m " ;
+        document.getElementById("minutes").innerHTML = min + "m " ;
+        timeLapsed = minutes - timeleft;
+        console.log(timeLapsed);
         if(timeleft<=0){
             submit();
             clearInterval(intervals);
@@ -208,15 +228,113 @@ function markGreen(c){
     document.getElementById(`Qbtn${c}`).style.background = "#21ab2c";            // green
 }
 
+function showReview(){
+
+    document.getElementById("initial-section").style.display = "none";
+    document.getElementById("exam-section").style.display = "none";
+    document.getElementById("response-section").style.display = "block";
+    document.getElementById("response-section").innerHTML +=`
+        <button type="button" class="btn btn-outline-primary mr-3 ml-3" id="back-btn" onclick="resume()"><< Go Back</button>
+        <button type="button" class="btn btn-outline-primary " id="final-submit-btn" onclick="submit()">Submit</button>`;
+
+
+
+    for(qNo=1; qNo<=totalQuestion; qNo++){
+        setTimeout(loadReviews(qNo),3000);
+    }
+ 
+    
+}
+
+
+function loadReviews(qNo){
+    var docRef2 = db.collection("/courses/categories/"+category+"/"+courseid+"/questions").doc(`${qNo}`);
+
+            docRef2.withConverter(dataConverterVirtual)
+            .get().then(function(doc) {
+                if (doc.exists){
+                    reviewQues++;
+                    d = doc.data();
+                    d.showQues();
+                    console.log("Loaded :",qNo);
+                } else {
+                console.log("No such document!");
+                }}).catch(function(error) {
+                console.log("Error getting document:", error);
+                });
+}
+
+
+
+class data2 {
+
+    constructor (ques, opt1, opt2, opt3, opt4 ) {
+        this.ques = ques;
+        this.opt1 = opt1;
+        this.opt2 = opt2;
+        this.opt3 = opt3;
+        this.opt4 = opt4;
+    }
+    toString() {
+        return this.ques + ', ' + this.opt1 + ', ' + this.opt2 + ', ' + this.opt3 + ', ' + this.opt4;
+    }
+    showQues(){
+    
+        document.getElementById("response-section").innerHTML += `
+                        <div class="card data-card m-5 p-5">
+                        <h5 id="Q">Q.${reviewQues} ${this.ques}</h5><br>   
+                        <h6  id="opt1" value="${this.opt1}" >1)  ${this.opt1} </h6>   
+                        <h6  id="opt2" value="${this.opt2}" >2)  ${this.opt2} </h6>   
+                        <h6  id="opt3" value="${this.opt3}" >3)  ${this.opt3} </h6>    
+                        <h6  id="opt4" value="${this.opt4}" >4)  ${this.opt4} </h6>   
+
+                        <br>
+                            <div id="status-txt${reviewQues}">
+                            </div>
+                        </div>`;
+                       
+
+                        if(optObj[`${reviewQues}`]!= null || optObj[`${reviewQues}`!=undefined]){
+                            document.getElementById(`status-txt${reviewQues}`).innerHTML += `
+                            <h6 class=" pl-1">Your Ans: ${optObj[reviewQues]}) ${localQuesCache[`opt${reviewQues}.${optObj[reviewQues]}`]} </h6>
+                            `;
+                        }else{
+                            document.getElementById(`status-txt${reviewQues}`).innerHTML += `
+                            <h6 class=" pl-1">Your Ans: Unattempted </h6>
+                            `;
+                        }
+
+                        
+    }
+}
+
+
+dataConverterVirtual = {
+    toFirestore: function(data2) {
+        return {
+            ques: data2.ques,
+            opt1: data2.opt1,
+            opt2: data2.opt2,
+            opt3: data2.opt3,
+            opt4: data2.opt4
+            }
+    },
+    fromFirestore: function(snapshot, options){
+        const data = snapshot.data(options);
+        return new data2(data.ques, data.opt1, data.opt2, data.opt3, data.opt4)
+    }
+}
+
 function submit(){
     console.log("Answers:", ans);
     console.log("Answers:", optObj);
-
+    optObj['timeLapsed']=timeLapsed;
     for(i=1; i<=totalQuestion; i++){
         if(optObj[`${i}`]== null || optObj[`${i}`==undefined]){
             optObj[i]="0";
         }
     }
+
 
 
     db.collection("/users/"+uid+"/courses/"+courseid+"/result").doc("Responses").set(optObj)
@@ -370,10 +488,8 @@ function loadFromCache(qNo){
     
     markQues(currentQ);
 
-
-     console.log("Q:",qNo);
-
 }
+
 
 
 
@@ -424,6 +540,9 @@ class data1 {
 
 
 
+
+
+
 dataConverter = {
     toFirestore: function(data1) {
         return {
@@ -439,6 +558,8 @@ dataConverter = {
         return new data1(data.ques, data.opt1, data.opt2, data.opt3, data.opt4)
     }
 }
+
+
 
 
 function markQues(qNo ){
