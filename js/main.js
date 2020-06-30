@@ -41,7 +41,7 @@ function fetchdata(){
     querySnapshot.forEach(function(doc) {
         
         document.getElementById("listofdailyquizes").innerHTML += `
-        <a href="quiz.html?quizid=${doc.data().id}" style="text-decoration: none;">
+        <a href="quiz.html?quizid=${doc.id}" style="text-decoration: none;">
         <li class="li-list">
         <div class="dailyquizhead">
         ${doc.data().Name}
