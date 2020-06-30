@@ -214,7 +214,7 @@ function markYellow(c){
 
 }
 function markRed(c){
-    document.getElementById(`Qbtn${c}`).style.background = "#e51f1f";            //  red
+    document.getElementById(`Qbtn${c}`).style.background = "#e51f1f";            //red
 }
 function markGreen(c){
     document.getElementById(`Qbtn${c}`).style.background = "#21ab2c";            // green
