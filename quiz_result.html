@@ -131,13 +131,7 @@
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-gap: 80px;
     }
-    #result2{
-        padding-left: 5rem;
-        padding-right: 5rem;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr ;
-        grid-gap: 120px;
-    }
+   
     #chart-section{
         padding: 2rem;
         display: grid;
@@ -165,25 +159,29 @@
             grid-template-columns: repeat(2,1fr);
             grid-gap: 40px;
         }
-        #result2{
-        padding-left: 2rem;
-        padding-right: 2rem;
-        display: grid;
-        grid-template-columns: repeat(2,1fr) ;
-        grid-gap: 40px;
+        
+        #responses{
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        
     }
-        #chart-section{
-            padding: 2rem;
-            display: grid;
-            border-radius: 12px;
-            grid-template-columns: repeat(1, 1fr);
-    }
-    #piechart1{
-        width: 300px; height: 166px;
-    }
-    #piechart2{
-        width: 300px; height: 166px;
-    }
+        #responses h5,h6,p{
+            font-size: small;
+        }
+            #chart-section{
+                padding: 2rem;
+                display: grid;
+                border-radius: 12px;
+                grid-template-columns: repeat(1, 1fr);
+        }
+        #piechart1{
+            width: 300px; height: 166px;
+        }
+        #piechart2{
+            width: 300px; height: 166px;
+        }
     
     }
 
@@ -363,9 +361,7 @@ of Simple CSS Waves-->
     <section id="result">
     
     </section>
-    <section id="result2">
-    
-    </section>
+   
     <section id="chart-section" class="card text-center m-5">
         <div id="piechart1" class="text-center" ></div>
         <div id="piechart2" class="text-center" ></div>
@@ -374,9 +370,9 @@ of Simple CSS Waves-->
 
     <section class="container text-center m-3">
         <div>
-            <button type="button" class="btn btn-outline-primary ml-3 mr-3" id="expand-btn" onclick="showResponses()">Show Questions</button>
-            <button type="button" class="btn btn-outline-primary ml-3 mr-3" id="final-submit-btn" onclick="participate()">Participate In Rankings</button>
-            <button type="button" class="btn btn-outline-primary ml-3 mr-3" id="final-submit-btn" onclick="gotoprofile()">Go To Profile</button>
+            <button type="button" class="btn btn-outline-primary m-3" id="expand-btn" onclick="showResponses()">Show Questions</button>
+            <button type="button" class="btn btn-outline-primary m-3" id="final-submit-btn" onclick="participate()">Participate In Rankings</button>
+            <button type="button" class="btn btn-outline-primary m-3" id="final-submit-btn" onclick="gotoprofile()">Go To Profile</button>
         </div>
         
     </section>
@@ -401,7 +397,7 @@ of Simple CSS Waves-->
 
     <div class="form-group">
         <label for="exampleInputUserData1">Email Or Password</label>
-        <input type="text" class="form-control" id="exampleInputUserData1" aria-describedby="emailHelp" placeholder="Enter email">
+        <input type="text" class="form-control" id="exampleInputUserData1" aria-describedby="emailHelp" placeholder="Enter email or Phone Number">
         <small id="emailHelp" class="form-text text-muted">We'll never share your email or phone number with anyone else.</small>
       </div>
 
