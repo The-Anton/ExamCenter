@@ -3,7 +3,7 @@ var res=[];
 var exp;
 var totalQuestion;
 var timeLapsed;
-
+var score=0;
 document.getElementById("responses").style.display = "none";
 
 
@@ -81,7 +81,7 @@ function processData(a,r,e,timeLapsed){
     var wrong=0;
     var percentage=0;
     var unattempted=0;
-    var score=0
+    
     var questionNo;
     var attempted=0;
     
@@ -250,12 +250,12 @@ function processData(a,r,e,timeLapsed){
                             document.getElementById(`status${qNo}`).innerText="Status: Unattempted";
                             document.getElementById(`status${qNo}`).style.color="#e51f1f";      // red
                         }
-                        if(res[qNo]!=ans[qNo]){
+                        else if(res[qNo]!=ans[qNo]){
                             document.getElementById(`status${qNo}`).innerText="Status: Incorrect";
                             document.getElementById(`status${qNo}`).style.color="#e51f1f";      // red
                             document.getElementById(`${qNo}.${res[qNo]}`).style.color="#4EC5F1";
                         }
-                        if(res[qNo]==ans[qNo]){
+                        else if(res[qNo]==ans[qNo]){
                             document.getElementById(`status${qNo}`).innerText="Status: Correct";
                             document.getElementById(`status${qNo}`).style.color="#21ab2c";      // green
                             document.getElementById(`${qNo}.${res[qNo]}`).style.color="#4EC5F1";
@@ -392,7 +392,7 @@ function finish(){
     var userData = document.getElementById("exampleInputUserData1").value;
 
     console.log(timeLapsed);
-
+    console.log(score);
     db.collection('/dailyquiz/tempData/quizResponses').doc(tempDoc).delete().then(function() {
     }).catch(function(error) {
         console.error("Error removing document: ", error);
